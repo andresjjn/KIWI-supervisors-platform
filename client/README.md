@@ -1,1 +1,1 @@
-# Client APP - MVP
+# Client APP - MVP.
