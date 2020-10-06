@@ -1,0 +1,51 @@
+@media screen and (max-width: 2560px) {
+  .logo_compressed, .logo_extended {
+    height: 55px;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  .logo_compressed, .logo_extended {
+    height: 55px;
+  }
+}
+
+@media screen and (max-width: 1520px) {
+  .logo_compressed, .logo_extended {
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .logo_compressed, .logo_extended {
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .logo_compressed, .logo_extended {
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo_compressed, .logo_extended {
+    height: 28px;
+  }
+}
+
+.logo_compressed, .logo_extended {
+  width: 100%;
+  margin-top: 1.5vh;
+  transition: 180ms;
+}
+
+.logo_extended {
+  background: url('../../images/Logo.png') center no-repeat;
+  background-size: contain;
+}
+
+.logo_compressed {
+  background: url('../../images/face-robot.png') center no-repeat;
+  background-size: contain;
+}
