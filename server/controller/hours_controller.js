@@ -1,4 +1,3 @@
-const { findOneAndUpdate } = require("../models/Day");
 const Day = require("../models/Day");
 const hoursCtrl = {};
 
@@ -12,12 +11,12 @@ hoursCtrl.getHours = async (req, res) => {
 };
 
 hoursCtrl.createHour = async (req, res) => {
-  const dayOfdate = await Day.findOne({ date: req.params.date });
-  if (dayOfdate) {
-    const updatedDay = await Day.findOneAndUpdate(
-      { date: req.params.date },
-      { hours: req.body }
-    );
+  const updatedDay = await Day.findOneAndUpdate(
+    { date: req.params.date },
+    { hours: req.body },
+    { new: true, runValidators: true }
+  );
+  if (updatedDay) {
     res.status(200).json(updatedDay);
   } else {
     const newDay = new Day({
@@ -28,10 +27,11 @@ hoursCtrl.createHour = async (req, res) => {
     res.status(201).json(newDay);
   }
 };
-hoursCtrl.getHour = (req, res) => res.json({ a: "GET Hello Days Get" });
-hoursCtrl.modifyHour = (req, res) => res.json({ a: "GET Hello Days Get" });
-hoursCtrl.deleteHour = (req, res) => res.json({ a: "GET Hello Days Get" });
-hoursCtrl.getSlots = (req, res) => res.json({ a: "GET Hello Days Get" });
-hoursCtrl.modifySlots = (req, res) => res.json({ a: "GET Hello Days Get" });
+
+hoursCtrl.getHour = (req, res) => res.json({ a: "GET Hello Days Get 1" });
+hoursCtrl.modifyHour = (req, res) => res.json({ a: "GET Hello Days Get 2" });
+hoursCtrl.deleteHour = (req, res) => res.json({ a: "GET Hello Days Get 3" });
+hoursCtrl.getSlots = (req, res) => res.json({ a: "GET Hello Days Get 4" });
+hoursCtrl.modifySlots = (req, res) => res.json({ a: "GET Hello Days Get 5" });
 
 module.exports = hoursCtrl;
