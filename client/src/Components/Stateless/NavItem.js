@@ -1,5 +1,5 @@
 import React from "react";
-import "./Styles.css";
+import "./NavItem.css";
 
 export default function Dashboard(props) {
   return (
