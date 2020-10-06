@@ -10,6 +10,6 @@ const {
 
 router.route("/").get(getAllDays).post(createDay);
 
-router.route("/:id").get(getDay).delete(deleteDay);
+router.route("/:date").get(getDay).delete(deleteDay);
 
 module.exports = router;

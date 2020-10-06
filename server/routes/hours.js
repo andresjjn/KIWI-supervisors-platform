@@ -11,10 +11,10 @@ const {
   modifySlots,
 } = require("../controller/hours_controller");
 
-router.route("/:day/hours").get(getHours).put(createHour);
+router.route("/:date/hours").get(getHours).put(createHour);
 
-router.route("/:day/:hour").get(getHour).put(modifyHour).delete(deleteHour);
+router.route("/:date/:hours").get(getHour).put(modifyHour).delete(deleteHour);
 
-router.route("/:day/:hour/slots").get(getSlots).put(modifySlots);
+router.route("/:date/:hour/slots").get(getSlots).put(modifySlots);
 
 module.exports = router;

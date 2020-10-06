@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-app.use("/api/days", require("./routes/days"));
-app.use("/api/", require("./routes/hours"));
+app.use("/api/v1/days", require("./routes/days"));
+app.use("/api/v1/", require("./routes/hours"));
 
 module.exports = { app, PORT };
