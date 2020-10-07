@@ -27,7 +27,7 @@ daysCtrl.getDay = async (req, res) => {
   if (dayOfdate) {
     res.status(200).json(dayOfdate);
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 
@@ -36,7 +36,7 @@ daysCtrl.deleteDay = async (req, res) => {
   if (dayOfdate) {
     res.status(200).json({ message: "Day Deleted" });
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 

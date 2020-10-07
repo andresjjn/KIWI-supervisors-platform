@@ -6,7 +6,7 @@ hoursCtrl.getHours = async (req, res) => {
   if (dayOfdate) {
     res.status(200).json(dayOfdate.hours);
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 
@@ -35,9 +35,9 @@ hoursCtrl.getHour = async (req, res) => {
         return;
       }
     }
-    res.status(404).json({ error: "Hour not found" });
+    res.status(400).json({ error: "Hour not found" });
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 
@@ -52,9 +52,9 @@ hoursCtrl.modifyHour = async (req, res) => {
         return;
       }
     }
-    res.status(404).json({ error: "Hour not found" });
+    res.status(400).json({ error: "Hour not found" });
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 
@@ -69,9 +69,9 @@ hoursCtrl.deleteHour = async (req, res) => {
         return;
       }
     }
-    res.status(404).json({ error: "Hour not found" });
+    res.status(400).json({ error: "Hour not found" });
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 hoursCtrl.getSlots = async (req, res) => {
@@ -83,9 +83,9 @@ hoursCtrl.getSlots = async (req, res) => {
         return;
       }
     }
-    res.status(404).json({ error: "Hour not found" });
+    res.status(400).json({ error: "Hour not found" });
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 
@@ -100,9 +100,9 @@ hoursCtrl.modifySlots = async (req, res) => {
         return;
       }
     }
-    res.status(404).json({ error: "Hour not found" });
+    res.status(400).json({ error: "Hour not found" });
   } else {
-    res.status(404).json({ error: "Day not found" });
+    res.status(400).json({ error: "Day not found" });
   }
 };
 
