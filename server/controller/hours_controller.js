@@ -11,13 +11,11 @@ hoursCtrl.getHours = async (req, res) => {
 };
 
 hoursCtrl.createHour = async (req, res) => {
-  const updatedDay = await Day.findOneAndUpdate(
-    { date: req.params.date },
-    { hours: req.body },
-    { new: true, runValidators: true }
-  );
-  if (updatedDay) {
-    res.status(200).json(updatedDay);
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    dayOfdate.hours.push(req.body);
+    await dayOfdate.save();
+    res.status(200).json(dayOfdate);
   } else {
     const newDay = new Day({
       date: req.params.date,
@@ -28,10 +26,69 @@ hoursCtrl.createHour = async (req, res) => {
   }
 };
 
-hoursCtrl.getHour = (req, res) => res.json({ a: "GET Hello Days Get 1" });
-hoursCtrl.modifyHour = (req, res) => res.json({ a: "GET Hello Days Get 2" });
-hoursCtrl.deleteHour = (req, res) => res.json({ a: "GET Hello Days Get 3" });
-hoursCtrl.getSlots = (req, res) => res.json({ a: "GET Hello Days Get 4" });
+hoursCtrl.getHour = async (req, res) => {
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    for (hours of dayOfdate.hours) {
+      if (hours.hour == req.params.hour) {
+        res.status(200).json(hours);
+        return;
+      }
+    }
+    res.status(404).json({ error: "Hour not found" });
+  } else {
+    res.status(404).json({ error: "Day not found" });
+  }
+};
+
+hoursCtrl.modifyHour = async (req, res) => {
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    for (let i = 0; i < dayOfdate.hours.length; i++) {
+      if (dayOfdate.hours[i].hour == req.params.hour) {
+        dayOfdate.hours[i] = req.body;
+        dayOfdate.save();
+        res.status(200).json(dayOfdate);
+        return;
+      }
+    }
+    res.status(404).json({ error: "Hour not found" });
+  } else {
+    res.status(404).json({ error: "Day not found" });
+  }
+};
+
+hoursCtrl.deleteHour = async (req, res) => {
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    for (let i = 0; i < dayOfdate.hours.length; i++) {
+      if (dayOfdate.hours[i].hour == req.params.hour) {
+        dayOfdate.hours.splice(i, 1);
+        dayOfdate.save();
+        res.status(200).json(dayOfdate);
+        return;
+      }
+    }
+    res.status(404).json({ error: "Hour not found" });
+  } else {
+    res.status(404).json({ error: "Day not found" });
+  }
+};
+hoursCtrl.getSlots = async (req, res) => {
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    for (hours of dayOfdate.hours) {
+      if (hours.hour == req.params.hour) {
+        res.status(200).json(hours.slots);
+        return;
+      }
+    }
+    res.status(404).json({ error: "Hour not found" });
+  } else {
+    res.status(404).json({ error: "Day not found" });
+  }
+};
+
 hoursCtrl.modifySlots = (req, res) => res.json({ a: "GET Hello Days Get 5" });
 
 module.exports = hoursCtrl;

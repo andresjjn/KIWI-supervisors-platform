@@ -9,14 +9,14 @@ daysCtrl.getAllDays = async (req, res) => {
 
 daysCtrl.createDay = async (req, res) => {
   const { date, hours } = req.body;
-  const newDay = new Day({
-    date: date,
-    hours: hours,
-  });
-  const dayOfdate = await Day.findOne({ date: newDay.date });
+  const dayOfdate = await Day.findOne({ date: req.body.date });
   if (dayOfdate) {
     res.status(400).json({ error: "This day already exist" });
   } else {
+    const newDay = new Day({
+      date: date,
+      hours: hours,
+    });
     await newDay.save();
     res.status(201).json(newDay);
   }

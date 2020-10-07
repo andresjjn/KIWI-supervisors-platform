@@ -14,7 +14,7 @@ const {
 router.route("/:date/hours").get(getHours).post(createHour);
 
 router
-  .route("/:date/hours/:hours")
+  .route("/:date/hours/:hour")
   .get(getHour)
   .put(modifyHour)
   .delete(deleteHour);
