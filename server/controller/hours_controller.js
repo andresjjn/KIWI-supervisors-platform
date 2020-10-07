@@ -89,6 +89,21 @@ hoursCtrl.getSlots = async (req, res) => {
   }
 };
 
-hoursCtrl.modifySlots = (req, res) => res.json({ a: "GET Hello Days Get 5" });
+hoursCtrl.modifySlots = async (req, res) => {
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    for (let i = 0; i < dayOfdate.hours.length; i++) {
+      if (dayOfdate.hours[i].hour == req.params.hour) {
+        dayOfdate.hours[i].slots = req.body;
+        dayOfdate.save();
+        res.status(200).json(dayOfdate);
+        return;
+      }
+    }
+    res.status(404).json({ error: "Hour not found" });
+  } else {
+    res.status(404).json({ error: "Day not found" });
+  }
+};
 
 module.exports = hoursCtrl;
