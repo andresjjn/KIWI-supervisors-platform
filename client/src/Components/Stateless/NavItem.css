@@ -1,5 +1,5 @@
 @media screen and (max-width: 2560px) {
-  .dashboard_compressed, .dashboard_extended {
+  .nav_item_compressed, .nav_item_extended {
     height: 80px;
     margin: 50px 50px;
   }
@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 1920px) {
-  .dashboard_compressed, .dashboard_extended {
+  .nav_item_compressed, .nav_item_extended {
     height: 80px;
     margin: 50px 50px;
   }
@@ -39,7 +39,7 @@
 }
 
 @media screen and (max-width: 1520px) {
-  .dashboard_compressed, .dashboard_extended {
+  .nav_item_compressed, .nav_item_extended {
     height: 80px;
     margin: 50px 50px;
   }
@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .dashboard_compressed, .dashboard_extended {
+  .nav_item_compressed, .nav_item_extended {
     height: 80px;
     margin: 50px 50px;
   }
@@ -79,7 +79,7 @@
 }
 
 @media screen and (max-width: 800px) {
-  .dashboard_compressed, .dashboard_extended {
+  .nav_item_compressed, .nav_item_extended {
     height: 80px;
     margin: 50px 50px;
   }
@@ -99,7 +99,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .dashboard_compressed, .dashboard_extended {
+  .nav_item_compressed, .nav_item_extended {
     height: 80px;
     margin: 50px 50px;
   }
@@ -118,11 +118,16 @@
   }
 }
 
-.dashboard_compressed, .dashboard_extended {
+.nav_item_compressed, .nav_item_extended {
   display: flex;
   box-sizing: border-box;
   align-items: center;
   width: 100%;
+  cursor: pointer;
+}
+
+.nav_item_compressed:hover, .nav_item_extended:hover {
+  background-color: rgba(255, 255, 255, 0.055);
 }
 
 .icon_compressed {
