@@ -4,9 +4,9 @@ import "./App.css";
 import Logout from "./button_logout/logout_button";
 import Notification from "./button_notification/notification_button";
 import Navbar from "./Components/Statefull/NavBar";
-import Dashboard from "./Components/Statefull/Dashboard";
+import Dashboard from "./Components/Statefull/Dashboard/Dashboard";
 import Booking from "./Components/Statefull/Booking";
-import Settings from "./Components/Statefull/Settings";
+import Settings from "./Components/Statefull/Settings/Settings";
 
 export default class App extends Component {
   render() {
