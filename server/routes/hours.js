@@ -7,18 +7,17 @@ const {
   getHour,
   modifyHour,
   deleteHour,
-  getSlots,
-  modifySlots,
+  changeHour
 } = require("../controller/hours_controller");
 
-router.route("/:date/hours").get(getHours).post(createHour);
+router.route("/:date/hours")
+  .get(getHours)
+  .post(createHour);
 
-router
-  .route("/:date/hours/:hour")
+router.route("/:date/hours/:hour")
   .get(getHour)
   .put(modifyHour)
+  .patch(changeHour)
   .delete(deleteHour);
-
-router.route("/:date/hours/:hour/slots").get(getSlots).put(modifySlots);
 
 module.exports = router;

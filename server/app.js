@@ -13,5 +13,6 @@ app.use(express.json());
 //routes
 app.use("/api/v1/days", require("./routes/days"));
 app.use("/api/v1/days", require("./routes/hours"));
+app.use("/api/v1/days", require("./routes/slots"));
 
 module.exports = { app, PORT };
