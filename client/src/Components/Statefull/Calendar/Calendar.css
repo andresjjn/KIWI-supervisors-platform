@@ -19,7 +19,7 @@
   display: flex;
   background-color: #0d1b2a;
   color: white;
-  font-size: 5vw;
+  font-size: 3vw;
   align-items: center;
   justify-content: space-between;
   padding: 2vw 0px 1vw 0px;
@@ -41,7 +41,6 @@
 }
 
 .calendar .header .previous {
-
   text-align: left;
   margin-left: 1rem;
 }

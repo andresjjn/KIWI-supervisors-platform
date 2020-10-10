@@ -1,10 +1,20 @@
-import React from 'react'
+import React from 'react';
 
 export default function CalendarHeader(props) {
     const { value, setValue } = props;
 
     function currentMonthName() {
-        return value.format('MMMM');
+        let date = value.format('LL');
+        const monthsEnglish = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const monthsSpanish = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        let finalDate = '';
+        for (let i = 0; i < 12; i++) {
+            if (date.includes(monthsEnglish[i])) {
+                finalDate = date.replace(monthsEnglish[i], monthsSpanish[i]);
+                break;
+            }
+        }
+        return finalDate;
     }
 
     function currentYear() {
