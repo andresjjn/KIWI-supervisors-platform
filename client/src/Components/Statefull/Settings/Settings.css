@@ -33,6 +33,7 @@
     margin: 15px;
     font-size: 20px;
     font-weight: 900px;
+    outline: none;
 }
 .settingsView button:hover {
     color: rgba(255, 255, 255, 1);

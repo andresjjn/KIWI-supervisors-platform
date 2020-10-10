@@ -26,9 +26,9 @@ export default class Navbar extends Component {
             <div className='navbar'>
                 <div onMouseEnter={() => this.changeDimension()} onMouseLeave={() => this.changeDimension()} className={this.state.cName}>
                     <Logo cName={this.state.cName} />
-                    <NavItem className={this.state.cName} icon={DashboardIcon} text={this.state.isOpen && 'Tablero'}/>
-                    <NavItem className={this.state.cName} icon={BookingIcon} text={this.state.isOpen && 'Reservas'} />
-                    <NavItem className={this.state.cName} icon={SettingsIcon} text={this.state.isOpen && 'Gestionar '} />
+                    <NavItem link="/" className={this.state.cName} icon={DashboardIcon} text={this.state.isOpen && 'Tablero'}/>
+                    <NavItem link="/booking" className={this.state.cName} icon={BookingIcon} text={this.state.isOpen && 'Reservas'} />
+                    <NavItem link="/settings" className={this.state.cName} icon={SettingsIcon} text={this.state.isOpen && 'Gestionar '} />
                 </div>
             </div>
         )

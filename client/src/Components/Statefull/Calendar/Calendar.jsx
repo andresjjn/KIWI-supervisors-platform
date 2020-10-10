@@ -12,30 +12,32 @@ export default function Calendar({ value, onChange }) {
     }, [value]);
 
     return (
-        <div className="calendar">
-            <Header value={value} setValue={onChange} />
-            <div className="body">
-                <div className="day-names">
-                    {["D", "L", "M", "M", "J", "V", "S"].map((d) => (
-                        <div className="week">{d}</div>
+        <div className="calendarView">
+            <div className="calendar">
+                <Header value={value} setValue={onChange} />
+                <div className="body">
+                    <div className="day-names">
+                        {["D", "L", "M", "M", "J", "V", "S"].map((d) => (
+                            <div className="nameDay"><p>{d}</p></div>
+                        ))} 
+                    </div>
+                    {calendar.map((week) => (
+                        <div className="week">
+                            {week.map((day) => (
+                                <div
+                                    className="day"
+                                    onClick={() =>
+                                        !beforeToday(day) && onChange(day)
+                                    }
+                                >
+                                    <div className={dayStyles(day, value)}>
+                                        {day.format("D").toString()}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     ))}
                 </div>
-                {calendar.map((week) => (
-                    <div>
-                        {week.map((day) => (
-                            <div
-                                className="day"
-                                onClick={() =>
-                                    !beforeToday(day) && onChange(day)
-                                }
-                            >
-                                <div className={dayStyles(day, value)}>
-                                    {day.format("D").toString()}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ))}
             </div>
         </div>
     );
