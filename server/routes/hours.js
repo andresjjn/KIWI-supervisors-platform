@@ -1,4 +1,4 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const router = Router();
 
 const {
@@ -8,13 +8,13 @@ const {
   modifyHour,
   deleteHour,
   changeHour
-} = require("../controller/hours_controller");
+} = require('../controller/hours_controller');
 
-router.route("/:date/hours")
+router.route('/:date/hours')
   .get(getHours)
   .post(createHour);
 
-router.route("/:date/hours/:hour")
+router.route('/:date/hours/:hour')
   .get(getHour)
   .put(modifyHour)
   .patch(changeHour)

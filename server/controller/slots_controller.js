@@ -1,23 +1,24 @@
-const Day = require("../models/Day");
+const Day = require('../models/Day');
 const slotsCtrl = {};
 
-//Return the slots from a specific hour and date (uri = ...days/:DATE/hours/:hour/slots)
+// Return the slots from a specific hour and date (uri = ...days/:DATE/hours/:hour/slots)
 slotsCtrl.getSlots = async (req, res) => {
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
-    for (hours of dayOfdate.hours) {
+    for (const hours of dayOfdate.hours) {
       if (hours.hour == req.params.hour) {
         res.status(200).json(hours.slots);
         return;
       }
     }
-    res.status(400).json({ error: "Hour not found" });
+    res.status(400).json({ error: 'Hour not found' });
   } else {
-    res.status(400).json({ error: "Day not found" });
+    res.status(400).json({ error: 'Day not found' });
   }
 };
 
-//Modify slots from a hour and date is specific using PUT request (uri = ...days/:DATE/hours/:hour/slots, body = {user data})
+// Modify slots from a hour and date is specific using PUT request
+// (uri = ...days/:DATE/hours/:hour/slots, body = {user data})
 slotsCtrl.modifySlots = async (req, res) => {
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
@@ -29,24 +30,25 @@ slotsCtrl.modifySlots = async (req, res) => {
         return;
       }
     }
-    res.status(400).json({ error: "Hour not found" });
+    res.status(400).json({ error: 'Hour not found' });
   } else {
-    res.status(400).json({ error: "Day not found" });
+    res.status(400).json({ error: 'Day not found' });
   }
 };
 
-//Create slots for a hour and date is specific using POST request (uri = ...days/:DATE/hours/:hour/slots, body = {user data})
+// Create slots for a hour and date is specific using POST request
+// (uri = ...days/:DATE/hours/:hour/slots, body = {user data})
 slotsCtrl.createSlots = async (req, res) => {
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (!dayOfdate) {
     const arr = [];
-    for (i = 0; i < req.body.available; i++) {
-      arr.push({status: 'available'});
+    for (let i = 0; i < req.body.available; i++) {
+      arr.push({ status: 'available' });
     }
     const newDay = new Day({
       date: req.params.date,
       hours: [{
-        hour: req.params.hour, 
+        hour: req.params.hour,
         available: req.body.available,
         slots: arr
       }]
@@ -54,39 +56,65 @@ slotsCtrl.createSlots = async (req, res) => {
     await newDay.save();
     res.status(200).json(newDay);
     return;
-  };
-  for (i = 0; i < dayOfdate.hours.length; i++) {
+  }
+  for (let i = 0; i < dayOfdate.hours.length; i++) {
     if (dayOfdate.hours[i].hour == req.params.hour) {
-      for (j = 0; j < req.body.available; j++) {
-        dayOfdate.hours[i].slots.push({status: 'available'});
+      for (let j = 0; j < req.body.available; j++) {
+        dayOfdate.hours[i].slots.push({ status: 'available' });
       }
       dayOfdate.hours[i].available += dayOfdate.hours[i].slots.length;
-      const dayUpdated = await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
-      res.status(200).json(dayUpdated);
+      await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
+      res.status(200).json(await Day.findOne({ date: req.params.date }));
       return;
     }
   }
-}
+};
 
-//Remove for a hour and date is specific using REMOVE request (uri = ...days/:DATE/hours/:hour/slots, body = {delete: })
-
+// Remove for a hour and date is specific using REMOVE request
+// (uri = ...days/:DATE/hours/:hour/slots, body = {delete: })
 slotsCtrl.deleteSlots = async (req, res) => {
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
     for (let i = 0; i < dayOfdate.hours.length; i++) {
       if (dayOfdate.hours[i].hour == req.params.hour) {
-				for (let j = 0; j <  req.body.delete; j++) {
-					dayOfdate.hours[i].slots.pop();
-					dayOfdate.hours[i].available = dayOfdate.hours[i].slots.length;
-				}
+        for (let j = 0; j < req.body.delete; j++) {
+          dayOfdate.hours[i].slots.pop();
+          dayOfdate.hours[i].available = dayOfdate.hours[i].slots.length;
+        }
         dayOfdate.save();
         res.status(200).json(dayOfdate);
         return;
       }
     }
-    res.status(400).json({ error: "Hour not found" });
+    res.status(400).json({ error: 'Hour not found' });
   } else {
-    res.status(400).json({ error: "Day not found" });
+    res.status(400).json({ error: 'Day not found' });
+  }
+};
+
+// Fill a slot with user info using PATCH request
+// (uri = ...days/:DATE/hours/:hour/slots, body = {userInfo})
+slotsCtrl.fillSlot = async (req, res) => {
+  const dayOfdate = await Day.findOne({ date: req.params.date });
+  if (dayOfdate) {
+    for (let i = 0; i < dayOfdate.hours.length; i++) {
+      if (dayOfdate.hours[i].hour == req.params.hour) {
+        if (dayOfdate.hours[i].available > 0) {
+          const pos = dayOfdate.hours[i].slots.length - dayOfdate.hours[i].available;
+          dayOfdate.hours[i].slots[pos] = req.body;
+          dayOfdate.hours[i].available -= 1;
+          await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
+          res.status(200).json(await Day.findOne({ date: req.params.date }));
+          return;
+        } else {
+          res.status(400).json({ error: 'Not slots availables' });
+          return;
+        }
+      }
+    }
+    res.status(400).json({ error: 'Hour not found' });
+  } else {
+    res.status(400).json({ error: 'Day not found' });
   }
 };
 

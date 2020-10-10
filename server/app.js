@@ -1,18 +1,18 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
-//settings
+// settings
 const PORT = process.env.PORT || 5000;
 
-//middelwars
+// middelwars
 app.use(cors());
 app.use(express.json());
 
-//routes
-app.use("/api/v1/days", require("./routes/days"));
-app.use("/api/v1/days", require("./routes/hours"));
-app.use("/api/v1/days", require("./routes/slots"));
+// routes
+app.use('/api/v1/days', require('./routes/days'));
+app.use('/api/v1/days', require('./routes/hours'));
+app.use('/api/v1/days', require('./routes/slots'));
 
 module.exports = { app, PORT };
