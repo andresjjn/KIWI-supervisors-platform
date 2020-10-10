@@ -83,6 +83,7 @@
 }
 
 .extended, .compressed {
+  z-index: 10;
   background-color: #0d1b2a;
   height: 100vh;
   position: fixed;

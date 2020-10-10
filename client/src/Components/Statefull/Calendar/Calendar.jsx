@@ -15,7 +15,6 @@ export default function Calendar() {
     }, [value]);
 
 
-
     return (
         <div className='calendar'>
             <Header value={value} setValue={setValue}/>
