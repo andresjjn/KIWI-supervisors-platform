@@ -1,0 +1,46 @@
+.settingsBody{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.settingsTittle{
+    width: 100%;
+    border-bottom: 1px solid rgb(59, 59, 58);
+    margin: 20px;
+    padding: 0px 10px 1px;
+}
+.settingsView{
+    display: flex;
+    box-shadow: -5px 5px 5px rgb(63, 62, 62);
+    flex-direction: row;
+    background-color: white;
+    padding: 35px;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px;    
+    border-radius: 10px;
+    border-style: solid;
+    min-width: 250px;
+}
+.settingsView button{
+    background-color: #0d1b2a;
+    color: white;
+    padding: 10px 40px;
+    border-radius: 12px;
+    border: 1px;
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 900px;
+}
+.settingsView button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+    transition: all 0.2s ease;
+  }
+@media screen and (max-width: 670px) {
+    .settingsView{
+        flex-direction: column;
+    }
+}

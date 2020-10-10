@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import GoogleCalendar from '../googleCalendar'
+import Calendar from "./Calendar/Calendar";
 
 class Booking extends Component {
   render() {
     return (
-      <GoogleCalendar />
+      <>
+        <Calendar/>
+      </>
     );
   }
 }
