@@ -75,14 +75,24 @@ slotsCtrl.createSlots = async (req, res) => {
 slotsCtrl.deleteSlots = async (req, res) => {
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
+    if (!req.body.delete) {
+      res.status(400).json({ error: 'No delete parameter founded' });
+      return;
+    }
     for (let i = 0; i < dayOfdate.hours.length; i++) {
       if (dayOfdate.hours[i].hour == req.params.hour) {
-        for (let j = 0; j < req.body.delete; j++) {
+        let remove = 0;
+        if (req.body.delete > dayOfdate.hours[i].slots.length) {
+          remove = dayOfdate.hours[i].slots.length;
+        } else {
+          remove = req.body.delete;
+        }
+        for (let j = 0; j < remove; j++) {
           dayOfdate.hours[i].slots.pop();
           dayOfdate.hours[i].available = dayOfdate.hours[i].slots.length;
         }
-        dayOfdate.save();
-        res.status(200).json(dayOfdate);
+        await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
+        res.status(200).json(await Day.findOne({ date: req.params.date }));
         return;
       }
     }
