@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import buildCalendar from "./Build";
 import dayStyles, { beforeToday } from "./Styles";
 import "./Calendar.css";
-import Header from "./Header";
+import Header from "./Header/Header";
 
-export default function Calendar({ value, onChange }) {
+export default function Calendar(props) {
+    const { value, onChange } = props;
     const [calendar, setCalendar] = useState([]);
 
     useEffect(() => {
@@ -17,9 +18,9 @@ export default function Calendar({ value, onChange }) {
                 <Header value={value} setValue={onChange} />
                 <div className="body">
                     <div className="day-names">
-                        {["D", "L", "M", "M", "J", "V", "S"].map((d) => (
+                        {["dom", "lun", "mar", "mié", "jue", "vie", "sáb"].map((d) => (
                             <div className="nameDay"><p>{d}</p></div>
-                        ))} 
+                        ))}
                     </div>
                     {calendar.map((week) => (
                         <div className="week">

@@ -6,7 +6,8 @@ function Booking() {
   const [value, setValue] = useState(Moment());
   return (
     <>
-      <Calendar value={value} onChange={setValue} />
+      <div class='calendar_view'><Calendar value={value} onChange={setValue} /></div>
+      <div class='documents'></div>
     </>
   );
 }

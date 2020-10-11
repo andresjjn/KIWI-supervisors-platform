@@ -2,27 +2,14 @@
   display: flex;
   justify-content: center;
 }
+
 .calendar {
   box-sizing: border-box;
+  font-family: monospace;
   font-size: 1rem;
   max-width: 1000px;
   width: 80vw;
-}
-
-.calendar .header {
-  text-align: center;
-  min-height: 7vw;
-  line-height: 2rem;
-  color: var(--black);
-  font-family: sans-serif;
-  font-weight: 700;
-  display: flex;
   background-color: #0d1b2a;
-  color: white;
-  font-size: 3vw;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2vw 0px 1vw 0px;
 }
 
 .calendar .day-names {
@@ -30,35 +17,15 @@
   flex-wrap: wrap;
   margin: 0;
   align-items: center;
-  padding: 20px 0px;
-  }
+}
 
 .calendar .body {
   display: flex;
   flex-direction: column;
-  padding: 0vw 0px 4vw 0px;
-  background-color: #0d1b2a;
-}
-
-.calendar .header .previous {
-  text-align: left;
-  margin-left: 1rem;
-}
-
-.calendar .header .next {
-
-  text-align: right;
-  margin-right: 1rem;
-}
-.calendar .header .next:hover, .previous:hover {
-  color: rgba(255, 255, 255, 1);
-  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
-  transition: all 0.2s ease;
+  padding: 0vw 0px 1vw 0px;
 }
 
 .calendar .nameDay {
-  background-color: #0d1b2a;
-  color: rgba(209, 9, 9, 0.849);
   width: calc(100% / 7);
   height: 44px;
   line-height: 44px;
@@ -68,6 +35,7 @@
   font-size: 25px;
   font-weight: 900;
 }
+
 .calendar .nameDay div {
   width: 100%;
 }
@@ -85,7 +53,6 @@
   width: calc(100% / 7);
   height: 44px;
   display: flex;
-  background-color: #0d1b2a;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -118,4 +85,5 @@
 .calendar .day div.today {
   background-color: rgb(7, 40, 224);
   border-radius: 50%;
+  font-size: 1rem;
 }

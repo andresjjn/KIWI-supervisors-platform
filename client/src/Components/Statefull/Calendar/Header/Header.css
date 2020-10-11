@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  background-color: #0d1b2a;
+  font-family: monospace;
+  font-weight: 500;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: groove;
+}
+
+.date {
+  font-size: 2rem;
+  width: 80%;
+  text-transform: uppercase;
+}
+
+.picker {
+  display: flex;
+}
+
+.previous, .today, .next {
+  font-size: 2rem;
+  color: #999;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.previous:hover, .today:hover, .next:hover {
+  color: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
