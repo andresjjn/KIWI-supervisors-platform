@@ -10,7 +10,7 @@
 }
 
 .date {
-  font-size: 2rem;
+  font-size: 1.8rem;
   width: 80%;
   text-transform: uppercase;
 }
@@ -20,7 +20,7 @@
 }
 
 .previous, .today, .next {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #999;
   text-align: left;
   margin-left: 1rem;

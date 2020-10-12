@@ -1,0 +1,15 @@
+.booking {
+  display: flex;
+  background-color: brown;
+  width: 100%;
+  height: 100%;
+}
+
+.bookingInput {
+  width: 50%;
+  background-color: cyan;
+}
+
+.dates {
+  width: 50%;
+}

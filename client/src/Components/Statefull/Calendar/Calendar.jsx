@@ -18,15 +18,15 @@ export default function Calendar(props) {
                 <Header value={value} setValue={onChange} />
                 <div className="body">
                     <div className="day-names">
-                        {["dom", "lun", "mar", "mié", "jue", "vie", "sáb"].map((d) => (
-                            <div className="nameDay"><p>{d}</p></div>
+                        {["lun", "mar", "mié", "jue", "vie", "sáb", "dom"].map((d) => (
+                            <div className="nameDay" key={d.toString()}><p>{d}</p></div>
                         ))}
                     </div>
                     {calendar.map((week) => (
-                        <div className="week">
+                        <div className="week" key={week.toString()}>
                             {week.map((day) => (
                                 <div
-                                    className="day"
+                                    className="day" key={day.toString()}
                                     onClick={() =>
                                         !beforeToday(day) && onChange(day)
                                     }

@@ -1,8 +1,8 @@
 export default function buildCalendar(value) {
     //Reference for first day of the month (square draw)
-    const startDay = value.clone().startOf('month').startOf('week');
+    const startDay = value.clone().startOf('month').startOf('isoWeek');
     //Reference for the last day of the month (square draw)
-    const endDay = value.clone().endOf('month').endOf('week');
+    const endDay = value.clone().endOf('month').endOf('isoWeek');
 
     const calendar = [];
     const day = startDay.clone().subtract(1, 'day');
