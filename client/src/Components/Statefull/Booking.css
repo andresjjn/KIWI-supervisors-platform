@@ -1,15 +1,28 @@
 .booking {
   display: flex;
-  background-color: brown;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 }
 
 .bookingInput {
+  display: flex;
+  height: 50%;
   width: 50%;
-  background-color: cyan;
 }
 
 .dates {
   width: 50%;
+}
+@media screen and (max-width: 900px) {
+  .booking {
+    flex-direction: column-reverse;
+  }
+  .bookingInput {
+    width: 100%;
+  }
+  
+  .dates {
+    width: 100%;
+  }
 }

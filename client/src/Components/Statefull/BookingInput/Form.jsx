@@ -31,6 +31,9 @@ export default function Form(props) {
                 <Day name='SÁB' date={setDaysOfWeek(5)}/>
                 <Day name='DOM' date={setDaysOfWeek(6)}/>
             </div>
+            <div className='hours'>
+                
+            </div>
         </div>
     );
 }

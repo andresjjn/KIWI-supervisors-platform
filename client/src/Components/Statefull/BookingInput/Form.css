@@ -1,12 +1,12 @@
 .form {
-  /* display: flex; */
+  display: flex;
   font-family: monospace;
+  align-items: center;
 }
 
 .days {
   display: flex;
   flex-wrap: wrap;
-  height: 44px;
   width: 100%;
   /* line-height: 44px; */
   text-align: center;
@@ -15,6 +15,19 @@
   align-items: center;
   font-weight: 900;
   justify-content: space-evenly;
+}
+.days button {
+  background-color:#0d1b2a;
+  border-radius: 10px;
+  border: 0px;
+  margin: 4px;
+  outline: none;
+  cursor: pointer;
+}
+.days button:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+  transition: all 0.2s ease;
 }
 
 .daySelection {
@@ -31,4 +44,9 @@ p {
 
 h1 {
   text-align: center;
+}
+@media screen and (max-width: 900px) {
+  .form {
+    flex-direction: column;
+  }
 }

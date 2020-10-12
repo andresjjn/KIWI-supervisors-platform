@@ -83,5 +83,11 @@ body {
   overflow: scroll;
   background-color: #f5f3f3;
   /* color: #d6d6d6; */
-  padding: 1vw 1vw 1vw 14vw;
+  padding: 1vw 1vw 1vw 8vw;
+}
+
+@media screen and (max-width: 900px) {
+  .main_table {
+    padding: 1vw 1vw 1vw 14vw;
+  }
 }

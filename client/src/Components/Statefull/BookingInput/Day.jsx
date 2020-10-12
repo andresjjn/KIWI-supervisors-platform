@@ -9,7 +9,7 @@ export default function Day(props) {
     return (
         <div>
             <button>{name}-{info[2]}</button>
-            <p>{finalDate}</p>
+            {/* <p>{finalDate}</p> */}
         </div>
     );
 }
