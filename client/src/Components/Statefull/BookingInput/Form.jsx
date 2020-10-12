@@ -1,36 +1,35 @@
 import React from 'react';
+import Day from './Day';
 import './Form.css'
-import DaySelector from './DaySelector';
-import { useState } from 'react';
 
 export default function Form(props) {
     const { value } = props;
-    const [name, setName] = useState('Reservas');
-    const date = value.format('YYYYMM');
+
     let startOfWeek = value.clone().startOf('isoWeek');
     let endOfWeek = value.clone().endOf('isoWeek');
 
-    function setDaysOfWeek() {
+    function setDaysOfWeek(index) {
         let days = [];
         let day = startOfWeek;
 
         while (day <= endOfWeek) {
-            days.push(String(day.toDate()).slice(8, 10));
+            days.push(String(day.toDate()));
             day = day.clone().add(1, 'd');
         }
 
-        return days;
-    }
-
-    function test(val) {
-        setName(`${date}${val}`);
+        return days[index];
     }
 
     return (
         <div className='form'>
-            <h1 onClick={() => test()}>{name}</h1>
-            <div key='dayDiv' className='days'>
-                <DaySelector onClick={test} arr={setDaysOfWeek()}/>
+            <div className='days'>
+                <Day name='LUN' date={setDaysOfWeek(0)}/>
+                <Day name='MAR' date={setDaysOfWeek(1)}/>
+                <Day name='MIÉ' date={setDaysOfWeek(2)}/>
+                <Day name='JUV' date={setDaysOfWeek(3)}/>
+                <Day name='VIE' date={setDaysOfWeek(4)}/>
+                <Day name='SÁB' date={setDaysOfWeek(5)}/>
+                <Day name='DOM' date={setDaysOfWeek(6)}/>
             </div>
         </div>
     );
