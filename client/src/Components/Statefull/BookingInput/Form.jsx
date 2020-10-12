@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Day from './Day';
 import Hour from './Hour';
+import AvailableInput from './AvailableInput';
 import './Form.css';
 
 
 export default function Form(props) {
     const { value } = props;
-    const [input, setInput] = useState(0);
 
     let startOfWeek = value.clone().startOf('isoWeek');
     let endOfWeek = value.clone().endOf('isoWeek');
@@ -39,7 +39,7 @@ export default function Form(props) {
         console.log(hourInfo);
     }
 
-    function selectDays(days, event) {
+    function selectDays(days) {
         if (daysInfo.includes(days)) {
             daysInfo.splice(daysInfo.indexOf(days), 1);
         } else {
@@ -47,7 +47,10 @@ export default function Form(props) {
         }
         daysInfo.sort((a, b) => a - b);
         console.log(daysInfo);
-        console.log(input);
+    }
+
+    function printForm(available) {
+        console.log(`dias: ${daysInfo}, horas: ${hourInfo}, available:${available}`);
     }
 
     return (
@@ -72,11 +75,7 @@ export default function Form(props) {
             </div>
             <div className="slots">
                 <h3>Cantidad de supervisores por hora</h3>
-                <input
-                    value={input}
-                    onChange={(event) => setInput(event.target.value)}
-                    type="number"
-                />
+                <AvailableInput onChange={printForm}/>
             </div>
         </div>
     );
