@@ -6,7 +6,7 @@ import './Form.css';
 
 export default function Form(props) {
     const { value } = props;
-    const [input, setInput] = useState();
+    const [input, setInput] = useState(0);
 
     let startOfWeek = value.clone().startOf('isoWeek');
     let endOfWeek = value.clone().endOf('isoWeek');
@@ -15,7 +15,7 @@ export default function Form(props) {
     let daysInfo = [];
 
     let hourInfo = [];
-    const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+    const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
 
     function setDaysOfWeek(index) {
         let days = [];
@@ -51,19 +51,32 @@ export default function Form(props) {
     }
 
     return (
-        <div className='form'>
-            <div className='days'>
-                {Object.keys(dirDays).map(
-                    (key, value) => <Day key={key} name={key} date={setDaysOfWeek(value)} onClick={selectDays}/>
-                )}
-            </div>
-            <div className='hours'>
-                {hours.map((elem) => (
-                    <Hour key={elem} hour={elem} onClick={selectHours}/>
+        <div className="form">
+            <div className="days">
+                {Object.keys(dirDays).map((key, value) => (
+                    <Day
+                        key={key}
+                        name={key}
+                        date={setDaysOfWeek(value)}
+                        onClick={selectDays}
+                    />
                 ))}
             </div>
-            <div className='slots'>
-                <input value={input} onChange={(event) => setInput(event.target.value)} placeholder='Cantidad de Supervisores por hora' type='number'/>
+            <div className="hours">
+                <h3>Seleccione horas para asignar</h3>
+                <div className="hours_container">
+                    {hours.map((elem) => (
+                        <Hour key={elem} hour={elem} onClick={selectHours} />
+                    ))}
+                </div>
+            </div>
+            <div className="slots">
+                <h3>Cantidad de supervisores por hora</h3>
+                <input
+                    value={input}
+                    onChange={(event) => setInput(event.target.value)}
+                    type="number"
+                />
             </div>
         </div>
     );

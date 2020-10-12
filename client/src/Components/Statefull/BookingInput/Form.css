@@ -1,7 +1,11 @@
 .form {
   display: flex;
+  flex-direction: column;
   font-family: monospace;
   align-items: center;
+  /* background-color: rgba(9, 0, 0, 0.083);
+  border-radius: 20px;
+  padding: 30px; */
 }
 
 .days {
@@ -45,6 +49,61 @@ p {
 h1 {
   text-align: center;
 }
+
+.hours {
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.hours h3 {
+  font-size: 30px;
+}
+
+.hours_container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.slots {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  margin-top: 30px;
+}
+
+.slots h3 {
+  font-size: 30px;
+}
+
+.slots input {
+  width: 120px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0px 30px;
+  -webkit-appearance: none;
+  margin: 0 10px;
+  border: 1px solid rgb(150, 150, 150);
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+
 @media screen and (max-width: 900px) {
   .form {
     flex-direction: column;

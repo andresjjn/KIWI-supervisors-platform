@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Day.css";
 
 export default function Day(props) {
     const { name, date, onClick } = props;
@@ -8,8 +9,11 @@ export default function Day(props) {
 
     return (
         <div>
-            <button onClick={() => onClick(finalDate)}>{name}-{info[2]}</button>
-            <p>{finalDate}</p>
+            <button
+                onClick={() => onClick(finalDate)}
+            >
+                {name}-{info[2]}
+            </button>
         </div>
     );
 }
