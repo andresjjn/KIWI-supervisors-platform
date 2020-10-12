@@ -62,6 +62,10 @@
   justify-content: center;
 }
 
+.calendar .day:hover {
+  cursor: default;
+}
+
 .calendar .day div {
   width: 54px;
   height: 44px;
@@ -79,11 +83,11 @@
   background-color: var(--red);
   color: var(--white);
   font-weight: bold;
-  border-radius: 50%;
+  border-radius: 15%;
 }
 
 .calendar .day div.today {
-  background-color: rgb(7, 40, 224);
   border-radius: 50%;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  color: red;
 }

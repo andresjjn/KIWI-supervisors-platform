@@ -9,7 +9,7 @@ export default function Booking() {
     return (
         <div className='booking'>
             <div className='bookingInput'>
-                <Form />
+                <Form value={value} />
             </div>
             <div className='dates'>
                 <Calendar value={value} onChange={setValue} />
