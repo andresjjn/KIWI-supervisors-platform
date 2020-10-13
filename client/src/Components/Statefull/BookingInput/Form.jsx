@@ -47,6 +47,9 @@ export default function Form(props) {
         }
         daysInfo.sort((a, b) => a - b);
         console.log(daysInfo);
+
+
+
     }
 
     function printForm(available) {
@@ -76,6 +79,9 @@ export default function Form(props) {
             <div className="slots">
                 <h3>Cantidad de supervisores por hora</h3>
                 <AvailableInput onChange={printForm}/>
+            </div>
+            <div className="sendBtn">
+                <button>Enviar</button>
             </div>
         </div>
     );

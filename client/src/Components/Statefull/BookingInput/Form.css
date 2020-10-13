@@ -20,14 +20,7 @@
   font-weight: 900;
   justify-content: space-evenly;
 }
-.days button {
-  background-color:#0d1b2a;
-  border-radius: 10px;
-  border: 0px;
-  margin: 4px;
-  outline: none;
-  cursor: pointer;
-}
+
 .days button:hover {
   color: rgba(255, 255, 255, 1);
   box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
@@ -39,6 +32,24 @@
 }
 
 .daySelection:hover {
+  cursor: pointer;
+}
+
+.default {
+  background-color:#0d1b2a;
+  border-radius: 10px;
+  border: 0px;
+  margin: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.selected {
+  background-color:#33679e;
+  border-radius: 10px;
+  border: 0px;
+  margin: 4px;
+  outline: none;
   cursor: pointer;
 }
 
@@ -102,6 +113,8 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance:textfield;
 }
+
+
 
 
 @media screen and (max-width: 900px) {

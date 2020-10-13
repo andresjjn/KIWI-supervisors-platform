@@ -1,0 +1,13 @@
+.defaultBtn {
+    background-color: white;
+    outline: none;
+    border-radius: 5px;
+}
+
+.selectedBtn {
+    background-color:#33679e;
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
