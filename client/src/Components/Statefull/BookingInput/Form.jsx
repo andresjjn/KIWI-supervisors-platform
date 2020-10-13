@@ -21,16 +21,14 @@ export default function Form(props) {
     const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
     let available = 0;
 
-    function setDaysOfWeek(index) {
-        let days = [];
+    let days = [];
+    function setDaysOfWeek() {
         let day = startOfWeek;
 
         while (day <= endOfWeek) {
             days.push(String(day.toDate()));
             day = day.clone().add(1, 'd');
         }
-
-        return days[index];
     }
 
     function selectHours(hour) {
@@ -61,11 +59,12 @@ export default function Form(props) {
     return (
         <div className="form">
             <div className="days">
+                {setDaysOfWeek()}
                 {Object.keys(dirDays).map((key, value) => (
                     <Day
                         key={key}
                         name={key}
-                        date={setDaysOfWeek(value)}
+                        date={days[value]}
                         onClick={selectDays}
                     />
                 ))}
@@ -73,7 +72,7 @@ export default function Form(props) {
             <div className="hours">
                 <h3>Seleccione horas para asignar</h3>
                 <div className="hours_container">
-                    {hours.map((elem) => (
+                    {hours.map((elem, index) => (
                         <Hour key={elem} hour={elem} onClick={selectHours} />
                     ))}
                 </div>

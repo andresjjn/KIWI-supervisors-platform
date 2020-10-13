@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import "./Day.css";
+import isYesterday from './DayCheck';
 
 export default function Day(props) {
     const { name, date, onClick } = props;
@@ -20,12 +21,14 @@ export default function Day(props) {
 
     return (
         <div>
+            {!isYesterday(finalDate) &&
             <button
                 className={isSelected}
                 onClick={() => onClick(classNameSelection())}
             >
                 {name}-{info[2]}
             </button>
+            }
         </div>
     );
 }
