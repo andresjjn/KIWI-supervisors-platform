@@ -26,7 +26,7 @@ export default function Day(props) {
                 className={isSelected}
                 onClick={() => onClick(classNameSelection())}
             >
-                {name}-{info[2]}
+                {name}-{Number(info[2])}
             </button>
             }
         </div>
