@@ -3,6 +3,7 @@ import Day from './Day';
 import Hour from './Hour';
 import AvailableInput from './AvailableInput';
 import './Form.css';
+import isYesterday from './Today';
 
 
 export default function Form(props) {
@@ -40,6 +41,10 @@ export default function Form(props) {
     }
 
     function selectDays(days) {
+        if (days === undefined) {
+            return;
+        }
+
         if (daysInfo.includes(days)) {
             daysInfo.splice(daysInfo.indexOf(days), 1);
         } else {
@@ -47,9 +52,6 @@ export default function Form(props) {
         }
         daysInfo.sort((a, b) => a - b);
         console.log(daysInfo);
-
-
-
     }
 
     function printForm(available) {

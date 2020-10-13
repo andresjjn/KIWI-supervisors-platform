@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import "./Day.css";
+import isYesterday from './Today';
 
 export default function Day(props) {
     const { name, date, onClick } = props;
@@ -9,6 +10,9 @@ export default function Day(props) {
     const finalDate = `${info[3]}${months[info[1]]}${info[2]}`;
 
     function classNameSelection() {
+        if (isYesterday(finalDate)) {
+            return;
+        }
         if (isSelected === 'default') {
             setSelected('selected')
         }
