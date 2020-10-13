@@ -12,6 +12,14 @@
   background-color: #0d1b2a;
 }
 
+.date {
+  margin-left: 20px;
+}
+
+.picker {
+  margin-right: 20px;
+}
+
 .calendar .day-names {
   display: flex;
   flex-wrap: wrap;
@@ -41,6 +49,7 @@
 }
 
 .calendar .nameDay p {
+  font-size: 20px;
   color: white;
 }
 

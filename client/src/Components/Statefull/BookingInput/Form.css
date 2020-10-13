@@ -23,7 +23,7 @@
 
 .days button:hover {
   color: rgba(255, 255, 255, 1);
-  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   transition: all 0.2s ease;
 }
 
@@ -37,20 +37,26 @@
 
 .default {
   background-color:#0d1b2a;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 0px;
   margin: 4px;
   outline: none;
   cursor: pointer;
+  width: 70px;
+  height: 30px;
+  font-size: 14px;
 }
 
 .selected {
-  background-color:#33679e;
-  border-radius: 10px;
+  background-color:#8c8c8c;
+  border-radius: 5px;
   border: 0px;
   margin: 4px;
   outline: none;
   cursor: pointer;
+  width: 70px;
+  height: 30px;
+  font-size: 14px;
 }
 
 p {
@@ -68,15 +74,17 @@ h1 {
 }
 
 .hours h3 {
-  font-size: 30px;
+  font-size: 20px;
+  text-align: start;
 }
 
 .hours_container {
+  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
-  width: 100%;
-  margin: 20px 0;
+  width: 70%;
 }
 
 .slots {
@@ -87,12 +95,12 @@ h1 {
 }
 
 .slots h3 {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .slots input {
-  width: 120px;
-  height: 50px;
+  width: 100px;
+  height: 30px;
   font-size: 20px;
   border: none;
   outline: none;
@@ -112,6 +120,27 @@ input[type=number]::-webkit-inner-spin-button {
 
 input[type=number] {
   -moz-appearance:textfield;
+}
+
+.sendBtn button{
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.sendBtn button:hover {
+  background-color: rgb(247, 246, 246);
+}
+
+.sendBtn button:active {
+  box-shadow: none;
 }
 
 

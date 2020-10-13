@@ -3,6 +3,7 @@ import Day from './Day';
 import Hour from './Hour';
 import AvailableInput from './AvailableInput';
 import './Form.css';
+import GET from '../../../requests';
 
 
 export default function Form(props) {
@@ -81,7 +82,7 @@ export default function Form(props) {
                 <AvailableInput onChange={printForm}/>
             </div>
             <div className="sendBtn">
-                <button>Enviar</button>
+                <button onClick={GET}>Enviar</button>
             </div>
         </div>
     );
