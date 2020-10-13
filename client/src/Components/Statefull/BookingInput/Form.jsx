@@ -3,7 +3,9 @@ import Day from './Day';
 import Hour from './Hour';
 import AvailableInput from './AvailableInput';
 import './Form.css';
-import GET from '../../../requests';
+import postDays from '../../../requests/postDays';
+import getDaysRequest from "../../../requests/getDaysRequest";
+import deleteDaysRequest from "../../../requests/deleteDaysRequest";
 
 
 export default function Form(props) {
@@ -17,6 +19,7 @@ export default function Form(props) {
 
     let hourInfo = [];
     const hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+    let available = 0;
 
     function setDaysOfWeek(index) {
         let days = [];
@@ -48,13 +51,11 @@ export default function Form(props) {
         }
         daysInfo.sort((a, b) => a - b);
         console.log(daysInfo);
-
-
-
     }
 
-    function printForm(available) {
-        console.log(`dias: ${daysInfo}, horas: ${hourInfo}, available:${available}`);
+    function printForm(slots) {
+        console.log(`dias: ${daysInfo}, horas: ${hourInfo}, available:${slots}`);
+        available = slots;
     }
 
     return (
@@ -79,10 +80,12 @@ export default function Form(props) {
             </div>
             <div className="slots">
                 <h3>Cantidad de supervisores por hora</h3>
-                <AvailableInput onChange={printForm}/>
+                <AvailableInput onChange={printForm} />
             </div>
             <div className="sendBtn">
-                <button onClick={GET}>Enviar</button>
+                <button onClick={() => postDays(daysInfo, hourInfo, available)}>Crear Dias</button>
+                <button onClick={getDaysRequest}>Ver</button>
+                <button onClick={() => deleteDaysRequest(daysInfo, hourInfo, available)}>Borrar</button>
             </div>
         </div>
     );

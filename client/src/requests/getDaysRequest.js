@@ -1,6 +1,8 @@
+import Swal from "sweetalert2";
+
 var axios = require("axios");
 
-const GET = () => {
+const getDaysRequest = () => {
     var config = {
         method: "get",
         url: "http://localhost:5000/api/v1/days/",
@@ -16,4 +18,4 @@ const GET = () => {
         });
 };
 
-export default GET;
+export default getDaysRequest;
