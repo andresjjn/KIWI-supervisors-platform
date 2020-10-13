@@ -7,12 +7,11 @@
 
 .bookingInput {
   display: flex;
-  height: 50%;
-  width: 50%;
+  width: 47%;
 }
 
 .dates {
-  width: 50%;
+  width: 47%;
 }
 @media screen and (max-width: 900px) {
   .booking {

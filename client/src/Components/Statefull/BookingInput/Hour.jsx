@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import './Hour.css'
+import React, { useState } from 'react';
+import './Hour.css';
 
 
 export default function Hour(props) {
-    const [isSelected, setSelected] = useState("defaultBtn");
     const { hour, onClick } = props;
+    const [isSelected, setSelected] = useState("defaultBtn");
 
 
-    function classNameSelection() {
+    function selection() {
         if (isSelected === "defaultBtn") {
             setSelected("selectedBtn");
         } else {
@@ -17,8 +17,10 @@ export default function Hour(props) {
     }
 
     return (
-        <div>
-            <button className={isSelected} onClick={() => onClick(classNameSelection())}>{hour}</button>
+        <div>{
+            <button className={isSelected} onClick={() => onClick(selection())}>
+                {hour}
+            </button>}
         </div>
     );
 }

@@ -10,4 +10,4 @@ export default function isYesterday(day) {
     } else {
         return false;
     }
-};
+}
