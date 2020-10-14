@@ -34,22 +34,26 @@ export default function BookingList() {
 
     return (
         <div className="booking_list_container">
-            {daysList.map((elem, index) => (
+            {daysList.map((elem) => (
                 <h2 key={elem._id} className='card'>
                     Date:{elem.date} - ID:{elem._id}
-                    {elem.hours.map((h) =>
+                    {elem.hours.map((h) => (
                         <div key={h} className='available'>
-                            <div key={h['available']}>Espacios Disponibles:{h['available']}</div>
+                            <div key={h['available']}>Disponibles:{h['available']}</div>
                             <div hey={h['hour']} className='hour'>
                                 Hora:{h['hour']}:00
                             </div>
-                            <button className='deleteBtn' onClick={() => {
-                                const arr = [];
-                                arr.push(elem.date);
-                                deleteDaysRequest(arr, '', '')}}>Delete
-                            </button>
+                            <div>
+                                <button className='deleteBtn' onClick={() => {
+                                    const arr = [];
+                                    arr.push(elem.date);
+
+                                    deleteDaysRequest(arr, '', '')
+                                    }}>Delete
+                                </button>
+                            </div>
                         </div>
-                    )}
+                    ))}
                 </h2>
             ))}
         </div>

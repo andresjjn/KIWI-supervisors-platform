@@ -24,9 +24,9 @@
 }
 
 .card {
-  display: flex;
   padding: 10px;
-  font-size: 17.8px;
+  font-size: 18px;
+  width: 100%;
 }
 
 .available {
