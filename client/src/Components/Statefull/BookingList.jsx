@@ -38,6 +38,11 @@ export default function BookingList() {
             {daysList.map((elem) => (
                 <h2 key={elem._id} className='card'>
                     Date:{elem.date} - ID:{elem._id}
+                    <button className='deleteBtn' onClick={() => {
+                        const arr = [];
+                        arr.push(elem.date);
+                        deleteDaysRequest(arr, '', '')}}>Delete
+                    </button>
                     {elem.hours.map((h) => (
                         <div key={h} className='available'>
                             <div key={h['available']}>Disponibles:{h['available']}</div>
@@ -48,7 +53,6 @@ export default function BookingList() {
                                 <button className='deleteBtn' onClick={() => {
                                     const arr = [];
                                     arr.push(elem.date);
-
                                     DeleteHourOfADay(elem.date, h['hour']);
                                     }}>Delete
                                 </button>
