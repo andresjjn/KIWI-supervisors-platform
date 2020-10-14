@@ -31,22 +31,37 @@ export default function BookingList() {
             }
             return 0;
         });
+        const daysLength = daysList.length;
+        for (let i = 0; i < daysLength; i++) {
+            const hoursLength = daysList[i]['hours'].length;
+            for (let j = 0; j < hoursLength; j++) {
+                daysList[i]['hours'].sort((a, b) => {
+                    if (a['hour'] > b['hour']) {
+                        return 1;
+                    }
+                    if (a['hour'] < b['hour']) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
+        }
     }
 
     return (
         <div className="booking_list_container">
-            {daysList.map((elem) => (
-                <h2 key={elem._id} className='card'>
+            {daysList.map((elem, ind) => (
+                <h2 key={ind} className='card'>
                     Date:{elem.date} - ID:{elem._id}
                     <button className='deleteBtn' onClick={() => {
                         const arr = [];
                         arr.push(elem.date);
                         deleteDaysRequest(arr, '', '')}}>Delete
                     </button>
-                    {elem.hours.map((h) => (
-                        <div key={h} className='available'>
+                    {elem.hours.map((h, index) => (
+                        <div key={index} className='available'>
                             <div key={h['available']}>Disponibles:{h['available']}</div>
-                            <div hey={h['hour']} className='hour'>
+                            <div hey={h['hour'] + index} className='hour'>
                                 Hora:{h['hour']}:00
                             </div>
                             <div>
