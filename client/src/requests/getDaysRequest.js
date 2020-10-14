@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 
 var axios = require("axios");
 
