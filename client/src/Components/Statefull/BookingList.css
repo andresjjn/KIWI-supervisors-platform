@@ -1,0 +1,24 @@
+.booking_list_container {
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a transparent;
+}
+.booking_list_container::-webkit-scrollbar {
+  width: 10px;
+}
+.booking_list_container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.booking_list_container::-webkit-scrollbar-thumb {
+  background-color: #0d1b2a;
+  border-radius: 20px;
+  border: 3px solid transparent;
+}
+
+.booking_list_container {
+    overflow: scroll;
+    height: 44%;
+    scrollbar-width: thin;
+    scrollbar-color: #0d1b2a #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.289);
+    padding: 10px;
+}

@@ -3,7 +3,7 @@ import './Hour.css';
 
 
 export default function Hour(props) {
-    const { hour, onClick } = props;
+    const { hour, value, onClick } = props;
     const [isSelected, setSelected] = useState("defaultBtn");
 
 
@@ -13,7 +13,7 @@ export default function Hour(props) {
         } else {
             setSelected("defaultBtn");
         }
-        return hour
+        return value
     }
 
     return (
