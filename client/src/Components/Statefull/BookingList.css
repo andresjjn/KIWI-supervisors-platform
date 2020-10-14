@@ -22,3 +22,24 @@
     border: 1px solid rgba(0, 0, 0, 0.289);
     padding: 10px;
 }
+
+.card {
+  display: flex;
+  padding: 10px;
+  font-size: 17.8px;
+}
+
+.available {
+  display: flex;
+  padding: 0px 10px;
+}
+
+.hour {
+  display: flex;
+  padding: 0px 5px;
+}
+
+.deleteBtn {
+  display: flex;
+  padding: 0px 5px;
+}

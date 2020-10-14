@@ -28,7 +28,7 @@ export default class Navbar extends Component {
                     <Logo cName={this.state.cName} />
                     <NavItem link="/" className={this.state.cName} icon={DashboardIcon} text={this.state.isOpen && 'Tablero'}/>
                     <NavItem link="/booking" className={this.state.cName} icon={BookingIcon} text={this.state.isOpen && 'Reservas'} />
-                    <NavItem link="/settings" className={this.state.cName} icon={SettingsIcon} text={this.state.isOpen && 'Gestionar '} />
+                    <NavItem link="/settings" className={this.state.cName} icon={SettingsIcon} text={this.state.isOpen && 'Gestionar'} />
                 </div>
             </div>
         )

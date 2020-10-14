@@ -1,8 +1,4 @@
 @media screen and (max-width: 2560px) {
-  body {
-    background-color: #111;
-  }
-
   .extended {
     width: 250px;
   }
@@ -13,23 +9,17 @@
 }
 
 @media screen and (max-width: 1920px) {
-  body {
-    background-color: #222;
-  }
-
   .extended {
     width: 240px;
   }
 
   .compressed {
     width: 80px;
+    align-items: center;
   }
 }
 
 @media screen and (max-width: 1520px) {
-  body {
-    background-color: #333;
-  }
 
   .extended {
     width: 180px;
@@ -41,9 +31,6 @@
 }
 
 @media screen and (max-width: 1280px) {
-  body {
-    background-color: #444;
-  }
 
   .extended {
     width: 160px;
@@ -55,9 +42,6 @@
 }
 
 @media screen and (max-width: 800px) {
-  body {
-    background-color: #555;
-  }
 
   .extended {
     width: 140px;
@@ -69,10 +53,6 @@
 }
 
 @media screen and (max-width: 480px) {
-  body {
-    background-color: #666;
-  }
-
   .extended {
     width: 120px;
   }

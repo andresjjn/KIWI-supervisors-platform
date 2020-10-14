@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BookingList.css";
-// import deleteDaysRequest from '../../requests/deleteDaysRequest';
+import deleteDaysRequest from '../../requests/deleteDaysRequest';
 
 var axios = require("axios");
 
@@ -18,6 +18,9 @@ export default function BookingList() {
     if (isLoading) {
         return <h1>Test Loading . . .</h1>;
     } else {
+        if (daysList.length === 0) {
+            return <h1>No hay horas asignadas</h1>
+        }
         daysList.sort((a, b) => {
             if (a.date > b.date) {
                 return 1;
@@ -31,16 +34,20 @@ export default function BookingList() {
 
     return (
         <div className="booking_list_container">
-            {daysList.map((element, index) => (
-                <h2 key={element._id}>
-                    {element.date} - {element._id}
-                    {element.hours.map((h) =>
-                        <div key={h}>
-                            <div key={h['available']}>Available: {h['available']}</div>
-                            <div hey={h['hour']}>
-                                Hora: {h['hour']}
-                                <button>Delete</button>
+            {daysList.map((elem, index) => (
+                <h2 key={elem._id} className='card'>
+                    Date:{elem.date} - ID:{elem._id}
+                    {elem.hours.map((h) =>
+                        <div key={h} className='available'>
+                            <div key={h['available']}>Espacios Disponibles:{h['available']}</div>
+                            <div hey={h['hour']} className='hour'>
+                                Hora:{h['hour']}:00
                             </div>
+                            <button className='deleteBtn' onClick={() => {
+                                const arr = [];
+                                arr.push(elem.date);
+                                deleteDaysRequest(arr, '', '')}}>Delete
+                            </button>
                         </div>
                     )}
                 </h2>
