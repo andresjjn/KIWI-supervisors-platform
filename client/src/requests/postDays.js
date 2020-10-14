@@ -3,7 +3,7 @@ import reloadPage from "./ReloadPage";
 var axios = require("axios");
 
 
-const postDays = (dayDate, hours, slots) => {
+const postDays = async(dayDate, hours, slots) => {
     // var config = {
     //     method: "get",
     //     url: `http://localhost:5000/api/v1/days/${dayDate[0]}`,
@@ -21,51 +21,29 @@ const postDays = (dayDate, hours, slots) => {
     //     });
 
     for (const day of dayDate) {
-        var data = JSON.stringify({ date: day });
+        for (const hour of hours) {
+            const dataHour = `{\n    "hour": ${hour},\n    "available": ${slots}\n}`;
+            console.log(dataHour);
 
-        var config = {
-            method: "post",
-            url: `${process.env.REACT_APP_API_URL}days/`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            data: data,
-        };
+            const configHour = {
+                method: "post",
+                url: `${process.env.REACT_APP_API_URL}days/${day}/hours`,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                data: dataHour,
+            };
 
-        axios(config)
-            .then(function (response) {
-                console.log(JSON.stringify(response.data));
-                for (const hour of hours) {
-                    const dataHour = `{\n    "hour": ${hour},\n    "available": ${slots}\n}`;
-                    console.log(dataHour);
-
-                    const configHour = {
-                        method: "post",
-                        url: `${process.env.REACT_APP_API_URL}days/${day}/hours`,
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        data: dataHour,
-                    };
-
-                    axios(configHour)
-                        .then(function (response) {
-                            console.log(JSON.stringify(response.data));
-                            if (day === dayDate[dayDate.length - 1] && hour === hours[hours.length - 1]) {
-                                reloadPage();
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        console.log(day);
-        
+            await axios(configHour)
+                .then(function (response) {
+                    console.log(JSON.stringify(response.data));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     }
+    reloadPage();
 };
 
 export default postDays;
