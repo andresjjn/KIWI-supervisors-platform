@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BookingList.css";
 import deleteDaysRequest from '../../requests/deleteDaysRequest';
+import DeleteHourOfADay from "../../requests/DeleteHourOfADay";
 
 var axios = require("axios");
 
@@ -48,7 +49,7 @@ export default function BookingList() {
                                     const arr = [];
                                     arr.push(elem.date);
 
-                                    deleteDaysRequest(arr, '', '')
+                                    DeleteHourOfADay(elem.date, h['hour']);
                                     }}>Delete
                                 </button>
                             </div>
