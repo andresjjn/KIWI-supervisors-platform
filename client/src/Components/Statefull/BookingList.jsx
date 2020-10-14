@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BookingList.css";
+// import deleteDaysRequest from '../../requests/deleteDaysRequest';
+
 var axios = require("axios");
 
 export default function BookingList() {
@@ -14,10 +16,8 @@ export default function BookingList() {
     }, []);
 
     if (isLoading) {
-        console.log("Cargando");
         return <h1>Test Loading . . .</h1>;
     } else {
-        console.log(daysList[0]);
         daysList.sort((a, b) => {
             if (a.date > b.date) {
                 return 1;
@@ -25,15 +25,24 @@ export default function BookingList() {
             if (a.date < b.date) {
                 return -1;
             }
-            // a must be equal to b
             return 0;
         });
     }
+
     return (
         <div className="booking_list_container">
-            {daysList.map((element) => (
-                <h2>
+            {daysList.map((element, index) => (
+                <h2 key={element._id}>
                     {element.date} - {element._id}
+                    {element.hours.map((h) =>
+                        <div key={h}>
+                            <div key={h['available']}>Available: {h['available']}</div>
+                            <div hey={h['hour']}>
+                                Hora: {h['hour']}
+                                <button>Delete</button>
+                            </div>
+                        </div>
+                    )}
                 </h2>
             ))}
         </div>

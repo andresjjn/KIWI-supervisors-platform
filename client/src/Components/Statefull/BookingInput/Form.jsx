@@ -38,7 +38,7 @@ export default function Form(props) {
             hourInfo.push(hour);
         }
         hourInfo.sort((a, b) => a - b);
-        console.log(hourInfo);
+        // console.log(hourInfo);
     }
 
     function selectDays(days) {
@@ -48,7 +48,7 @@ export default function Form(props) {
             daysInfo.push(days);
         }
         daysInfo.sort((a, b) => a - b);
-        console.log(daysInfo);
+        // console.log(daysInfo);
     }
 
     function printForm(slots) {
