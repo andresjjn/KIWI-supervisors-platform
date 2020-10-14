@@ -39,7 +39,52 @@
   padding: 0px 5px;
 }
 
+.card {
+  padding: 10px;
+  background-color: rgba(119, 119, 119, 0.07);
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
 .deleteBtn {
   display: flex;
   padding: 0px 5px;
+}
+
+.info_section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info_section p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.available {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  background-color: rgba(72, 72, 72, 0.138);
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.available .deleteBtn {
+  border: none;
+  width: 20px;
+  width: 20px;
+  background: url('../../images/basura.svg') no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.hour {
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: larger;
 }

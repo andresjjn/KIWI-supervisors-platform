@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./BookingList.css";
 import deleteDaysRequest from '../../requests/deleteDaysRequest';
 import DeleteHourOfADay from "../../requests/DeleteHourOfADay";
+import formatedDate from './formatedDate'
 
 var axios = require("axios");
 
@@ -51,30 +52,44 @@ export default function BookingList() {
     return (
         <div className="booking_list_container">
             {daysList.map((elem, ind) => (
-                <h2 key={ind} className='card'>
-                    Date:{elem.date} - ID:{elem._id}
-                    <button className='deleteBtn' onClick={() => {
-                        const arr = [];
-                        arr.push(elem.date);
-                        deleteDaysRequest(arr, '', '')}}>Delete
-                    </button>
+                <div key={ind} className="card">
+                    {/* Date:{elem.date} - ID:{elem._id} */}
+                    <div className="info_section">
+                        <p>{formatedDate(elem.date)}</p>
+                        <button
+                            className="deleteBtn"
+                            onClick={() => {
+                                const arr = [];
+                                arr.push(elem.date);
+                                deleteDaysRequest(arr, "", "");
+                            }}
+                        >
+                            Delete
+                        </button>
+                    </div>
                     {elem.hours.map((h, index) => (
-                        <div key={index} className='available'>
-                            <div key={h['available']}>Disponibles:{h['available']}</div>
-                            <div hey={h['hour'] + index} className='hour'>
-                                Hora:{h['hour']}:00
+                        <div key={index} className="available">
+                            <div hey={h["hour"] + index} className="hour">
+                                {h["hour"]}:00
+                            </div>
+                            <div key={h["available"]}>
+                                Slots disponibles: {h["available"]}
                             </div>
                             <div>
-                                <button className='deleteBtn' onClick={() => {
-                                    const arr = [];
-                                    arr.push(elem.date);
-                                    DeleteHourOfADay(elem.date, h['hour']);
-                                    }}>Delete
+                                <button
+                                    className="deleteBtn"
+                                    onClick={() => {
+                                        const arr = [];
+                                        arr.push(elem.date);
+                                        DeleteHourOfADay(elem.date, h["hour"]);
+                                    }}
+                                >
+                                    .{/* . Don't delete this point, its very important xD*/}
                                 </button>
                             </div>
                         </div>
                     ))}
-                </h2>
+                </div>
             ))}
         </div>
     );
