@@ -51,7 +51,9 @@ const postDays = (dayDate, hours, slots) => {
                     axios(configHour)
                         .then(function (response) {
                             console.log(JSON.stringify(response.data));
-                            reloadPage();
+                            if (day === dayDate[dayDate.length - 1] && hour === hours[hours.length - 1]) {
+                                reloadPage();
+                            }
                         })
                         .catch(function (error) {
                             console.log(error);
@@ -62,6 +64,7 @@ const postDays = (dayDate, hours, slots) => {
                 console.log(error);
             });
         console.log(day);
+        
     }
 };
 
