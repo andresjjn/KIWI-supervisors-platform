@@ -21,12 +21,13 @@ export default function HoursDay(props) {
         })
         .catch(err => {
             setReqFail(true);
+            setLoading(false);
         });
     }, [getDay]);
 
     if (isLoading) {
         return <h1>Loading . . .</h1>;
-    } else if (day['hours'].length > 0) {
+    } else if (day['hours'] !== undefined && day['hours'].length > 0) {
         const hoursLength = day['hours'].length;
         for (let j = 0; j < hoursLength; j++) {
             day['hours'].sort((a, b) => {
