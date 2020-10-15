@@ -11,9 +11,10 @@ export default function BookingList() {
     const [daysList, updateList] = useState({});
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}days/`).then((response) => {
+        axios.get(`${process.env.REACT_APP_API_URL}days`).then((response) => {
             updateList(response.data);
             setLoading(false);
+            console.log(response.data);
         });
     }, []);
 
@@ -23,6 +24,7 @@ export default function BookingList() {
         if (daysList.length === 0) {
             return <h1>No hay horas asignadas</h1>
         }
+        console.log(daysList);
         daysList.sort((a, b) => {
             if (a.date > b.date) {
                 return 1;
@@ -53,7 +55,6 @@ export default function BookingList() {
         <div className="booking_list_container">
             {daysList.map((elem, ind) => (
                 <div key={ind} className="card">
-                    {/* Date:{elem.date} - ID:{elem._id} */}
                     <div className="info_section">
                         <p>{formatedDate(elem.date)}</p>
                         <button
@@ -84,7 +85,7 @@ export default function BookingList() {
                                         DeleteHourOfADay(elem.date, h["hour"]);
                                     }}
                                 >
-                                    .{/* . Don't delete this point, its very important xD*/}
+                                    .
                                 </button>
                             </div>
                         </div>

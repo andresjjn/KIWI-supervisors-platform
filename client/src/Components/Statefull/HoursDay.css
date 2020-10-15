@@ -1,0 +1,90 @@
+.booking_list_container {
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a transparent;
+}
+.booking_list_container::-webkit-scrollbar {
+  width: 10px;
+}
+.booking_list_container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.booking_list_container::-webkit-scrollbar-thumb {
+  background-color: #0d1b2a;
+  border-radius: 20px;
+  border: 3px solid transparent;
+}
+
+.booking_list_container {
+    overflow: scroll;
+    height: 44%;
+    scrollbar-width: thin;
+    scrollbar-color: #0d1b2a #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.289);
+    padding: 10px;
+}
+
+.card {
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.available {
+  display: flex;
+  padding: 0px 10px;
+}
+
+.hour {
+  display: flex;
+  padding: 0px 5px;
+}
+
+.card {
+  padding: 10px;
+  background-color: rgba(119, 119, 119, 0.07);
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.deleteBtn {
+  display: flex;
+  padding: 0px 5px;
+}
+
+.info_section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info_section p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.available {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  background-color: rgba(72, 72, 72, 0.138);
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.available .deleteBtn {
+  border: none;
+  width: 20px;
+  width: 20px;
+  background: url('../../images/basura.svg') no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.hour {
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: larger;
+}
