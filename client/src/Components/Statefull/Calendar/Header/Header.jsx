@@ -37,7 +37,7 @@ export default function CalendarHeader(props) {
 
     return (
         <div className='header'>
-            <div className='date'>{currentMonthName()} {currentYear()}</div>
+            <div className='date'>{currentMonthName()}, {currentYear()}</div>
             <div className='picker'>
                 <div className='previous' onClick={() => setValue(previousMonth())}>{'<'}</div>
                 <div className='today' onClick={() => setValue(currentDay())}>{'HOY'}</div>
