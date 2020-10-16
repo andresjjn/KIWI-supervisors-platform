@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import formatedDate from './formatedDate';
-import DeleteHourOfADay from '../../requests/DeleteHourOfADay';
 import './HoursDay.css';
+import Swal from "sweetalert2";
 
 
 let axios = require("axios");
@@ -31,6 +31,11 @@ export default function HoursDay(props) {
     }, [getDay]);
 
 
+    useEffect(() => {
+        //To render when delete hour
+    }, [day]);
+
+
     //2 different views in case cant load hours or day is empty
     if (isLoading) {
         return <h1>Loading . . .</h1>;
@@ -56,6 +61,58 @@ export default function HoursDay(props) {
     }
 
 
+    async function deleteHour(date, element) {
+        Swal.fire({
+            title: "Estás seguro?",
+            text: "No podras recuperarla!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, eliminala!",
+        }).then((response) => {
+            if (response.isConfirmed) {
+                var config = {
+                    method: "delete",
+                    url: `${process.env.REACT_APP_API_URL}days/${date}/hours/${element['hour']}`,
+                    headers: {},
+                    data: '',
+                };
+                axios(config)
+                    .then(function (response) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Hora eliminada correctamente",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        axios.get(`${process.env.REACT_APP_API_URL}days/${date}`)
+                            .then((response) => {
+                                setDay(response.data);
+                                setLoading(false);
+                                setReqFail(false);
+                            })
+                            .catch(() => {
+                                setReqFail(true);
+                                setLoading(false);
+                            });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "error",
+                            title: "Error al eliminar la hora",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    });
+            }
+        });
+    }
+
+
     //Render all assigned hours per day
     return (
         <div className='booking_list_container'>
@@ -67,16 +124,14 @@ export default function HoursDay(props) {
                     <div key={`${elem}${index}`} className='available'>
                         <div key={elem['hour'] + index} className='hour'>
                             {elem['hour']}:00
-                            </div>
+                        </div>
                         <div key={elem['available']}>
                             Slots disponibles: {elem["available"]}
                         </div>
                         <div>
                             <button
                                 className="deleteBtn"
-                                onClick={() => {
-                                    DeleteHourOfADay(day.date, elem["hour"]);
-                                }}
+                                onClick={() => { deleteHour(day.date, elem); }}
                             >.
                             </button>
                         </div>
