@@ -9,26 +9,26 @@ import Booking from "./Components/Statefull/Booking";
 import Settings from "./Components/Statefull/Settings/Settings";
 
 export default class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Navbar />
-        <div className="main_section">
-          <div className="info_bar">
-            <Logout />
-            <Notification />
-          </div>
-          <div className="main_table">
-            <Router>
-              <Switch>
-                <Route path="/" exact component={Dashboard} />
-                <Route path="/booking" component={Booking} />
-                <Route path="/settings" component={Settings} />
-              </Switch>
-            </Router>
-          </div>
-        </div>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <Navbar />
+                <div className="main_section">
+                    <div className="info_bar">
+                        <Logout />
+                        <Notification />
+                    </div>
+                    <div className="main_table">
+                        <Router>
+                            <Switch>
+                                <Route path="/" exact component={Dashboard} />
+                                <Route path="/booking" component={Booking} />
+                                <Route path="/settings" component={Settings} />
+                            </Switch>
+                        </Router>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
