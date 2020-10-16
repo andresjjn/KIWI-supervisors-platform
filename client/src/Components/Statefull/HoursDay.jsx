@@ -3,31 +3,44 @@ import formatedDate from './formatedDate';
 import DeleteHourOfADay from '../../requests/DeleteHourOfADay';
 import './HoursDay.css';
 
+
 let axios = require("axios");
 
 
+//This component shows the work hours assigned to a specific day
 export default function HoursDay(props) {
     const { value } = props;
     const [isLoading, setLoading] = useState(true);
-    const [day, updateDay] = useState({});
+    const [day, setDay] = useState({});
     const [reqFail, setReqFail] = useState(false);
     const getDay = value.format('YYYYMMDD');
 
+
+    //Redraws the component when getDay changes its value
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`).then((response) => {
-            updateDay(response.data);
-            setLoading(false);
-            setReqFail(false);
-        })
-        .catch(err => {
-            setReqFail(true);
-            setLoading(false);
-        });
+        axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
+            .then((response) => {
+                setDay(response.data);
+                setLoading(false);
+                setReqFail(false);
+            })
+            .catch(() => {
+                setReqFail(true);
+                setLoading(false);
+            });
     }, [getDay]);
 
+
+    //2 different views in case cant load hours or day is empty
     if (isLoading) {
         return <h1>Loading . . .</h1>;
-    } else if (day['hours'] !== undefined && day['hours'].length > 0) {
+    } else if (reqFail) {
+        return <h1>No hay horas asignadas para este día</h1>
+    }
+
+
+    //Sort the hours of the day in ascending order
+    if (day['hours'] !== undefined) {
         const hoursLength = day['hours'].length;
         for (let j = 0; j < hoursLength; j++) {
             day['hours'].sort((a, b) => {
@@ -41,10 +54,9 @@ export default function HoursDay(props) {
             });
         }
     }
-    if (reqFail) {
-        return <h1>No hay horas asignadas para este día</h1>
-    }
 
+
+    //Render all assigned hours per day
     return (
         <div className='booking_list_container'>
             <div className='card'>
@@ -52,7 +64,7 @@ export default function HoursDay(props) {
                     <p>{formatedDate(day.date)}</p>
                 </div>
                 {day['hours'].map((elem, index) => (
-                    <div key={index} className='available'>
+                    <div key={`${elem}${index}`} className='available'>
                         <div key={elem['hour'] + index} className='hour'>
                             {elem['hour']}:00
                             </div>
@@ -63,8 +75,6 @@ export default function HoursDay(props) {
                             <button
                                 className="deleteBtn"
                                 onClick={() => {
-                                    const arr = [];
-                                    arr.push(day.date);
                                     DeleteHourOfADay(day.date, elem["hour"]);
                                 }}
                             >.

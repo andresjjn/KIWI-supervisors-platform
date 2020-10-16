@@ -47,7 +47,7 @@ const deleteHourOfADay = (dayDate, hour) => {
                     });
                 });
         }
-    });    
+    });
 };
 
 export default deleteHourOfADay;
