@@ -6,15 +6,17 @@
 
 .calendar {
   box-sizing: border-box;
-  font-family: monospace;
+  font-family: "Consolas", monospace;
   font-size: 1rem;
   max-width: 1000px;
   width: 100%;
-  background-color: #0d1b2a;
+  background-color: #e9e9e9;
 }
 
 .date {
   margin-left: 20px;
+  text-align: center;
+  color: black;
 }
 
 .picker {
@@ -51,7 +53,7 @@
 
 .calendar .nameDay p {
   font-size: 20px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .calendar .week {
@@ -80,13 +82,14 @@
   width: 54px;
   height: 44px;
   position: relative;
-  color: var(--white);
+  color: black;
+  font-weight: 900;
   z-index: 100;
   line-height: 44px;
 }
 
 .calendar .day div.before {
-  color: var(--black);
+  color: rgb(187, 187, 187);
 }
 
 .calendar .day div.selected {
