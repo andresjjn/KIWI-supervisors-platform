@@ -5,8 +5,8 @@ import LogoutIcon from '../images/logout.svg';
 
 export default function LogoutButton() {
     return (
-        <button className='logout'>
+        <div className='logout'>
             <img className='logout_icon' src={LogoutIcon} alt=''></img>
-        </button>
+        </div>
     );
 }
