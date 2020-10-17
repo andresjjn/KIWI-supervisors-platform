@@ -3,20 +3,17 @@ import formatedDate from './formatedDate';
 import './HoursDay.css';
 import deleteHourOfADay from '../../requests/DeleteHourOfADay';
 import MapHours from './MapHours';
-
+import { Loading, NoConnection, NoHours } from '../Stateless/DashboardMessages';
 
 let axios = require("axios");
 
-
-//This component shows the work hours assigned to a specific day
 export default function HoursDay({ value }) {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [reqFail, setReqFail] = useState(false);
     const getDay = value.format('YYYYMMDD');
+    let hoursLength = 0;
 
-
-    //Redraws the component when getDay changes its value
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
             .then((response) => {
@@ -30,25 +27,19 @@ export default function HoursDay({ value }) {
             });
     }, [getDay]);
 
+    useEffect(() => { /*Called every time day change the state*/ }, [day]);
 
-    useEffect(() => {
-        //To render when delete hour
-    }, [day]);
+    if (isLoading) { return <Loading />; }
+    else if (reqFail) { return <NoConnection />; }
 
-
-    //2 different views in case cant load hours or day is empty
-    if (isLoading) {
-        return <h1>Loading . . .</h1>;
-    } else if (reqFail) {
-        return <h1>No hay horas asignadas para este día</h1>
+    hoursLength = day.hours.length;
+    if (hoursLength > 0) {
+        sortHours(day.hours);
     }
 
-
-    //Sort the hours of the day in ascending order
-    if (day['hours'] !== undefined) {
-        const hoursLength = day['hours'].length;
+    function sortHours(hours) {
         for (let j = 0; j < hoursLength; j++) {
-            day['hours'].sort((a, b) => {
+            hours.sort((a, b) => {
                 if (a['hour'] > b['hour']) {
                     return 1;
                 }
@@ -60,7 +51,6 @@ export default function HoursDay({ value }) {
         }
     }
 
-
     async function deleteHour(date, hour, index) {
         let respone = await deleteHourOfADay(date, hour);
         if (respone === true) {
@@ -70,15 +60,13 @@ export default function HoursDay({ value }) {
         }
     }
 
-
-    //Render all assigned hours per day
     return (
         <div className='booking_list_container'>
             <div className='card'>
                 <div className='info_section'>
                     <p>{formatedDate(day.date)}</p>
                 </div>
-                <MapHours day={day} funct={deleteHour} />
+                {(hoursLength > 0) ? <MapHours day={day} funct={deleteHour} /> : <NoHours />}
             </div>
         </div>
     );

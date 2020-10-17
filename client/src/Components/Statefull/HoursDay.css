@@ -1,7 +1,7 @@
 .booking_list_container {
   scrollbar-width: thin;
   scrollbar-color: #0d1b2a transparent;
-  
+  text-align: center;
 }
 .booking_list_container::-webkit-scrollbar {
   width: 10px;
@@ -16,15 +16,15 @@
 }
 
 .booking_list_container {
-    overflow: scroll;
-    height: 44%;
-    max-height: 400px;
-    scrollbar-width: thin;
-    scrollbar-color: #0d1b2a #ffffff;
-    padding: 10px;
-    background-color: rgb(37, 37, 37);
-    color: rgb(223, 223, 223);
-    overflow-x: hidden;
+  overflow: scroll;
+  height: 44%;
+  max-height: 400px;
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a #ffffff;
+  padding: 10px;
+  background-color: rgb(37, 37, 37);
+  color: rgb(223, 223, 223);
+  overflow-x: hidden;
 }
 
 .card {

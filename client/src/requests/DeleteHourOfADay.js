@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
-const deleteHourOfADay = async (day, hour) => {
+export default async function deleteHourOfADay (day, hour) {
     try {
         let responseSwal = await Swal.fire({
             title: "Estás seguro?",
@@ -14,16 +14,9 @@ const deleteHourOfADay = async (day, hour) => {
             confirmButtonText: "Sí, eliminala!",
         });
 
-        var config = {
-            method: "delete",
-            url: `${process.env.REACT_APP_API_URL}days/${day}/hours/${hour}`,
-            headers: {},
-            data: '',
-        };
-
         if (responseSwal.isConfirmed) {
             try {
-                await axios(config);
+                await axios.delete(`${process.env.REACT_APP_API_URL}days/${day}/hours/${hour}`);
                 Swal.fire({
                     position: "center",
                     icon: "success",
@@ -43,5 +36,3 @@ const deleteHourOfADay = async (day, hour) => {
         return false;
     }
 };
-
-export default deleteHourOfADay;
