@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import formatedDate from './formatedDate';
 import './HoursDay.css';
 import Swal from "sweetalert2";
+// import deleteHourOfADay from '../../requests/DeleteHourOfADay';
 
 
 let axios = require("axios");
@@ -62,6 +63,12 @@ export default function HoursDay(props) {
 
 
     async function deleteHour(date, element) {
+        // let respone = await deleteHourOfADay(date, element);
+        // if (respone === true) {
+        //     console.log('ELIMINADO');
+        // } else {
+        //     console.log('CANCELADO');
+        // }
         Swal.fire({
             title: "Estás seguro?",
             text: "No podras recuperarla!",
@@ -108,6 +115,9 @@ export default function HoursDay(props) {
                             timer: 1500,
                         });
                     });
+            }
+            if (response.isDismissed) {
+                console.log('OE');
             }
         });
     }
