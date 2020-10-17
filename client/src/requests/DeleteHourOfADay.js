@@ -2,11 +2,11 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
-const deleteHourOfADay = async (dayDate, element) => {
+const deleteHourOfADay = async (day, hour) => {
     try {
         let responseSwal = await Swal.fire({
             title: "Estás seguro?",
-            text: "No podras recuperarla!",
+            text: "Puedes perder supervisores asignados!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -16,7 +16,7 @@ const deleteHourOfADay = async (dayDate, element) => {
 
         var config = {
             method: "delete",
-            url: `${process.env.REACT_APP_API_URL}days/${dayDate}/hours/${element['hour']}`,
+            url: `${process.env.REACT_APP_API_URL}days/${day}/hours/${hour}`,
             headers: {},
             data: '',
         };
