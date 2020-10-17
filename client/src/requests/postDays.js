@@ -3,7 +3,7 @@ import reloadPage from "./ReloadPage";
 var axios = require("axios");
 
 
-const postDays = async(dayDate, hours, slots) => {
+const postDays = async(daysInfo, hourInfo, available) => {
     // var config = {
     //     method: "get",
     //     url: `http://localhost:5000/api/v1/days/${dayDate[0]}`,
@@ -20,9 +20,9 @@ const postDays = async(dayDate, hours, slots) => {
     //         }
     //     });
 
-    for (const day of dayDate) {
-        for (const hour of hours) {
-            const dataHour = `{\n    "hour": ${hour},\n    "available": ${slots}\n}`;
+    for (const day of daysInfo) {
+        for (const hour of hourInfo) {
+            const dataHour = `{\n    "hour": ${hour},\n    "available": ${available}\n}`;
             console.log(dataHour);
 
             const configHour = {

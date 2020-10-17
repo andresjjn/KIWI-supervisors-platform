@@ -82,7 +82,7 @@ export default function Form(props) {
                 <AvailableInput onChange={printForm} />
             </div>
             <div className="sendBtn">
-                <button onClick={() => postDays(daysInfo, hourInfo, available)}>Crear Dias</button>
+                <button onClick={() => postDays(daysInfo, hourInfo, available)}>Crear</button>
                 <button onClick={getDaysRequest}>Ver</button>
                 <button onClick={() => deleteDaysRequest(daysInfo, hourInfo, available)}>Borrar</button>
             </div>

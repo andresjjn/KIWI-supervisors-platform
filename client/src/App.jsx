@@ -7,8 +7,10 @@ import Navbar from "./Components/Statefull/NavBar";
 import Dashboard from "./Components/Statefull/Dashboard/Dashboard";
 import Booking from "./Components/Statefull/Booking";
 import Settings from "./Components/Statefull/Settings/Settings";
+import AuthenticationButton from "./Components/Statefull/AuthenticationButton";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 
-export default class App extends Component {
+class App extends Component {
     render() {
         return (
             <div className="App">
@@ -16,6 +18,7 @@ export default class App extends Component {
                 <div className="main_section">
                     <div className="info_bar">
                         <Logout />
+                        <AuthenticationButton />
                         <Notification />
                     </div>
                     <div className="main_table">
@@ -32,3 +35,5 @@ export default class App extends Component {
         );
     }
 }
+
+export default withAuthenticationRequired(App);
