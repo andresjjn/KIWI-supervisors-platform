@@ -1,7 +1,10 @@
 const { Schema, model } = require('mongoose');
+const date = new Date()
 
 const daySchema = new Schema(
   {
+    created: {type: String, default: date.toISOString()},
+    updated: {type: String, default: date.toISOString()},
     date: {
       type: String,
       unique: true,

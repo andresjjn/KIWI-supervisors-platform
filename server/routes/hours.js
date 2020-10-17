@@ -6,8 +6,7 @@ const {
   createHour,
   getHour,
   modifyHour,
-  deleteHour,
-  changeHour
+  deleteHour
 } = require('../controller/hours_controller');
 
 router.route('/:date/hours')
@@ -17,7 +16,6 @@ router.route('/:date/hours')
 router.route('/:date/hours/:hour')
   .get(getHour)
   .put(modifyHour)
-  .patch(changeHour)
   .delete(deleteHour);
 
 module.exports = router;
