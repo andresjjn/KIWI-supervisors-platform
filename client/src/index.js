@@ -7,9 +7,11 @@ import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 require("dotenv").config();
 
 ReactDOM.render(
-    <Auth0ProviderWithHistory>
-        <App />
-    </Auth0ProviderWithHistory>,
+    <React.StrictMode>
+        <Auth0ProviderWithHistory>
+            <App />
+        </Auth0ProviderWithHistory>
+    </React.StrictMode>,
     document.getElementById("root")
 );
 
