@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Logout from "./button_logout/logout_button";
 import Notification from "./button_notification/notification_button";
-import Navbar from "./Components/Statefull/NavBar";
-import Dashboard from "./Components/Statefull/Dashboard/Dashboard";
-import Booking from "./Components/Statefull/Booking";
-import Settings from "./Components/Statefull/Settings/Settings";
-import AuthenticationButton from "./Components/Statefull/AuthenticationButton";
+import Navbar from "./components/Statefull/NavBar";
+import Dashboard from "./components/Statefull/Dashboard/Dashboard";
+import Booking from "./components/Statefull/Booking";
+import Settings from "./components/Statefull/Settings/Settings";
+import AuthenticationButton from "./components/Statefull/AuthenticationButton";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 
 class App extends Component {
