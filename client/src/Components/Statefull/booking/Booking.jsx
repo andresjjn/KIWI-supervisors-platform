@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Moment from "moment";
-import Calendar from "./Calendar/Calendar";
-import Form from './BookingInput/Form';
-import HoursDay from "./HoursDay";
+import Calendar from "../Calendar/Calendar";
+import Form from '../BookingInput/Form';
+import HoursDay from "../hours_list/HoursDay";
 import './Booking.css';
 
 export default function Booking() {

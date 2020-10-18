@@ -81,7 +81,7 @@
   border: none;
   width: 20px;
   width: 20px;
-  background: url('../../images/basura.svg') no-repeat;
+  background: url('../../../images/basura.svg') no-repeat;
   background-size: contain;
   cursor: pointer;
 }

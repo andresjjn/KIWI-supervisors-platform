@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import formatedDate from './formatedDate';
+import formatedDate from '../formatedDate';
 import './HoursDay.css';
-import deleteHourOfADay from '../../requests/DeleteHourOfADay';
+import deleteHourOfADay from '../../../requests/DeleteHourOfADay';
 import MapHours from './MapHours';
-import { Loading, NoConnection, NoHours } from '../Stateless/DashboardMessages';
+import { Loading, NoConnection, NoHours } from '../../stateless/DashboardMessages';
+import sortHours from './SortHours';
 
 let axios = require("axios");
 
 export default function HoursDay({ value }) {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
-    const [reqFail, setReqFail] = useState(false);
+    const [requestFail, setRequestFail] = useState(false);
     const getDay = value.format('YYYYMMDD');
     let hoursLength = 0;
 
@@ -19,10 +20,10 @@ export default function HoursDay({ value }) {
             .then((response) => {
                 setDay(response.data);
                 setLoading(false);
-                setReqFail(false);
+                setRequestFail(false);
             })
             .catch(() => {
-                setReqFail(true);
+                setRequestFail(true);
                 setLoading(false);
             });
     }, [getDay]);
@@ -30,25 +31,11 @@ export default function HoursDay({ value }) {
     useEffect(() => { /*Called every time day change the state*/ }, [day]);
 
     if (isLoading) { return <Loading />; }
-    else if (reqFail) { return <NoConnection />; }
+    else if (requestFail) { return <NoConnection />; }
 
     hoursLength = day.hours.length;
     if (hoursLength > 0) {
         sortHours(day.hours);
-    }
-
-    function sortHours(hours) {
-        for (let j = 0; j < hoursLength; j++) {
-            hours.sort((a, b) => {
-                if (a['hour'] > b['hour']) {
-                    return 1;
-                }
-                if (a['hour'] < b['hour']) {
-                    return -1;
-                }
-                return 0;
-            });
-        }
     }
 
     async function deleteHour(date, hour, index) {

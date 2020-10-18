@@ -1,13 +1,13 @@
-import React from 'react';
-import './NavItem.css';
+import React from "react";
+import "./NavItem.css";
 
-
-export default function Dashboard(props) {
-    const {className, icon, text} = props;
+export default function NavItem({ link, className, icon, text}) {
     return (
-        <div className={'dashboard_' + className}>
-            <img className={'icon_' + className} src={icon} alt=''></img>
-            <div className={'text_' + className}><p>{text}</p></div>
-        </div>
+        <a href={link} className={"nav_item_" + className}>
+            <img className={"icon_" + className} src={icon} alt=""></img>
+            <div className={"text_" + className}>
+                <p>{text}</p>
+            </div>
+        </a>
     );
 }

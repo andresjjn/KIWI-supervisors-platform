@@ -2,9 +2,7 @@ import React from 'react';
 import Moment from 'moment';
 import './Header.css'
 
-export default function CalendarHeader(props) {
-    const { value, setValue } = props;
-
+export default function CalendarHeader({ value, setValue }) {
     function currentMonthName() {
         let date = value.format('MMMM');
         const monthsEnglish = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

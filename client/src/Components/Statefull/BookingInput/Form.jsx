@@ -8,9 +8,7 @@ import getDaysRequest from "../../../requests/getDaysRequest";
 import deleteDaysRequest from "../../../requests/deleteDaysRequest";
 
 
-export default function Form(props) {
-    const { value } = props;
-
+export default function Form({ value }) {
     let startOfWeek = value.clone().startOf('isoWeek');
     let endOfWeek = value.clone().endOf('isoWeek');
 

@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import './Hour.css';
 
 
-export default function Hour(props) {
-    const { hour, value, onClick } = props;
+export default function Hour({ hour, value, onClick }) {
     const [isSelected, setSelected] = useState("defaultBtn");
-
 
     function selection() {
         if (isSelected === "defaultBtn") {

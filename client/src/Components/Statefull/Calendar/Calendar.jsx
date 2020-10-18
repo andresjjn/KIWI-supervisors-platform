@@ -4,8 +4,7 @@ import dayStyles, { beforeToday } from "./Styles";
 import "./Calendar.css";
 import Header from "./Header/Header";
 
-export default function Calendar(props) {
-    const { value, onChange } = props;
+export default function Calendar({ value, onChange }) {
     const [calendar, setCalendar] = useState([]);
 
     useEffect(() => {

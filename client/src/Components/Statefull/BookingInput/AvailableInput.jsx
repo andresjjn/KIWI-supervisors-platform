@@ -1,8 +1,7 @@
 import React from 'react';
 
 
-export default function AvailableInput(props) {
-    const { onChange } = props;
+export default function AvailableInput({ onChange }) {
     let available;
 
     function changeValue(event) {

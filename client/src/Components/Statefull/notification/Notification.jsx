@@ -1,6 +1,6 @@
 import React from 'react';
-import './notification_button.css'
-import NotificationIcon from '../images/notification.svg'
+import './Notification.css';
+import NotificationIcon from '../../../images/notification.svg'
 
 export default function NotificationButton() {
     return (
