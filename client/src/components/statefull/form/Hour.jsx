@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import './Hour.css';
+import { useEffect } from 'react';
 
 
-export default function Hour({ hour, value, onClick }) {
+export default function Hour({ reload, hour, value, onClick }) {
     const [isSelected, setSelected] = useState("defaultBtn");
+
+    useEffect(() => {
+        setSelected('defaultBtn');
+    }, [reload]);
 
     function selection() {
         if (isSelected === "defaultBtn") {

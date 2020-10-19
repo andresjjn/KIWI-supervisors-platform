@@ -1,0 +1,6 @@
+.days_name {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  align-items: center;
+}

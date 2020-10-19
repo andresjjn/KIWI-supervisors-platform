@@ -1,7 +1,28 @@
+import Swal from "sweetalert2";
+
 var axios = require("axios");
 
+export default async function postHours(daysInfo, hourInfo, available) {
+    if (daysInfo.length === 0 && hourInfo.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No hay ningun día u hora seleccionada!'
+        });
+        return;
+    }
 
-const postDays = async(daysInfo, hourInfo, available) => {
+    Swal.fire({
+        title: 'Espere mientras se crean los Horarios!',
+        text: 'No recargue la página',
+        showConfirmButton: false,
+        showCancelButton: false,
+        allowOutsideClick: false,
+        willOpen: () => {
+            Swal.showLoading()
+        }
+    });
+
     for (const day of daysInfo) {
         for (const hour of hourInfo) {
             const dataHour = `{\n    "hour": ${hour},\n    "available": ${available}\n}`;
@@ -25,6 +46,10 @@ const postDays = async(daysInfo, hourInfo, available) => {
                 });
         }
     }
+    Swal.fire({
+        title: 'Horarios creados!',
+        icon: 'success',
+        showDenyButton: false,
+    });
+    return true;
 };
-
-export default postDays;

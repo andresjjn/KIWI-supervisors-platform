@@ -23,13 +23,6 @@
   margin-right: 20px;
 }
 
-.calendar .day-names {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  align-items: center;
-}
-
 .calendar .body {
   display: flex;
   flex-direction: column;
@@ -96,11 +89,14 @@
   background-color: var(--red);
   color: var(--white);
   font-weight: bold;
+  font-size: 25px;
+  width: 50px;
   border-radius: 15%;
+  margin: 0;
 }
 
 .calendar .day div.today {
-  border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 25px;
   color: red;
+  width: 54px;
 }

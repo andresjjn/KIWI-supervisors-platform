@@ -1,30 +1,25 @@
 import React from 'react';
-import Day from './Day';
-import Hour from './Hour';
 import AvailableInput from './AvailableInput';
 import './Form.css';
-import postDays from '../../../requests/postDays';
-import getDaysRequest from "../../../requests/getDaysRequest";
 import deleteDaysRequest from "../../../requests/deleteDaysRequest";
+import WeekForm from './WeekForm';
+import HoursForm from './HoursForm';
+import postHours from '../../../requests/PostHours';
 
 
-export default function Form({ value }) {
+export default function Form({ reload, setReload, value }) {
     let startOfWeek = value.clone().startOf('isoWeek');
     let endOfWeek = value.clone().endOf('isoWeek');
-
-    const dirDays = {'LUN': 0, 'MAR': 1, 'MIÉ': 2, 'JUE': 3, 'VIE': 4, 'SÁB': 5, 'DOM': 6};
+    let daysOfWeek = [];
     let daysInfo = [];
-
     let hourInfo = [];
-    const hours = { '0:00': 0, '1:00': 1, '2:00': 2, '3:00': 3, '4:00': 4, '5:00': 5, '6:00': 6, '7:00': 7, '8:00': 8, '9:00': 9, '10:00': 10, '11:00': 11, '12:00': 12, '13:00': 13, '14:00': 14, '15:00': 15, '16:00': 16, '17:00': 17, '18:00': 18, '19:00': 19, '20:00': 20, '21:00': 21, '22:00': 22, '23:00': 23};
     let available = 0;
 
-    let days = [];
     function setDaysOfWeek() {
         let day = startOfWeek;
 
         while (day <= endOfWeek) {
-            days.push(String(day.toDate()));
+            daysOfWeek.push(String(day.toDate()));
             day = day.clone().add(1, 'd');
         }
     }
@@ -36,7 +31,7 @@ export default function Form({ value }) {
             hourInfo.push(hour);
         }
         hourInfo.sort((a, b) => a - b);
-        // console.log(hourInfo);
+        console.log(hourInfo);
     }
 
     function selectDays(days) {
@@ -46,7 +41,7 @@ export default function Form({ value }) {
             daysInfo.push(days);
         }
         daysInfo.sort((a, b) => a - b);
-        // console.log(daysInfo);
+        console.log(daysInfo);
     }
 
     function printForm(slots) {
@@ -54,34 +49,30 @@ export default function Form({ value }) {
         available = slots;
     }
 
+    async function sendInfo() {
+        let success = await postHours(daysInfo, hourInfo, available);
+        if (success) {
+            const load = (reload === false) ? true : false;
+            setReload(load);
+        }
+    }
+
     return (
         <div className="form">
-            <div className="days">
+            <div className='week'>
                 {setDaysOfWeek()}
-                {Object.keys(dirDays).map((key, value) => (
-                    <Day
-                        key={key}
-                        name={key}
-                        date={days[value]}
-                        onClick={selectDays}
-                    />
-                ))}
+                <WeekForm reload={reload} days={daysOfWeek} onClick={selectDays}/>
             </div>
             <div className="hours">
                 <h3>Seleccione horas para asignar</h3>
-                <div className="hours_container">
-                    {Object.keys(hours).map((key, value) => (
-                        <Hour key={key} hour={key} value={value} onClick={selectHours} />
-                    ))}
-                </div>
+                <HoursForm reload={reload} onClick={selectHours} />
             </div>
             <div className="slots">
                 <h3>Cantidad de supervisores por hora</h3>
-                <AvailableInput onChange={printForm} />
+                <AvailableInput reload={reload} onChange={printForm} />
             </div>
             <div className="sendBtn">
-                <button onClick={() => postDays(daysInfo, hourInfo, available)}>Crear</button>
-                <button onClick={getDaysRequest}>Ver</button>
+                <button onClick={sendInfo}>Crear</button>
                 <button onClick={() => deleteDaysRequest(daysInfo, hourInfo, available)}>Borrar</button>
             </div>
         </div>

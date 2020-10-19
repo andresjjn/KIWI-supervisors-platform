@@ -8,7 +8,7 @@ import sortHours from './SortHours';
 
 let axios = require("axios");
 
-export default function HoursDay({ value }) {
+export default function HoursDay({ reload, value }) {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
@@ -26,7 +26,7 @@ export default function HoursDay({ value }) {
                 setRequestFail(true);
                 setLoading(false);
             });
-    }, [getDay]);
+    }, [getDay, reload]);
 
     useEffect(() => { /*Called every time day change the state*/ }, [day]);
 
@@ -53,7 +53,7 @@ export default function HoursDay({ value }) {
                 <div className='info_section'>
                     <p>{formatedDate(day.date)}</p>
                 </div>
-                {(hoursLength > 0) ? <MapHours day={day} funct={deleteHour} /> : <NoHours />}
+                {(hoursLength > 0) ? <MapHours day={day} onClick={deleteHour} /> : <NoHours />}
             </div>
         </div>
     );

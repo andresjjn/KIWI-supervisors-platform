@@ -11,14 +11,9 @@ function isToday(day) {
 }
 
 export default function dayStyles(day, value) {
-    if (beforeToday(day)) {
-        return 'before';
-    }
-    if (isSelected(day, value)) {
-        return 'selected';
-    }
-    if (isToday(day)) {
-        return 'today';
-    }
-    return '';
+    const ret = (beforeToday(day) && isSelected(day, value)) ? 'before selected' :
+                (beforeToday(day)) ? 'before' :
+                (isSelected(day, value)) ? 'selected' :
+                (isToday(day)) ? 'today' : '';
+    return ret;
 }

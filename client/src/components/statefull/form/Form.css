@@ -8,7 +8,7 @@
   padding: 30px; */
 }
 
-.days {
+.week {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -35,30 +35,6 @@
   cursor: pointer;
 }
 
-.default {
-  background-color:#8c8c8c;
-  border-radius: 5px;
-  border: 0px;
-  margin: 4px;
-  outline: none;
-  cursor: pointer;
-  width: 70px;
-  height: 30px;
-  font-size: 14px;
-}
-
-.selected {
-  background-color:#0d1b2a;
-  border-radius: 5px;
-  border: 0px;
-  margin: 4px;
-  outline: none;
-  cursor: pointer;
-  width: 70px;
-  height: 30px;
-  font-size: 14px;
-}
-
 p {
   margin: 0;
 }
@@ -76,15 +52,6 @@ h1 {
 .hours h3 {
   font-size: 20px;
   text-align: start;
-}
-
-.hours_container {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  width: 70%;
 }
 
 .slots {

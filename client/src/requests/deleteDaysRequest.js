@@ -1,5 +1,4 @@
 import Swal from "sweetalert2";
-import reloadPage from './ReloadPage'
 
 var axios = require("axios");
 
@@ -15,7 +14,6 @@ const deleteDaysResquest = (dayDate) => {
         axios(config)
             .then(function (response) {
                 console.log(JSON.stringify(response.data.message));
-                reloadPage();
             })
             .catch(function (error) {
                 console.log(error);
