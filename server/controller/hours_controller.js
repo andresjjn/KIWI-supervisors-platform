@@ -15,35 +15,34 @@ hoursCtrl.getHours = async (req, res) => {
 // Create a new hour into hours array using POST request
 // (uri = ...days/:DATE/hours, body = {hour:, available:})
 hoursCtrl.createHour = async (req, res) => {
-  date = new Date()
-  if (req.body.slots) {
-    req.body.available = req.body.slots.length;
-  } else {
-    req.body.available = 0;
+  date = new Date();
+  if (req.body.slots || req.body.total || req.body.available) {
+    res.status(400).json({ status: 'Error', description: 'Just hour parameter is suportted' });
+    return;
   }
   if (!req.body.hour) {
-    res.status(400).json({status: 'Error', description: 'No hour received'});
+    res.status(400).json({ status: 'Error', description: 'No hour received' });
     return;
   }
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
     for (const hours of dayOfdate.hours) {
       if (hours.hour == req.body.hour) {
-        res.status(400).json({status: 'Error', description: 'The hour already exist'});
+        res.status(400).json({ status: 'Error', description: 'The hour already exist' });
         return;
       }
     }
     dayOfdate.hours.push(req.body);
     dayOfdate.updated = date.toISOString();
     await dayOfdate.save();
-    res.status(200).json({status: 'Success'});
+    res.status(200).json({ status: 'Success' });
   } else {
     const newDay = new Day({
       date: req.params.date,
       hours: req.body
     });
     await newDay.save();
-    res.status(201).json({status: 'Success'});
+    res.status(201).json({ status: 'Success' });
   }
 };
 
@@ -63,33 +62,6 @@ hoursCtrl.getHour = async (req, res) => {
   }
 };
 
-// Modify an specific hour from a date using PUT request
-// (uri = ...days/:DATE/hours/:hour,  body = {hour: , available: })
-hoursCtrl.modifyHour = async (req, res) => {
-  date = new Date()
-  if (!req.body.hour || !req.body.slots) {
-    res.status(400).json({status: 'Error', description: 'No hour or slots received'});
-    return;
-  }
-  const dayOfdate = await Day.findOne({ date: req.params.date });
-  if (dayOfdate) {
-    for (let i = 0; i < dayOfdate.hours.length; i++) {
-      if (dayOfdate.hours[i].hour == req.params.hour) {
-        dayOfdate.hours[i] = req.body;
-        delete dayOfdate.hours[i].available;
-        dayOfdate.hours[i].available = dayOfdate.hours[i].slots.length;
-        dayOfdate.updated = date.toISOString();
-        await dayOfdate.save();
-        res.status(200).json({status: 'Success'});
-        return;
-      }
-    }
-    res.status(400).json({ status: 'Error', description: 'Hour not found' });
-  } else {
-    res.status(400).json({ status: 'Error', description: 'Day not found' });
-  }
-};
-
 // Delete an specific hour from a date using DELETE request (uri = ...days/:DATE/hours/:hour)
 hoursCtrl.deleteHour = async (req, res) => {
   date = new Date()
@@ -100,7 +72,7 @@ hoursCtrl.deleteHour = async (req, res) => {
         dayOfdate.hours.splice(i, 1);
         dayOfdate.updated = date.toISOString();
         await dayOfdate.save();
-        res.status(200).json({status: 'Success'});
+        res.status(200).json({ status: 'Success' });
         return;
       }
     }

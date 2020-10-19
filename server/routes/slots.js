@@ -3,17 +3,22 @@ const router = Router();
 
 const {
   getSlots,
-  modifySlots,
   createSlots,
   deleteSlots,
-  fillSlot
+  getSlot,
+  fillSlot,
+  deleteSlot
 } = require('../controller/slots_controller');
+const { route } = require('./hours');
 
 router.route('/:date/hours/:hour/slots')
   .get(getSlots)
   .post(createSlots)
-  .put(modifySlots)
-  .patch(fillSlot)
-  .delete(deleteSlots);
+  .delete(deleteSlots)
+  .patch(fillSlot);
+
+router.route('/:date/hours/:hour/slots/:id')
+  .get(getSlot)
+  .delete(deleteSlot);
 
 module.exports = router;
