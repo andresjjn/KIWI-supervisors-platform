@@ -31,3 +31,9 @@
   transition: all 0.2s ease;
   cursor: pointer;
 }
+
+@media screen and (max-height: 800px) {
+  .header {
+    padding: 10px;
+  }
+}

@@ -13,6 +13,16 @@
 .dates {
   width: 47%;
 }
+
+.dates2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
 @media screen and (max-width: 900px) {
   .booking {
     flex-direction: column-reverse;

@@ -5,6 +5,7 @@ import deleteHourOfADay from '../../../requests/DeleteHourOfADay';
 import MapHours from './MapHours';
 import { Loading, NoConnection, NoHours } from '../../stateless/DashboardMessages';
 import sortHours from './SortHours';
+import isAdmin from '../../../IsAdmin'
 
 let axios = require("axios");
 
@@ -13,6 +14,7 @@ export default function HoursDay({ reload, value }) {
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
     const getDay = value.format('YYYYMMDD');
+    const cName = isAdmin() ? "booking_list_container" : "booking_list_container2"
     let hoursLength = 0;
 
     useEffect(() => {
@@ -48,7 +50,7 @@ export default function HoursDay({ reload, value }) {
     }
 
     return (
-        <div className='booking_list_container'>
+        <div className={cName}>
             <div className='card'>
                 <div className='info_section'>
                     <p>{formatedDate(day.date)}</p>
