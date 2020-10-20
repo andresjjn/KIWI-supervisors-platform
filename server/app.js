@@ -14,5 +14,6 @@ app.use(express.json());
 app.use('/api/v1/days', require('./routes/days'));
 app.use('/api/v1/days', require('./routes/hours'));
 app.use('/api/v1/days', require('./routes/slots'));
+app.use('/api/v1/users', require('./routes/users'));
 
 module.exports = { app, PORT };

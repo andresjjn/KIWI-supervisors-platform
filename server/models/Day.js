@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const date = new Date()
+const date = new Date();
 
 const daySchema = new Schema(
   {
