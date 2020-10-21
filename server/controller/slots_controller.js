@@ -45,6 +45,15 @@ slotsCtrl.createSlots = async (req, res) => {
     await newDay.save();
     res.status(201).json({ status: 'Success' });
   } else {
+    let flag = 0;
+    for (const hours of dayOfdate.hours) {
+      if (hours.hour == req.params.hour) {
+        flag = 1;
+      }
+    }
+    if (flag === 0) {
+      dayOfdate.hours.push({'hour': req.params.hour});
+    }
     for (let i = 0; i < dayOfdate.hours.length; i++) {
       if (dayOfdate.hours[i].hour == req.params.hour) {
         for (let j = 0; j < req.body.available; j++) {
@@ -60,7 +69,6 @@ slotsCtrl.createSlots = async (req, res) => {
     }
   }
 };
-
 
 // Remove for a hour and date is specific using REMOVE request
 // (uri = ...days/:DATE/hours/:hour/slots, body = {delete: })
