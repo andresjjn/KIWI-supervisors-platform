@@ -25,12 +25,12 @@ export default async function postHours(daysInfo, hourInfo, available) {
 
     for (const day of daysInfo) {
         for (const hour of hourInfo) {
-            const dataHour = `{\n    "hour": ${hour},\n    "available": ${available}\n}`;
+            const dataHour = `{\n    "available": ${available}\n}`;
             console.log(dataHour);
 
             const configHour = {
                 method: "post",
-                url: `${process.env.REACT_APP_API_URL}days/${day}/hours`,
+                url: `${process.env.REACT_APP_API_URL}days/${day}/hours/${hour}/slots`,
                 headers: {
                     "Content-Type": "application/json",
                 },
