@@ -20,8 +20,6 @@ export default function MapHours({ day, onClick }) {
         return false;
     }
 
-    console.log(day.hours);
-
     return day.hours.map((elem, index) =>
         <div key={`available ${elem.hour}`} className={isAdded(elem.slots) ? 'assigned' : 'available'}>
             <div key={`hour ${elem.hour}`} className='hour'>{elem['hour']}:00</div>
