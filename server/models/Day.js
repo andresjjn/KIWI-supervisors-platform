@@ -21,7 +21,7 @@ const daySchema = new Schema(
         slots: [
           {
             _id: false,
-            id: { type: Number, min: 0 },
+            id: { type: String, min: 0 },
             name: { type: String }
           }
         ]
