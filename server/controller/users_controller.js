@@ -9,9 +9,9 @@ usersCtrl.getUsers = async (req, res) => {
 
 // Create a user passing a Obj with id and role params, using POST request (uri = .../days) (body = {date: ""})
 usersCtrl.createUser = async (req, res) => {
-  const { id, role } = req.body;
-  if (!id || !role) {
-    res.status(400).json({ status: 'Error', description: 'No id or role parameter found' });
+  const { id, role, name } = req.body;
+  if (!id || !role || !name) {
+    res.status(400).json({ status: 'Error', description: 'No id, name or role parameter found' });
     return;
   }
   const user = await User.findOne({ id: req.body.id });
@@ -20,7 +20,8 @@ usersCtrl.createUser = async (req, res) => {
   } else {
     const newUser = new User({
       id: id,
-      role: role
+      role: role,
+      name: name
     });
     await newUser.save();
     res.status(201).json({ status: 'Success' });

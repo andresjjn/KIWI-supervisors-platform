@@ -6,12 +6,13 @@ const userSchema = new Schema(
     created: { type: String, default: date.toISOString() },
     updated: { type: String, default: date.toISOString() },
     id: {
-      type: Number,
+      type: String,
       unique: true,
       required: true
     },
     name: {
       type: String,
+      required: true,
       unique: true
     },
     email: String,

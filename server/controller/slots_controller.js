@@ -1,5 +1,6 @@
 const { json } = require('express');
 const Day = require('../models/Day');
+const User = require('../models/User');
 let date = {};
 const slotsCtrl = {};
 
@@ -149,7 +150,11 @@ slotsCtrl.fillSlot = async (req, res) => {
         if (dayOfdate.hours[i].available > 0) {
           const pos = dayOfdate.hours[i].slots.length - dayOfdate.hours[i].available;
           dayOfdate.hours[i].slots[pos] = req.body;
-          dayOfdate.hours[i].slots[pos].status = 'full';
+          const user = await User.findOne({ id: req.body.id });
+          if (!user) {
+            res.status(400).json({ status: 'Error', description: 'No user found' });
+          }
+          dayOfdate.hours[i].slots[pos].name = user.name;
           dayOfdate.hours[i].available -= 1;
           dayOfdate.updated = date.toISOString();
           await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
