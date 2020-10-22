@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 var axios = require("axios");
 
 export default async function postHours(daysInfo, hourInfo, available) {
-    if (daysInfo.length === 0 && hourInfo.length === 0) {
+    if (daysInfo.length === 0 || hourInfo.length === 0) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',

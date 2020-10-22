@@ -27,9 +27,11 @@
   overflow-x: hidden;
 }
 .booking_list_container2 {
-  overflow: scroll;
   flex: 1;
-  height: 80%;
+  overflow: scroll;
+  width: 90%;
+  height: 100%;
+  max-width: 1000px;
   max-height: 600px;
   scrollbar-width: thin;
   scrollbar-color: #0d1b2a #ffffff;

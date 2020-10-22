@@ -1,6 +1,6 @@
 export default function buildCalendar(value) {
     const startDay = value.clone().startOf('Month').startOf('isoWeek');
-    const endDay = value.clone().endOf('Month').endOf('Week');
+    const endDay = value.clone().endOf('Month').endOf('isoWeek');
     const calendar = [];
     const day = startDay.clone().subtract(1, 'day');
 
