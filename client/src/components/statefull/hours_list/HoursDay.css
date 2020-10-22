@@ -100,6 +100,38 @@
   cursor: pointer;
 }
 
+.available .addBtn {
+  background: url('../../../images/anadir.svg') no-repeat;
+  border: none;
+  width: 20px;
+  width: 20px;
+  background-size: contain;
+  cursor: pointer;
+  filter: invert(100%);
+}
+
+ .minusBtn {
+  background: url('../../../images/minus.svg') no-repeat;
+  border: none;
+  width: 20px;
+  width: 20px;
+  background-size: contain;
+  cursor: pointer;
+  filter: invert(100%);
+}
+
+.assigned {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  background-color: #5f5cfe;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 4px;
+}
+
 .hour {
   letter-spacing: 2px;
   font-weight: 500;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import formatedDate from '../formatedDate';
 import './HoursDay.css';
 import deleteHourOfADay from '../../../requests/DeleteHourOfADay';
+import assignHourOfADay from '../../../requests/AssignHourOfADay';
 import MapHours from './MapHours';
 import { Loading, NoConnection, NoHours } from '../../stateless/DashboardMessages';
 import sortHours from './SortHours';
@@ -30,6 +31,19 @@ export default function HoursDay({ reload, value }) {
             });
     }, [getDay, reload]);
 
+    function refreshList() {
+        axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
+            .then((response) => {
+                setDay(response.data);
+                setLoading(false);
+                setRequestFail(false);
+            })
+            .catch(() => {
+                setRequestFail(true);
+                setLoading(false);
+            });
+    }
+
     useEffect(() => { /*Called every time day change the state*/ }, [day]);
 
     if (isLoading) { return <Loading />; }
@@ -49,13 +63,20 @@ export default function HoursDay({ reload, value }) {
         }
     }
 
+    async function assignHour(date, hour, index) {
+        let respone = await assignHourOfADay(date, hour, "123456789"); //cambiar por id
+        if (respone === true) {
+            refreshList();
+        }
+    }
+
     return (
         <div className={cName}>
             <div className='card'>
                 <div className='info_section'>
                     <p>{formatedDate(day.date)}</p>
                 </div>
-                {(hoursLength > 0) ? <MapHours day={day} onClick={deleteHour} /> : <NoHours />}
+                {(hoursLength > 0) ? <MapHours day={day} onClick={(isAdmin()) ? deleteHour : assignHour} /> : <NoHours />}
             </div>
         </div>
     );
