@@ -34,8 +34,7 @@ export default function HoursDay({ reload, value }) {
     }, [getDay, reload]);
 
     useEffect(() => {
-        setTimeout(() => setCounter(counter + 1), 15000);
-        console.log("REFRESH");
+        setTimeout(() => setCounter(counter + 1), 5000);
         refreshList();
     }, [counter]);
 
@@ -72,14 +71,15 @@ export default function HoursDay({ reload, value }) {
     }
 
     async function assignHour(date, hour, index) {
-        let respone = await assignHourOfADay(date, hour, "123456789"); //cambiar por id
+        let respone = await assignHourOfADay(date, hour, "a1b2c3"); //cambiar por id
+        console.log(respone);
         if (respone === true) {
             refreshList();
         }
     }
 
     async function unassignHour(date, hour, index) {
-        let respone = await unassignHourOfADay(date, hour, "123456789"); //cambiar por id
+        let respone = await unassignHourOfADay(date, hour, "a1b2c3"); //cambiar por id
         if (respone === true) {
             refreshList();
         }

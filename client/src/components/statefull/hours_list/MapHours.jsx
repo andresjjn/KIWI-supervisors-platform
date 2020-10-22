@@ -13,14 +13,12 @@ export default function MapHours({ day, onClick }) {
 
     function isAdded(slots) {
         for (let slot of slots) {
-            if (!isAdmin() && slot.id === 123456789) {//cambiar id
+            if (!isAdmin() && slot.id === "a1b2c3") {//cambiar id
                 return true;
             }
         }
         return false;
     }
-
-    console.log(day.hours);
 
     return day.hours.map((elem, index) =>
         <div key={`available ${elem.hour}`} className={isAdded(elem.slots) ? 'assigned' : 'available'}>
