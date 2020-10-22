@@ -7,6 +7,7 @@ import MapHours from './MapHours';
 import { Loading, NoConnection, NoHours } from '../../stateless/DashboardMessages';
 import sortHours from './SortHours';
 import isAdmin from '../../../IsAdmin'
+import unassignHourOfADay from '../../../requests/UnassignHourOfADay';
 
 let axios = require("axios");
 
@@ -14,6 +15,7 @@ export default function HoursDay({ reload, value }) {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
+    const [counter, setCounter] = useState(1);
     const getDay = value.format('YYYYMMDD');
     const cName = isAdmin() ? "booking_list_container" : "booking_list_container2"
     let hoursLength = 0;
@@ -30,6 +32,12 @@ export default function HoursDay({ reload, value }) {
                 setLoading(false);
             });
     }, [getDay, reload]);
+
+    useEffect(() => {
+        setTimeout(() => setCounter(counter + 1), 15000);
+        console.log("REFRESH");
+        refreshList();
+    }, [counter]);
 
     function refreshList() {
         axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
@@ -70,13 +78,22 @@ export default function HoursDay({ reload, value }) {
         }
     }
 
+    async function unassignHour(date, hour, index) {
+        let respone = await unassignHourOfADay(date, hour, "123456789"); //cambiar por id
+        if (respone === true) {
+            refreshList();
+        }
+    }
+
+    const functions = [deleteHour, assignHour, unassignHour];
+
     return (
         <div className={cName}>
             <div className='card'>
                 <div className='info_section'>
                     <p>{formatedDate(day.date)}</p>
                 </div>
-                {(hoursLength > 0) ? <MapHours day={day} onClick={(isAdmin()) ? deleteHour : assignHour} /> : <NoHours />}
+                {(hoursLength > 0) ? <MapHours day={day} onClick={functions} /> : <NoHours />}
             </div>
         </div>
     );
