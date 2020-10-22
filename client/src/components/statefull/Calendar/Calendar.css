@@ -1,10 +1,9 @@
 .calendarView {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex: 1;
-  margin-right: 20px;
   width: 100%;
 }
 
@@ -128,8 +127,6 @@
 
 @media screen and (max-height: 800px) {
   .calendar .day div.selected {
-    background-color: var(--red);
-    color: var(--white);
     font-weight: bold;
     font-size: 20px;
     width: 50px;
@@ -142,7 +139,6 @@
 
   .calendar .day div.today {
     font-size: 20px;
-    color: red;
     width: 54px;
   }
 }

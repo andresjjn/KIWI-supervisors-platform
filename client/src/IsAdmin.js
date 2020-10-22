@@ -1,2 +1,2 @@
-const isAdmin = () => false;
+const isAdmin = () => true;
 export default isAdmin;

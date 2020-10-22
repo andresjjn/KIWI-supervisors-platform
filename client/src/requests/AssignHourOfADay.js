@@ -14,7 +14,8 @@ export default async function assignHourOfADay (day, hour, id) {
         });
 
         if (responseSwal.isConfirmed) {
-            const dataUser = `{\n    "id": ${id}}`
+            const dataUser = `{\n    "id": "${id}"}`
+            console.log(dataUser);
             try {
                 const config = {
                     method: "patch",

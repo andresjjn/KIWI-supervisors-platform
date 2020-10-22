@@ -64,7 +64,7 @@ export default function HoursDay({ reload, value }) {
     }
 
     async function assignHour(date, hour, index) {
-        let respone = await assignHourOfADay(date, hour, "123456789"); //cambiar por id
+        let respone = await assignHourOfADay(date, hour, "a1b2c3"); //cambiar por id
         if (respone === true) {
             refreshList();
         }
