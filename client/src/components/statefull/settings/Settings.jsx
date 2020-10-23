@@ -1,5 +1,7 @@
 import React from 'react';
 import './Settings.css';
+import getUsers from '../../../requests/GetUsers'
+import Board from './Board'
 
 export default function Settings() {
     return (
@@ -8,7 +10,8 @@ export default function Settings() {
                 <h1>Administracion de Cuentas</h1>
             </div>
             <div className='settingsView'>
-                <button>Crear</button>
+                <Board />
+                <button onClick={getUsers}>Crear</button>
                 <button>Modificar</button>
                 <button>Eliminar</button>
             </div>
