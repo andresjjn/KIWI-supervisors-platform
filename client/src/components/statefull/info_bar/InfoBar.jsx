@@ -3,9 +3,12 @@ import Logout from '../logout/Logout';
 import { useAuth0 } from "@auth0/auth0-react";
 // import Notification from '../notification/Notification';
 import './InfoBar.css'
+import getRole from '../../../requests/GetRole';
 
 export default function InfoBar() {
     const { user } = useAuth0();
+    console.log(user);
+    getRole('auth0|5f8da1fa7305a200769008f9');
     return (
         <div className="info_bar">
             <div className="info_user">

@@ -6,6 +6,7 @@ import InfoBar from "./components/statefull/info_bar/InfoBar";
 import MainTable from "./components/statefull/main_table/MainTable";
 
 class App extends Component {
+
     render() {
         return (
             <div className="App">
