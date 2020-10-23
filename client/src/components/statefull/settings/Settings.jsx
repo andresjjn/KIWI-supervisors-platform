@@ -9,12 +9,8 @@ export default function Settings() {
             <div className='settingsTittle'>
                 <h1>Administracion de Cuentas</h1>
             </div>
-            <div className='settingsView'>
-                <Board />
-                <button onClick={getUsers}>Crear</button>
-                <button>Modificar</button>
-                <button>Eliminar</button>
-            </div>
+            <Board />
+            <button onClick={getUsers}>Crear</button>
         </div>
     );
 }
