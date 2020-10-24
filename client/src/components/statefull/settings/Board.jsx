@@ -1,32 +1,24 @@
-import React, { useState } from 'react';
-import getUsers from '../../../requests/GetUsers';
+import React from 'react';
 
 export default function Board() {
-    const [supervisors, setSupervisors] = useState([]);
+    console.log("CALKKLGLSJAKLJG");
 
-    let arr = [];
-    let mapeo = []
-    async function fillSupervisors() {
-        const res = await getUsers();
-        for (let user of res) {
-            if (user.role === 'admin') { arr.push(user) }
-        }
-        setSupervisors(arr);
-    }
+    /* let mapeo = []
     if (supervisors.length === 0) {
         fillSupervisors();
     } else {
         mapeo = supervisors.map(user => (
-            <div className='supervisor' key={user.id}>
-                <h6 className='supervisorName'>{user.name}</h6>
-                <h6 className='supervisorId'>{user.id}</h6>
+            <div className='supervisor' key={user.user_id}>
+                <h6 className='supervisorName'>{user.nickname}</h6>
+                <h6 className='supervisorId'>{String(user.user_id).slice(6)}</h6>
                 <div className='supervisorMenu'>
                     <button className='editSupervisor'>Editar</button>
                     <button className='deleteSupervisor'>Borrar</button>
                 </div>
             </div>
         ))
-    }
+        return <h1>Holi</h1>;
+    } */
     return (
         <>
             <div className='supervisors'>
@@ -36,7 +28,7 @@ export default function Board() {
                     <h2>Id</h2>
                     <h2>Menu</h2>
                 </div>
-                {(supervisors.length > 0) ? mapeo : <h1>CAGANDO</h1>}
+                {/* (supervisors.length > 0) ? mapeo : <h1>CAGANDO</h1> */}
             </div>
         </>
     )

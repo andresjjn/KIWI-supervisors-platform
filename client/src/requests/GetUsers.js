@@ -1,21 +1,17 @@
-import axios from 'axios'
+var axios = require("axios").default;
 
-const getUsers = async() => {
-    var config = {
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}users/`,
-        headers: {},
+export default async function getUsers() {
+    var options = {
+        method: 'GET',
+        url: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users`,
+        headers: { authorization: `Bearer ${process.env.REACT_APP_MGMT_API_ACCESS_TOKEN}` }
     };
 
     try {
-        const res = await axios(config);
-        console.log(res.data);
+        const res = await axios.request(options);
+        /* console.log(res.data); */
         return res.data;
     } catch (error) {
-        console.log(error);
-        return false;
+        console.error(error);
     }
-};
-
-export default getUsers;
-
+}

@@ -3,28 +3,35 @@
   scrollbar-color: #0d1b2a transparent;
   text-align: center;
 }
+
 .booking_list_container::-webkit-scrollbar {
   width: 10px;
 }
+
 .booking_list_container::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .booking_list_container::-webkit-scrollbar-thumb {
   background-color: #999999;
   border-radius: 20px;
   border: 3px solid transparent;
 }
+
 .booking_list_container2 {
   scrollbar-width: thin;
   scrollbar-color: #0d1b2a transparent;
   text-align: center;
 }
+
 .booking_list_container2::-webkit-scrollbar {
   width: 10px;
 }
+
 .booking_list_container2::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .booking_list_container2::-webkit-scrollbar-thumb {
   background-color: #999999;
   border-radius: 20px;
@@ -42,6 +49,7 @@
   color: rgb(223, 223, 223);
   overflow-x: hidden;
 }
+
 .booking_list_container2 {
   flex: 1;
   overflow: scroll;
