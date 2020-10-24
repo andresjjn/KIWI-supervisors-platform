@@ -9,7 +9,6 @@ export default async function getUsers() {
 
     try {
         const res = await axios.request(options);
-        /* console.log(res.data); */
         return res.data;
     } catch (error) {
         console.error(error);

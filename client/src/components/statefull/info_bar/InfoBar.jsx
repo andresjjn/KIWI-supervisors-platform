@@ -3,16 +3,16 @@ import Logout from '../logout/Logout';
 import { useAuth0 } from "@auth0/auth0-react";
 // import Notification from '../notification/Notification';
 import './InfoBar.css'
-import getRole from '../../../requests/GetRole';
+// import getRole from '../../../requests/GetRole';
 
 export default function InfoBar() {
     const { user } = useAuth0();
 
-    async function userRole() {
-        const res = await getRole(user.sub);
-        console.log(res);
-    }
-    userRole();
+    // async function userRole() {
+    //     const res = await getRole(user.sub);
+    //     console.log(res);
+    // }
+    // userRole();
 
     return (
         <div className="info_bar">

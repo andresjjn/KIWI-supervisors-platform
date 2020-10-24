@@ -15,7 +15,7 @@ export default function HoursDay({ reload, value }) {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
-    const [counter, setCounter] = useState(1);
+    // const [counter, setCounter] = useState(1);
     const getDay = value.format('YYYYMMDD');
     const cName = isAdmin() ? "booking_list_container" : "booking_list_container2"
     let hoursLength = 0;

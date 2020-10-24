@@ -1,45 +1,45 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './Settings.css';
-import getUsers from '../../../requests/GetUsers'
-import Board from './Board'
-import getSupervisors from '../../../requests/GetSupervisors';
+import Board from './Board';
+import getUsers from '../../../requests/GetUsers';
+import { Loading } from '../../stateless/DashboardMessages';
 
-export default function Settings() {
-    const [supervisors, setSupervisors] = useState([]);
 
-    async function fillSupervisors() {
-        let arr = [];
-        const users = await getUsers();
-        console.log("ACAAAAAAA");
-        console.log(users);
-        if (users) {
-            arr = await getSupervisors(users);
-            /* setSupervisors(arr); */
+export default class Settings extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            supervisors: []
+        };
+    }
+
+    async componentDidMount() {
+        let listUsers = [];
+
+        try {
+            const users = await getUsers();
+            for (const user of users) {
+                if (user.user_metadata === undefined || user.user_metadata.length === 0 || user.user_metadata.role !== 'admin') {
+                    listUsers.push(user);
+                }
+            }
+            this.setState({ supervisors: listUsers });
+        } catch (error) { console.log(error); }
+    }
+
+    render() {
+        if (this.state.supervisors.length === 0) {
+            return Loading();
+        } else {
+            return (
+                <div className='bodySettings'>
+                    <div className='settingsTittle'>
+                        <h1>Administracion de Cuentas</h1>
+                    </div>
+                    <Board supervisors={this.state.supervisors} />
+                    <button>Crear</button>
+                </div>
+            );
         }
     }
-    if (supervisors.length === 0) {
-        fillSupervisors();
-        return <h1>CARGANDO</h1>
-    } else {
-        /* mapeo = supervisors.map(user => (
-            <div className='supervisor' key={user.user_id}>
-                <h6 className='supervisorName'>{user.nickname}</h6>
-                <h6 className='supervisorId'>{String(user.user_id).slice(6)}</h6>
-                <div className='supervisorMenu'>
-                    <button className='editSupervisor'>Editar</button>
-                    <button className='deleteSupervisor'>Borrar</button>
-                </div>
-            </div>
-        )) */
-        return <h1>Holi</h1>;
-    }
-    return (
-        <div className='bodySettings'>
-            <div className='settingsTittle'>
-                <h1>Administracion de Cuentas</h1>
-            </div>
-            <Board />
-            <button onClick={getUsers}>Crear</button>
-        </div>
-    );
 }
