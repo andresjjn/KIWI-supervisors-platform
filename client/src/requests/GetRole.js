@@ -8,9 +8,11 @@ export default async function getRole(user_id) {
         scope: 'read:users read:roles'
     };
 
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
+    try {
+        const res = await axios.request(options)
+        return res.data[0].name;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
 }

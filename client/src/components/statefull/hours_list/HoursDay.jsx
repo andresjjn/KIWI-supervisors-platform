@@ -33,21 +33,21 @@ export default function HoursDay({ reload, value }) {
             });
     }, [getDay, reload]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
-            .then((response) => {
-                setDay(response.data);
-                setLoading(false);
-                setRequestFail(false);
-            })
-            .catch(() => {
-                setRequestFail(true);
-                setLoading(false);
-            });
-            setCounter(counter + 1);
-        }, 5000);
-    }, [counter]);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
+    //         .then((response) => {
+    //             setDay(response.data);
+    //             setLoading(false);
+    //             setRequestFail(false);
+    //         })
+    //         .catch(() => {
+    //             setRequestFail(true);
+    //             setLoading(false);
+    //         });
+    //         setCounter(counter + 1);
+    //     }, 5000);
+    // }, [counter]);
 
     function refreshList() {
         axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
