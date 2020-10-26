@@ -1,27 +1,31 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
+const date = new Date();
 
-userSchema = new Schema(
+const userSchema = new Schema(
   {
-    name: {
+    created: { type: String, default: date.toISOString() },
+    updated: { type: String, default: date.toISOString() },
+    id: {
       type: String,
-      unique: true,
-      required: true,
-    },
-    documentId: {
-      type: Number,
       unique: true,
       required: true
     },
-    birthdate: String,
+    name: {
+      type: String,
+      required: true
+    },
+    email: String,
+    birthday: String,
     address: String,
     city: String,
     country: String,
     role: {
-          type: String,
-          required: true
-    }
+      type: String,
+      required: true
     },
-      { minimize: true }
+    password: String
+  },
+  { minimize: true }
 );
 
-module.exports = model("user", userSchema);
+module.exports = model('user', userSchema);
