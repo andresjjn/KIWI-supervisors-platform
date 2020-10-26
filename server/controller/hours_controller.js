@@ -17,11 +17,14 @@ hoursCtrl.getHours = async (req, res) => {
 hoursCtrl.createHour = async (req, res) => {
   date = new Date();
   if (req.body.slots || req.body.total || req.body.available) {
-    res.status(400).json({ status: 'Error', description: 'Just hour parameter is suportted' });
+    res.status(400).json({ status: 'Error', description: 'Just hour and price parameter are suportted' });
     return;
   }
   if (!req.body.hour) {
     res.status(400).json({ status: 'Error', description: 'No hour received' });
+    return;
+  } else if (!req.body.price) {
+    res.status(400).json({ status: 'Error', description: 'No price received' });
     return;
   }
   const dayOfdate = await Day.findOne({ date: req.params.date });

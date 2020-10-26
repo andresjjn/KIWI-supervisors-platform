@@ -27,6 +27,9 @@ slotsCtrl.createSlots = async (req, res) => {
   if (!req.body.available || req.body.available < 0) {
     res.status(400).json({ status: 'Error', description: 'No available parameter founded or less than 1' });
     return;
+  } else if (!req.body.price || req.body.price < 0) {
+    res.status(400).json({ status: 'Error', description: 'No price parameter founded or less than 1' });
+    return;
   }
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (!dayOfdate) {
@@ -39,6 +42,7 @@ slotsCtrl.createSlots = async (req, res) => {
       hours: [{
         hour: req.params.hour,
         available: req.body.available,
+        price: req.body.price,
         total: req.body.available,
         slots: arr
       }]
@@ -62,6 +66,7 @@ slotsCtrl.createSlots = async (req, res) => {
         }
         dayOfdate.hours[i].available += req.body.available;
         dayOfdate.hours[i].total += req.body.available;
+        dayOfdate.hours[i].price = req.body.price;
         dayOfdate.updated = date.toISOString();
         await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
         res.status(201).json({ status: 'Success' });

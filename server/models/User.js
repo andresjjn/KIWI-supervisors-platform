@@ -12,11 +12,10 @@ const userSchema = new Schema(
     },
     name: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     },
     email: String,
-    birthdate: String,
+    birthday: String,
     address: String,
     city: String,
     country: String,

@@ -18,6 +18,7 @@ const daySchema = new Schema(
         hour: { type: Number, required: true, min: 0, max: 23 },
         total: { type: Number, required: true, default: 0, min: 0 },
         available: { type: Number, required: true, default: 0, min: 0 },
+        price: { type: Number, required: true, default: 0, min: 0 },
         slots: [
           {
             _id: false,

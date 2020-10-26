@@ -23,6 +23,7 @@ usersCtrl.createUser = async (req, res) => {
       role: role,
       name: name
     });
+    Object.assign(newUser, req.body);
     await newUser.save();
     res.status(201).json({ status: 'Success' });
   }
