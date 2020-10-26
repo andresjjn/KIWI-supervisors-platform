@@ -5,6 +5,7 @@ import deleteDaysRequest from "../../../requests/deleteDaysRequest";
 import WeekForm from './WeekForm';
 import HoursForm from './HoursForm';
 import postHours from '../../../requests/PostHours';
+import PricePerHour from './PricePerHour';
 
 
 export default function Form({ reload, setReload, value }) {
@@ -14,6 +15,7 @@ export default function Form({ reload, setReload, value }) {
     let daysInfo = [];
     let hourInfo = [];
     let available = 0;
+    let price = 0;
 
     function setDaysOfWeek() {
         let day = startOfWeek;
@@ -45,12 +47,16 @@ export default function Form({ reload, setReload, value }) {
     }
 
     function printForm(slots) {
-        console.log(`dias: ${daysInfo}, horas: ${hourInfo}, available:${slots}`);
+        console.log(`dias: ${daysInfo}, horas: ${hourInfo}, available:${slots}, price:${price}`);
         available = slots;
     }
 
+    function changePrice(newPrice) {
+        price = newPrice;
+    }
+
     async function sendInfo() {
-        let success = await postHours(daysInfo, hourInfo, available);
+        let success = await postHours(daysInfo, hourInfo, available, price);
         if (success) {
             const load = (reload === false) ? true : false;
             setReload(load);
@@ -71,9 +77,13 @@ export default function Form({ reload, setReload, value }) {
                 <h3>Cantidad de supervisores por hora</h3>
                 <AvailableInput reload={reload} onChange={printForm} />
             </div>
+            <div className="price">
+                <h3>Precio por hora</h3>
+                <PricePerHour reload={reload} onChange={changePrice} />
+            </div>
             <div className="sendBtn">
                 <button onClick={sendInfo}>Crear</button>
-                <button onClick={() => deleteDaysRequest(daysInfo, hourInfo, available)}>Borrar</button>
+                <button onClick={() => deleteDaysRequest(daysInfo, hourInfo, available, price)}>Borrar</button>
             </div>
         </div>
     );

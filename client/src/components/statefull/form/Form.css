@@ -79,6 +79,32 @@ h1 {
   border: 1px solid rgb(150, 150, 150);
 }
 
+.price {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  margin-top: 30px;
+}
+
+
+.price h3 {
+  font-size: 20px;
+}
+
+.price input {
+  width: 125px;
+  height: 30px;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 0px 30px;
+  -webkit-appearance: none;
+  margin: 0 10px;
+  border: 1px solid rgb(150, 150, 150);
+}
+
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;

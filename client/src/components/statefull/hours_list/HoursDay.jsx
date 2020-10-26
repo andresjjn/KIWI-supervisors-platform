@@ -94,7 +94,6 @@ export default function HoursDay({ reload, value }) {
             refreshList();
         }
     }
-
     const functions = [deleteHour, assignHour, unassignHour];
 
     return (
