@@ -6,18 +6,18 @@ import assignHourOfADay from '../../../requests/AssignHourOfADay';
 import MapHours from './MapHours';
 import { Loading, NoConnection, NoHours } from '../../stateless/DashboardMessages';
 import sortHours from './SortHours';
-import isAdmin from '../../../IsAdmin'
 import unassignHourOfADay from '../../../requests/UnassignHourOfADay';
+import { connect } from 'react-redux';
 
 let axios = require("axios");
 
-export default function HoursDay({ reload, value }) {
+const HoursDay = ({ isAdmin, reload, value }) => {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
     // const [counter, setCounter] = useState(1);
     const getDay = value.format('YYYYMMDD');
-    const cName = isAdmin() ? "booking_list_container" : "booking_list_container2"
+    const cName = isAdmin ? "booking_list_container" : "booking_list_container2"
     let hoursLength = 0;
 
     useEffect(() => {
@@ -107,3 +107,9 @@ export default function HoursDay({ reload, value }) {
         </div>
     );
 }
+
+const mapStoreToProps = state => ({
+    isAdmin: state.isAdmin
+})
+
+export default connect(mapStoreToProps, {})(HoursDay);

@@ -9,20 +9,17 @@ import getUser from "../../../requests/GetUser";
 import { connect } from 'react-redux';
 
 
-const MainTable = ({ isLoaded, setIsLoaded }) => {
+const MainTable = ({ isLoaded, setIsLoaded, setIsAdmin }) => {
     const { user } = useAuth0();
 
     async function userRole() {
-        let resAdmin;
         const res = await getUser(user.sub);
         if (res.user_metadata !== undefined && res.user_metadata.role === 'admin') {
-            // console.log('%c Admin', 'background: white; color: red');
-            resAdmin = true;
+            setIsAdmin(true);
         } else {
-            // console.log("%c supervisor", 'background: white; color: blue');
-            resAdmin = false;
+            setIsAdmin(false);
         }
-        setIsLoaded(true, resAdmin);
+        setIsLoaded(true);
     }
 
     if (!user.email_verified) {
@@ -56,7 +53,13 @@ const mapDispatchToProps = dispatch => ({
         dispatch({
             type: "SetIsLoaded",
             setLoaded,
-            setAdmin
+        })
+    },
+
+    setIsAdmin(setAdmin) {
+        dispatch({
+            type: "SetIsAdmin",
+            setAdmin,
         })
     }
 })
