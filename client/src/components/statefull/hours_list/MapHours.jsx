@@ -1,19 +1,20 @@
 import React from 'react';
 import Moment from 'moment';
-import isAdmin from '../../../IsAdmin';
+import { connect } from 'react-redux';
+
 
 /**
  * MapHours - Create a list of hours.
  * @param day Array to map.
  * @param onClick Function to pass to onClick child.
  */
-export default function MapHours({ day, onClick }) {
+const MapHours = ({ isAdmin, day, onClick }) => {
     const beforeDay = Number(day.date);
     const today = Number(Moment().format('YYYYMMDD'));
 
     function isAdded(slots) {
         for (let slot of slots) {
-            if (!isAdmin() && slot.id === "a1b2c3") {//cambiar id
+            if (!isAdmin && slot.id === "a1b2c3") {//cambiar id
                 return true;
             }
         }
@@ -25,16 +26,22 @@ export default function MapHours({ day, onClick }) {
             <div key={`hour ${elem.hour}`} className='hour'>{elem['hour']}:00</div>
             <div key={elem['available']}>Slots disponibles: {elem["available"]}</div>
             <div>
-                {isAdmin() && (beforeDay >= today) &&
+                {isAdmin && (beforeDay >= today) &&
                     <button className="deleteBtn" onClick={() => onClick[0](day.date, elem.hour, index)}>.
                 </button>}
-                {!isAdmin() && (beforeDay >= today) && !isAdded(elem.slots) &&
+                {!isAdmin && (beforeDay >= today) && !isAdded(elem.slots) &&
                     <button className="addBtn" onClick={() => onClick[1](day.date, elem.hour, index)}>.
                 </button>}
-                {!isAdmin() && (beforeDay >= today) && isAdded(elem.slots) &&
+                {!isAdmin && (beforeDay >= today) && isAdded(elem.slots) &&
                     <button className="minusBtn" onClick={() => onClick[2](day.date, elem.hour, index)}>.
                 </button>}
             </div>
         </div>
     );
 }
+
+const mapStoreToProps = state => ({
+    isAdmin: state.isAdmin
+})
+
+export default connect(mapStoreToProps, {})(MapHours);

@@ -17,31 +17,6 @@
   -webkit-font-smoothing: antialiased;
 }
 
-@font-face {
-  font-family: "AirbnbCerealLight";
-  src: url(/fonts/AirbnbCerealLight.woff);
-}
-
-@font-face {
-  font-family: "AirbnbCerealBook";
-  src: url(/fonts/AirbnbCerealBook.woff);
-}
-
-@font-face {
-  font-family: "AirbnbCerealMedium";
-  src: url(/fonts/AirbnbCerealMedium.woff);
-}
-
-@font-face {
-  font-family: "AirbnbCerealBold";
-  src: url(/fonts/AirbnbCerealBold.woff);
-}
-
-@font-face {
-  font-family: "AirbnbCerealBlack";
-  src: url(/fonts/AirbnbCerealBlack.woff);
-}
-
 body {
   margin: 0;
   padding: 0;
