@@ -25,6 +25,7 @@ const MapHours = ({ isAdmin, day, onClick }) => {
         <div key={`available ${elem.hour}`} className={isAdded(elem.slots) ? 'assigned' : 'available'}>
             <div key={`hour ${elem.hour}`} className='hour'>{elem['hour']}:00</div>
             <div key={elem['available']}>Slots disponibles: {elem["available"]}</div>
+            <div key={`price ${elem.price}`} >Precio: {elem["price"]}</div>
             <div>
                 {isAdmin && (beforeDay >= today) &&
                     <button className="deleteBtn" onClick={() => onClick[0](day.date, elem.hour, index)}>.

@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
-export default async function postHours(daysInfo, hourInfo, available) {
+export default async function postHours(daysInfo, hourInfo, available, price) {
     if (daysInfo.length === 0 || hourInfo.length === 0) {
         Swal.fire({
             icon: 'error',
@@ -25,7 +25,7 @@ export default async function postHours(daysInfo, hourInfo, available) {
 
     for (const day of daysInfo) {
         for (const hour of hourInfo) {
-            const dataHour = `{\n    "available": ${available}\n}`;
+            const dataHour = `{\n    "available": ${available},\n    "price": ${price}\n}`;
             console.log(dataHour);
 
             const configHour = {
