@@ -3,7 +3,9 @@ import { createStore } from 'redux';
 const initialState = {
     isLoaded: false,
     isAdmin: false,
-    userId: ""
+    userId: "",
+    supervisors: [],
+    pendings: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +27,13 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             userId: action.setUserId,
+        }
+    }
+
+    if (action.type === "SetSupervisors") {
+        return {
+            ...state,
+            supervisors: action.supervisors
         }
     }
 

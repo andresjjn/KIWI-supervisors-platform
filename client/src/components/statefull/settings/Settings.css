@@ -42,63 +42,74 @@
     transition: all 0.2s ease;
   }
 
-.supervisors {
+.users {
     display: flex;
     flex-direction: column;
+    background-color: rgb(59, 59, 58);
+    min-height: 500px;
+    height: 100%;
 }
 
-.supervisor {
-    background-color: rgb(32, 34, 29);
+.user {
+    border-radius: 15px;
+    padding: 1px 15px;
+    background-color: rgb(95, 92, 254);
     display: flex;
     justify-content: space-between;
     margin: 2px;
     align-items: center;
 }
 
-.supervisorsTittle {
+.usersTittle {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 2px 20px;
 }
 
-.supervisor h6 {
+.users h2 {
+    color: white;
+}
+
+.user h6 {
     color: white;
     font-size: 20px;
     flex: 1;
 }
 
-.supervisorMenu button{
-    background-color: rgba(255, 255, 255, 0.308);
+.userName {
+    flex: 1;
+}
+
+.userId {
+    flex: 1;
+}
+
+.userMenu{
+    flex: 1;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     margin: 2px;
     color: white;
     outline: none;
 }
 
 .pending {
-    background-color: rgb(120, 196, 7);
-    display: flex;
-    justify-content: space-between;
-    margin: 2px;
-    align-items: center;
-}
-
-.pendingsTittle {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  border-radius: 15px;
+  padding: 1px 15px;
+  background-color: rgb(95, 92, 254, 0.5);
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+  align-items: center;
 }
 
 .pending h6 {
-    color: white;
-    font-size: 20px;
-    flex: 1;
-}
-
-.pendingMenu button {
-    background-color: rgba(255, 255, 255, 0.308);
-    margin: 2px;
-    color: white;
-    outline: none;
+  color: white;
+  font-size: 20px;
+  flex: 1;
 }
 
 .switch {
@@ -124,8 +135,8 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .1s;
+  transition: .1s;
 }
 
 .slider:before {
@@ -136,16 +147,16 @@
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .1s;
+  transition: .1s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: rgb(163, 161, 255);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px rgb(163, 161, 255);
 }
 
 input:checked + .slider:before {
@@ -161,6 +172,17 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.deleteUser {
+  filter: invert(100%);
+  border: none;
+  margin-left: 15px;
+  height: 20px;
+  width: 20px;
+  background: url('../../../images/basura.svg') no-repeat;
+  background-size: contain;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 670px) {

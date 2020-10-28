@@ -1,47 +1,54 @@
 import React from 'react';
 import editUser from '../../../requests/EditUser';
+import { connect } from 'react-redux';
+import ListUsers from './ListUsers';
 
-export default function Board({ supervisors, pendings }) {
-    const mapSupervisors = supervisors.map(user => (
-        <div className='supervisor' key={user.user_id}>
-            <h6 className='supervisorName'>{user.nickname}</h6>
-            <h6 className='supervisorId'>{String(user.user_id).slice(6)}</h6>
-            <div className='supervisorMenu'>
-                <label className="switch">
-                <input type="checkbox" checked={true} onChange={(event)=> editUser(user.user_id, event.target.checked)}/>
-                    <span className="slider round"></span>
-                </label>
-                <button className='deleteSupervisor'>Borrar</button>
-            </div>
-        </div>
-    ));
 
-    const mapPendings = pendings.map(user => (
-        <div className='pending' key={user.user_id}>
-            <h6 className='pendingName'>{user.nickname}</h6>
-            <h6 className='pendingId'>{String(user.user_id).slice(6)}</h6>
-            <div className='pendingMenu'>
-                <label className="switch">
-                <input type="checkbox" checked={false} onChange={(event)=> editUser(user.user_id, event.target.checked)}/>
-                    <span className="slider round"></span>
-                </label>
-                <button className='deletePending'>Borrar</button>
-            </div>
-        </div>
+const Board = ({ supervisors, setSupervisors }) => {
+
+    async function updateLists(user, checked, index) {
+        const res = await editUser(user.user_id, checked);
+        let s = [...supervisors];
+        if (res) {
+            if (checked) {
+                s[index].user_metadata.role = "supervisor";
+            } else {
+                s[index].user_metadata.role = "pending";
+            }
+            setSupervisors(s);
+        }
+    }
+
+    const mapSupervisors = supervisors.map((user, index) => (
+        <ListUsers key={user.user_id} user={user} index={index} updateLists={updateLists}/>
     ));
+    console.log(mapSupervisors);
 
     return (
         <>
-            <div className='supervisors'>
-
-                <div className='supervisorsTittle'>
+            <div className='users'>
+                <div className='usersTittle'>
                     <h2>Name</h2>
                     <h2>Id</h2>
                     <h2>Activar / Desactivar - Eliminar</h2>
                 </div>
                 {mapSupervisors}
-                {mapPendings}
             </div>
         </>
     )
 }
+
+const mapStoreToProps = state => ({
+    supervisors: state.supervisors,
+})
+
+const mapDispatchToProps = dispatch => ({
+    setSupervisors(supervisors, pendings) {
+        dispatch({
+            type: "setSupervisors",
+            supervisors,
+        })
+    },
+})
+
+export default connect(mapStoreToProps, mapDispatchToProps)(Board);

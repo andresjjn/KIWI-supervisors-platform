@@ -1,49 +1,56 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Settings.css';
 import Board from './Board';
 import getUsers from '../../../requests/GetUsers';
 import { Loading } from '../../stateless/DashboardMessages';
+import { connect } from 'react-redux';
 
 
-export default class Settings extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            supervisors: [],
-            pendings: []
-        };
-    }
+const Settings = ({ isAdmin, supervisors, setSupervisors }) => {
 
-    async componentDidMount() {
+    async function fillBoard() {
         let listUsers = [];
-        let listPendings = [];
 
         try {
             const users = await getUsers();
             for (const user of users) {
-                if (user.user_metadata !== undefined && user.user_metadata.role === 'supervisor') {
+                if (user.user_metadata === undefined || user.user_metadata.role !== 'admin') {
                     listUsers.push(user);
-                } else if (user.user_metadata === undefined || JSON.stringify(user.user_metadata) === JSON.stringify({})) {
-                    listPendings.push(user);
                 }
             }
-            this.setState({ supervisors: listUsers, pendings: listPendings });
+            setSupervisors(listUsers);
         } catch (error) { console.log(error); }
     }
 
-    render() {
-        if (this.state.supervisors.length === 0) {
-            return Loading();
-        } else {
-            return (
-                <div className='bodySettings'>
-                    <div className='settingsTittle'>
-                        <h1>Administracion de Supervisores</h1>
-                    </div>
-                    <Board supervisors={this.state.supervisors} pendings={this.state.pendings} />
-                    <button>Crear</button>
+    if (supervisors.length === 0) {
+        fillBoard();
+        return Loading();
+    } else {
+        return (
+            isAdmin && <div className='bodySettings'>
+                <div className='settingsTittle'>
+                    <h1>Administracion de Supervisores</h1>
                 </div>
-            );
-        }
+                <Board />
+                <button>Crear</button>
+            </div>
+        );
     }
 }
+
+
+const mapStoreToProps = state => ({
+    isAdmin: state.isAdmin,
+    supervisors: state.supervisors
+})
+
+const mapDispatchToProps = dispatch => ({
+    setSupervisors(supervisors) {
+        dispatch({
+            type: "SetSupervisors",
+            supervisors,
+        })
+    },
+})
+
+export default connect(mapStoreToProps, mapDispatchToProps)(Settings);
