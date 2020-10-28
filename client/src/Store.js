@@ -2,7 +2,8 @@ import { createStore } from 'redux';
 
 const initialState = {
     isLoaded: false,
-    isAdmin: false
+    isAdmin: false,
+    userId: ""
 }
 
 const reducer = (state = initialState, action) => {
@@ -17,6 +18,13 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             isAdmin: action.setAdmin,
+        }
+    }
+
+    if (action.type === "SetUserId") {
+        return {
+            ...state,
+            userId: action.setUserId,
         }
     }
 

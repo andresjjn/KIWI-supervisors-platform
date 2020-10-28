@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 let axios = require("axios");
 
-const HoursDay = ({ isAdmin, reload, value }) => {
+const HoursDay = ({ isAdmin, reload, value, userId }) => {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
@@ -82,14 +82,14 @@ const HoursDay = ({ isAdmin, reload, value }) => {
     }
 
     async function assignHour(date, hour, index) {
-        let respone = await assignHourOfADay(date, hour, "a1b2c3"); //cambiar por id
+        let respone = await assignHourOfADay(date, hour, userId); //cambiar por id
         if (respone === true) {
             refreshList();
         }
     }
 
     async function unassignHour(date, hour, index) {
-        let respone = await unassignHourOfADay(date, hour, "a1b2c3"); //cambiar por id
+        let respone = await unassignHourOfADay(date, hour, userId); //cambiar por id
         if (respone === true) {
             refreshList();
         }
@@ -109,7 +109,8 @@ const HoursDay = ({ isAdmin, reload, value }) => {
 }
 
 const mapStoreToProps = state => ({
-    isAdmin: state.isAdmin
+    isAdmin: state.isAdmin,
+    userId: state.userId
 })
 
 export default connect(mapStoreToProps, {})(HoursDay);

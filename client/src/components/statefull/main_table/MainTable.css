@@ -6,3 +6,9 @@
   background-color: #f5f3f3;
   padding: 1vw 1vw 1vw 8vw;
 }
+
+.waiting {
+  display: flex;
+  justify-content: center;
+  background-color: khaki;
+}

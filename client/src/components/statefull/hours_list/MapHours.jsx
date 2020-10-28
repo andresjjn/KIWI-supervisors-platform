@@ -8,13 +8,13 @@ import { connect } from 'react-redux';
  * @param day Array to map.
  * @param onClick Function to pass to onClick child.
  */
-const MapHours = ({ isAdmin, day, onClick }) => {
+const MapHours = ({ isAdmin, day, onClick, userId }) => {
     const beforeDay = Number(day.date);
     const today = Number(Moment().format('YYYYMMDD'));
 
     function isAdded(slots) {
         for (let slot of slots) {
-            if (!isAdmin && slot.id === "a1b2c3") {//cambiar id
+            if (!isAdmin && slot.id === userId) {
                 return true;
             }
         }
@@ -42,7 +42,8 @@ const MapHours = ({ isAdmin, day, onClick }) => {
 }
 
 const mapStoreToProps = state => ({
-    isAdmin: state.isAdmin
+    isAdmin: state.isAdmin,
+    userId: state.userId
 })
 
 export default connect(mapStoreToProps, {})(MapHours);
