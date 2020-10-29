@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
 const ListUsers = ({ user, index, updateLists }) => {
-    const [isActive, setActive] = useState(user.user_metadata.role === 'supervisor' ? true : false)
+    const [isActive, setActive] = useState((user.user_metadata !== undefined && user.user_metadata.role === 'supervisor') ? true : false)
+
     return (
         <div className={isActive ? 'user' : 'pending'} key={user.nickname + user.user_id}>
             <h6 className='userName'>{user.nickname}</h6>

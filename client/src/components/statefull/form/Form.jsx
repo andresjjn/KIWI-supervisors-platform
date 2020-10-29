@@ -1,7 +1,6 @@
 import React from 'react';
 import AvailableInput from './AvailableInput';
 import './Form.css';
-import deleteDaysRequest from "../../../requests/deleteDaysRequest";
 import WeekForm from './WeekForm';
 import HoursForm from './HoursForm';
 import postHours from '../../../requests/PostHours';
@@ -83,7 +82,6 @@ export default function Form({ reload, setReload, value }) {
             </div>
             <div className="sendBtn">
                 <button onClick={sendInfo}>Crear</button>
-                <button onClick={() => deleteDaysRequest(daysInfo, hourInfo, available, price)}>Borrar</button>
             </div>
         </div>
     );
