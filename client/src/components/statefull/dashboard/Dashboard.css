@@ -1,4 +1,4 @@
-.dashboardBody{
+/* .dashboardBody{
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -33,3 +33,36 @@
     font-size: 20px;
     font-weight: 500;
 }
+*/
+
+.dashboardBody{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black);
+    width: 50%;
+    align-self: center;
+    border-radius: 15px;
+}
+
+.dashboardTittle{
+    width: 100%;
+    border-bottom: 1px solid var(--purple);
+    margin: 20px;
+    padding: 0px 10px 1px;
+}
+/* 
+.stadisticsView{
+    display: inherit;
+    box-shadow: -5px 5px 5px rgb(63, 62, 62);
+    flex-direction: column;
+    padding: 15px 35px;
+    justify-content: center;
+    align-items: center;
+    border: 1px;    
+    border-radius: 10px;
+    border-style: solid;
+    min-width: 250px;
+} */

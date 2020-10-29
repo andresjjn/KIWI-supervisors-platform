@@ -15,10 +15,12 @@
 */
 
 .main_table {
+  display: flex;
   overflow: scroll;
   overflow-x: hidden;
   height: 100%;
   width: 100%;
-  background-color: var(--black);
+  background-color: var(--black2);
   padding: 2vw;
+  flex-direction: column;
 }

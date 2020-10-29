@@ -100,7 +100,7 @@
 .navbar {
   display: flex;
   width: 10%;
-  background-color: var(--black2);
+  background-color: var(--black);
   color: var(--white);
   text-decoration: none;
   max-width: 130px;
@@ -128,7 +128,8 @@
 .menuViews {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  align-content: center;
+  flex: 2;
   padding-left: 2px;
 }
 
@@ -145,11 +146,11 @@
   border-radius: 50%;
   width: 50%;
   margin-bottom: 10px;
-  overflow-wrap: break-word;
 }
 
 .infoUser h4 {
   text-decoration: none;
+  overflow-wrap: break-word;
 }
 
 .tablero {
@@ -158,7 +159,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
+  flex: 0.5;
 }
 
 .icon_tablero {
@@ -179,7 +180,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
+  flex: 0.5;
 }
 
 .icon_reservas {
@@ -200,7 +201,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
+  flex: 0.5;
 }
 
 .icon_gestionar {
@@ -221,7 +222,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
   flex: 1;
 }
 
@@ -250,6 +250,12 @@
 
   .icon_gestionar, .icon_reservas, .icon_tablero, .logout_icon {
     width: 90%;
+    max-width: 40px;
+  }
+
+  .logout{
+    flex-direction: column;
+    justify-content: center;
   }
 
   .menuViews {
@@ -290,7 +296,7 @@
     margin: 0px 0px 0px 15px;
     padding: 0;
     max-height: 50px;
-    max-width: 50px;
+    max-width: 65px;
   }
   
   .logo img {
@@ -310,14 +316,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex: 1;
+    flex: 0.3;
   }
   
   .infoUser img {
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 0px;
+    max-width: 0px;
     margin:0px;
     overflow-wrap: break-word;
+    visibility: hidden;
+
   }
   
   .infoUser h4 {
@@ -403,7 +411,7 @@
     max-height: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     cursor: pointer;
     flex: 1;
@@ -411,8 +419,8 @@
   
   .logout_icon {
     height: 30%;
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 45px;
+    max-width: 45px;
   }
   
   .text_logout {
