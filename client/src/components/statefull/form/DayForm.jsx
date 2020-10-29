@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import "./DayForm.css";
 import isYesterday from './DayCheck';
 
 

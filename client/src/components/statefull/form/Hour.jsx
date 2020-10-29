@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './Hour.css';
 import { useEffect } from 'react';
 
 

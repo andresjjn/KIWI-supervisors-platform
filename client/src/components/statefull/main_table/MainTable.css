@@ -24,3 +24,15 @@
   padding: 2vw;
   flex-direction: column;
 }
+
+.main_table::-webkit-scrollbar {
+  width: 10px;
+}
+.main_table::-webkit-scrollbar-track {
+  background: transparent;
+}
+.main_table::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  border-radius: 20px;
+  border: 3px solid transparent;
+}

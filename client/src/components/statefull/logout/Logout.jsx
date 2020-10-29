@@ -7,25 +7,24 @@ import Swal from "sweetalert2";
 export default function LogoutButton() {
     const { logout } = useAuth0();
     return (
-        <div className="logout">
-            <img
-                onClick={() => {
-                    Swal.fire({
-                        title: "Quieres cerrar sesión?",
-                        showDenyButton: true,
-                        showConfirmButton: false,
-                        showCancelButton: true,
-                        denyButtonText: `Salir`,
-                    }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isDenied) {
-                            logout({
-                                returnTo: window.location.origin,
-                            });
-                        }
+        <div className="logout" onClick={() => {
+            Swal.fire({
+                title: "Quieres cerrar sesión?",
+                heightAuto: false,
+                showDenyButton: true,
+                showConfirmButton: false,
+                showCancelButton: true,
+                denyButtonText: `Salir`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isDenied) {
+                    logout({
+                        returnTo: window.location.origin,
                     });
-                }}
-                className="logout_icon"
+                }
+            });
+        }}>
+            <img className="logout_icon"
                 src={LogoutIcon}
                 alt=""
             ></img>

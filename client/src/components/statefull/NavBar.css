@@ -106,6 +106,10 @@
   max-width: 130px;
 }
 
+.navbar p {
+  font-size: 17px;
+}
+
 .navbarView {
   width: 100%;
   display: flex;
@@ -130,7 +134,6 @@
   flex-direction: column;
   align-content: center;
   flex: 2;
-  padding-left: 2px;
 }
 
 .infoUser {
@@ -143,6 +146,7 @@
 }
 
 .infoUser img {
+  margin-left: 5px;
   border-radius: 50%;
   width: 50%;
   margin-bottom: 10px;
@@ -154,87 +158,129 @@
 }
 
 .tablero {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex: 0.5;
+  padding-left: 15px;
+}
+
+.tablero:hover {
+  background-color: var(--grey);
 }
 
 .icon_tablero {
-  width: 30%;
+  width: 15%;
+  flex: 0.2;
 }
 
 .text_tablero {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-light);
   text-decoration: none;
   color: var(--white);
-  width: 55%;
+  margin-left: 5px;
   font-weight: 900;
+  justify-content: center;
+  align-items: center;
 }
 
 .reservas {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex: 0.5;
+  padding-left: 15px;
+}
+
+.reservas:hover {
+  background-color: var(--grey);
 }
 
 .icon_reservas {
-  width: 30%;
+  width: 15%;
+  flex: 0.2;
 }
 
 .text_reservas {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-light);
   text-decoration: none;
   color: var(--white);
-  width: 55%;
+  margin-left: 5px;
   font-weight: 900;
+  justify-content: center;
+  align-items: center;
 }
 
 .gestionar {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex: 0.5;
+  padding-left: 15px;
+}
+
+.gestionar:hover {
+  background-color: var(--grey);
 }
 
 .icon_gestionar {
-  width: 30%;
+  width: 15%;
+  flex: 0.2;
 }
 
 .text_gestionar {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-light);
   text-decoration: none;
   color: var(--white);
-  width: 55%;
+  margin-left: 5px;
   font-weight: 900;
+  justify-content: center;
+  align-items: center;
 }
 
 .logout {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  flex: 1;
+  flex: 2;
+  padding-left: 15px;
+
+}
+
+.logout:hover {
+  background-color: var(--grey);
+  cursor: pointer;
 }
 
 .logout_icon {
-  width: 30%;
+  width: 15%;
+  flex: 0.2;
 }
 
 .text_logout {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-light);
   text-decoration: none;
   color: var(--white);
-  width: 55%;
+  margin-left: 5px;
   font-weight: 900;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 1250px) {

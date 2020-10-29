@@ -1,8 +1,11 @@
 .booking_list_container {
-  scrollbar-width: thin;
-  scrollbar-color: #0d1b2a transparent;
   text-align: center;
+  flex: 1;
+  border-radius: 20px;
+  border-right: 30px;
+  min-height: 350px;
 }
+
 .booking_list_container::-webkit-scrollbar {
   width: 10px;
 }
@@ -10,7 +13,7 @@
   background: transparent;
 }
 .booking_list_container::-webkit-scrollbar-thumb {
-  background-color: #999999;
+  background-color: var(--grey);
   border-radius: 20px;
   border: 3px solid transparent;
 }
