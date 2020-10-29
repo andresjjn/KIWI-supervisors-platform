@@ -15,7 +15,7 @@ const HoursDay = ({ isAdmin, reload, value, userId }) => {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
     const [requestFail, setRequestFail] = useState(false);
-    // const [counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(1);
     const getDay = value.format('YYYYMMDD');
     const cName = isAdmin ? "booking_list_container" : "booking_list_container2"
     let hoursLength = 0;
@@ -33,21 +33,23 @@ const HoursDay = ({ isAdmin, reload, value, userId }) => {
             });
     }, [getDay, reload]);
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
-    //         .then((response) => {
-    //             setDay(response.data);
-    //             setLoading(false);
-    //             setRequestFail(false);
-    //         })
-    //         .catch(() => {
-    //             setRequestFail(true);
-    //             setLoading(false);
-    //         });
-    //         setCounter(counter + 1);
-    //     }, 5000);
-    // }, [counter]);
+    useEffect(() => {
+        if (!isAdmin) {
+            setTimeout(() => {
+                axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
+                .then((response) => {
+                    setDay(response.data);
+                    setLoading(false);
+                    setRequestFail(false);
+                })
+                .catch(() => {
+                    setRequestFail(true);
+                    setLoading(false);
+                });
+                setCounter(counter + 1);
+            }, 5000);
+        }
+    }, [counter]);
 
     function refreshList() {
         axios.get(`${process.env.REACT_APP_API_URL}days/${getDay}`)
