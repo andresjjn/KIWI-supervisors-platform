@@ -22,7 +22,6 @@ const Board = ({ supervisors, setSupervisors }) => {
     const mapSupervisors = supervisors.map((user, index) => (
         <ListUsers key={user.user_id} user={user} index={index} updateLists={updateLists}/>
     ));
-    console.log(mapSupervisors);
 
     return (
         <>
@@ -43,9 +42,9 @@ const mapStoreToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setSupervisors(supervisors, pendings) {
+    setSupervisors(supervisors) {
         dispatch({
-            type: "setSupervisors",
+            type: "SetSupervisors",
             supervisors,
         })
     },

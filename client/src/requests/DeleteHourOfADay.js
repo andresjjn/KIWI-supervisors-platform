@@ -35,4 +35,4 @@ export default async function deleteHourOfADay (day, hour) {
     } catch {
         return false;
     }
-};
+}

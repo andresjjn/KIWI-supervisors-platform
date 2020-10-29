@@ -1,7 +1,6 @@
 var axios = require("axios");
 
 export default async function editUser(user_id, checked) {
-    console.log(user_id);
     const role = (checked) ? "supervisor" : "pending";
     var options = {
         method: 'PATCH',

@@ -7,6 +7,7 @@ import './MainTable.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import getUser from "../../../requests/GetUser";
 import { connect } from 'react-redux';
+import editUser from '../../../requests/EditUser';
 
 
 const MainTable = ({ isLoaded, setIsLoaded, setIsAdmin, setUserId }) => {
@@ -21,6 +22,8 @@ const MainTable = ({ isLoaded, setIsLoaded, setIsAdmin, setUserId }) => {
         } else if (res.user_metadata !== undefined && res.user_metadata.role === 'supervisor') {
             setIsAdmin(false);
             setIsLoaded(true);
+        } else {
+            await editUser(user.sub, false);
         }
     }
 

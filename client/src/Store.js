@@ -4,8 +4,7 @@ const initialState = {
     isLoaded: false,
     isAdmin: false,
     userId: "",
-    supervisors: [],
-    pendings: []
+    supervisors: []
 }
 
 const reducer = (state = initialState, action) => {
