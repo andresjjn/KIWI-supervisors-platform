@@ -18,7 +18,7 @@ export default function Navbar() {
             <div className={'navbarView'}>
                 <Logo cName="logo" />
                 <div className="infoUser">
-                    <img src={user.picture} alt=""/>
+                    <img src={user.picture} alt="" />
                     <h4>{user.nickname}</h4>
                 </div>
                 <div className="menuViews">
