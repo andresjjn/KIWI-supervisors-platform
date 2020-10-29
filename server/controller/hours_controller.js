@@ -1,4 +1,5 @@
 const Day = require('../models/Day');
+let date = {};
 const hoursCtrl = {};
 
 // Return an array with the hours as Objs with GET request (uri = ...days/:DATE/hours)
@@ -7,25 +8,44 @@ hoursCtrl.getHours = async (req, res) => {
   if (dayOfdate) {
     res.status(200).json(dayOfdate.hours);
   } else {
-    res.status(400).json({ error: 'Day not found' });
+    res.status(400).json({ status: 'Error', description: 'Day not found' });
   }
 };
 
 // Create a new hour into hours array using POST request
 // (uri = ...days/:DATE/hours, body = {hour:, available:})
 hoursCtrl.createHour = async (req, res) => {
+  date = new Date();
+  if (req.body.slots || req.body.total || req.body.available) {
+    res.status(400).json({ status: 'Error', description: 'Just hour and price parameter are suportted' });
+    return;
+  }
+  if (!req.body.hour) {
+    res.status(400).json({ status: 'Error', description: 'No hour received' });
+    return;
+  } else if (!req.body.price) {
+    res.status(400).json({ status: 'Error', description: 'No price received' });
+    return;
+  }
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
+    for (const hours of dayOfdate.hours) {
+      if (hours.hour == req.body.hour) {
+        res.status(400).json({ status: 'Error', description: 'The hour already exist' });
+        return;
+      }
+    }
     dayOfdate.hours.push(req.body);
+    dayOfdate.updated = date.toISOString();
     await dayOfdate.save();
-    res.status(200).json(dayOfdate);
+    res.status(200).json({ status: 'Success' });
   } else {
     const newDay = new Day({
       date: req.params.date,
       hours: req.body
     });
     await newDay.save();
-    res.status(201).json(newDay);
+    res.status(201).json({ status: 'Success' });
   }
 };
 
@@ -39,85 +59,30 @@ hoursCtrl.getHour = async (req, res) => {
         return;
       }
     }
-    res.status(400).json({ error: 'Hour not found' });
+    res.status(400).json({ status: 'Error', description: 'Hour not found' });
   } else {
-    res.status(400).json({ error: 'Day not found' });
+    res.status(400).json({ status: 'Error', description: 'Day not found' });
   }
 };
 
-// Modify an specific hour from a date using PUT request
-// (uri = ...days/:DATE/hours/:hour,  body = {hour: , available: })
-hoursCtrl.modifyHour = async (req, res) => {
-  const dayOfdate = await Day.findOne({ date: req.params.date });
-  if (dayOfdate) {
-    for (let i = 0; i < dayOfdate.hours.length; i++) {
-      if (dayOfdate.hours[i].hour == req.params.hour) {
-        dayOfdate.hours[i] = req.body;
-        dayOfdate.save();
-        res.status(200).json(dayOfdate);
-        return;
-      }
-    }
-    res.status(400).json({ error: 'Hour not found' });
-  } else {
-    res.status(400).json({ error: 'Day not found' });
-  }
-};
-
-// Delete an specific hour from a date using PUT request (uri = ...days/:DATE/hours/:hour)
+// Delete an specific hour from a date using DELETE request (uri = ...days/:DATE/hours/:hour)
 hoursCtrl.deleteHour = async (req, res) => {
+  date = new Date()
   const dayOfdate = await Day.findOne({ date: req.params.date });
   if (dayOfdate) {
     for (let i = 0; i < dayOfdate.hours.length; i++) {
       if (dayOfdate.hours[i].hour == req.params.hour) {
         dayOfdate.hours.splice(i, 1);
-        dayOfdate.save();
-        res.status(200).json(dayOfdate);
+        dayOfdate.updated = date.toISOString();
+        await dayOfdate.save();
+        res.status(200).json({ status: 'Success' });
         return;
       }
     }
-    res.status(400).json({ error: 'Hour not found' });
+    res.status(400).json({ status: 'Error', description: 'Hour not found' });
   } else {
-    res.status(400).json({ error: 'Day not found' });
+    res.status(400).json({ status: 'Error', description: 'Day not found' });
   }
 };
 
-// Change hour using PATCH request (uri = ...days/:DATE/hours/:hour,  body = {hour: ,})
-hoursCtrl.changeHour = async (req, res) => {
-  const dayOfdate = await Day.findOne({ date: req.params.date });
-
-  if (dayOfdate) {
-    if (!req.body.hour) {
-      res.status(400).json({ error: 'Hour no passed as argument' });
-      return;
-    }
-    let exist = 0;
-    for (let i = 0; i < dayOfdate.hours.length; i++) {
-      if (dayOfdate.hours[i].hour == req.params.hour) {
-        exist = 1;
-      }
-    }
-    if (exist == 0) {
-      res.status(400).json({ error: 'Hour not found' });
-      return;
-    }
-    for (let j = 0; j < dayOfdate.hours.length; j++) {
-      if (dayOfdate.hours[j].hour == req.body.hour) {
-        res.status(400).json({ error: 'Hour passed already exist' });
-        return;
-      }
-    }
-
-    for (let i = 0; i < dayOfdate.hours.length; i++) {
-      if (dayOfdate.hours[i].hour == req.params.hour) {
-        dayOfdate.hours[i].hour = req.body.hour;
-        dayOfdate.save();
-        res.status(200).json(dayOfdate);
-        return;
-      }
-    }
-  } else {
-    res.status(400).json({ error: 'Day not found' });
-  }
-};
 module.exports = hoursCtrl;

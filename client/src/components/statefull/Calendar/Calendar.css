@@ -1,0 +1,126 @@
+.calendarView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-right: 20px;
+}
+
+.calendar {
+  box-sizing: border-box;
+  font-family: "Consolas", monospace;
+  font-size: 1rem;
+  max-width: 1000px;
+  width: 100%;
+  background-color: #e9e9e9;
+}
+
+.date {
+  margin-left: 20px;
+  text-align: center;
+  color: black;
+}
+
+.picker {
+  margin-right: 20px;
+}
+
+.calendar .body {
+  display: flex;
+  flex-direction: column;
+  padding: 0vw 0px 1vw 0px;
+}
+
+.calendar .nameDay {
+  width: calc(100% / 7);
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--black);
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.calendar .nameDay div {
+  width: 100%;
+}
+
+.calendar .nameDay p {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+
+.calendar .week {
+  display: flex;
+}
+
+.calendar .day {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.calendar .day:hover {
+  cursor: default;
+}
+
+.calendar .day div {
+  width: 54px;
+  height: 44px;
+  position: relative;
+  color: black;
+  font-weight: 900;
+  z-index: 100;
+  line-height: 44px;
+}
+
+.calendar .day div.before {
+  color: rgb(187, 187, 187);
+}
+
+.calendar .day div.selected {
+  background-color: var(--red);
+  color: var(--white);
+  font-weight: bold;
+  font-size: 25px;
+  width: 50px;
+  border-radius: 15%;
+  margin: 0;
+}
+
+.calendar .day div.today {
+  font-size: 25px;
+  color: red;
+  width: 54px;
+}
+
+@media screen and (max-height: 800px) {
+  .calendar .day div.selected {
+    background-color: var(--red);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px;
+    width: 50px;
+    border-radius: 15%;
+    margin: 0;
+  }
+
+  .day {
+    font-size: 20px;
+  }
+
+  .calendar .day div.today {
+    font-size: 20px;
+    color: red;
+    width: 54px;
+  }
+}
