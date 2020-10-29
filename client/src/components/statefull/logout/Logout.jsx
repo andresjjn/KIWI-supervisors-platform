@@ -29,6 +29,9 @@ export default function LogoutButton() {
                 src={LogoutIcon}
                 alt=""
             ></img>
+            <div className={"text_logout"}>
+                <p>Salir</p>
+            </div>
         </div>
     );
 }

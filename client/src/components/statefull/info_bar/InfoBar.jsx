@@ -17,7 +17,7 @@ export default function InfoBar() {
     return (
         <div className="info_bar">
             <div className="info_user">
-                <p>{user.name}-</p>
+                <p>{user.name}</p>
                 <p>{user.sub.slice(6)}</p>
             </div>
             <div className="info_container">

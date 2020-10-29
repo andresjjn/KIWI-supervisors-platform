@@ -1,6 +1,5 @@
 import React from 'react';
 import Hour from './Hour';
-import './HoursForm.css';
 
 export default function HourForm({ reload, onClick }) {
     const hours = { '0:00': 0, '1:00': 1, '2:00': 2, '3:00': 3, '4:00': 4, '5:00': 5, '6:00': 6, '7:00': 7, '8:00': 8,

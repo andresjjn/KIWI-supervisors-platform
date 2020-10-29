@@ -1,12 +1,12 @@
 import React from 'react';
 import './Logo.css';
-import LogoCompressed from '../../images/Logo.png';
-import FaceRobot from '../../images/face-robot.png';
+import FaceRobot from '../../images/lobbyWhite.png';
 
 
-export default function Logo({ cName, isOpen }) {
+export default function Logo({ cName }) {
     return (
-        <img className={'logo_' + cName} src={(isOpen) ? LogoCompressed : FaceRobot} alt=''>
-        </img>
+        <div className={cName}>
+            <img src={FaceRobot}/>
+        </div>
     );
 }

@@ -1,4 +1,4 @@
-@media screen and (max-width: 2560px) {
+/* @media screen and (max-width: 2560px) {
   .extended {
     width: 250px;
   }
@@ -8,9 +8,9 @@
   }
 }
 
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 1950px) {
   .extended {
-    width: 240px;
+    width: 150px;
   }
 
   .compressed {
@@ -19,7 +19,7 @@
   }
 }
 
-@media screen and (max-width: 1520px) {
+@media screen and (max-width: 1550px) {
 
   .extended {
     width: 180px;
@@ -28,7 +28,7 @@
   .compressed {
     width: 75px;
   }
-}
+} 
 
 @media screen and (max-width: 1280px) {
 
@@ -44,7 +44,7 @@
 @media screen and (max-width: 800px) {
 
   .extended {
-    width: 140px;
+    width: 150px;
   }
 
   .compressed {
@@ -52,9 +52,13 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .extended {
-    width: 120px;
+    width: 50px;
+  }
+
+  .text_extended p{
+    visibility: hidden;
   }
 
   .compressed {
@@ -62,13 +66,368 @@
   }
 }
 
+.logout img {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+
+.infoUser {
+  width: 50px;
+  height: 100px;
+}
+
+.infoUser img {
+  width: inherit;
+}
+
+.infoUser h4 {
+  width: inherit;
+  color: var(--white);
+}
+
 .extended, .compressed {
   z-index: 10;
   background-color: #0d1b2a;
   height: 100vh;
-  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: 350ms;
+}
+*/
+
+.navbar {
+  display: flex;
+  width: 10%;
+  background-color: var(--black);
+  color: var(--white);
+  text-decoration: none;
+  max-width: 130px;
+}
+
+.navbarView {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin-top: 15px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.menuViews {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex: 2;
+  padding-left: 2px;
+}
+
+.infoUser {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.infoUser img {
+  border-radius: 50%;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.infoUser h4 {
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.tablero {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0.5;
+}
+
+.icon_tablero {
+  width: 30%;
+}
+
+.text_tablero {
+  font-family: var(--font-light);
+  text-decoration: none;
+  color: var(--white);
+  width: 55%;
+  font-weight: 900;
+}
+
+.reservas {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0.5;
+}
+
+.icon_reservas {
+  width: 30%;
+}
+
+.text_reservas {
+  font-family: var(--font-light);
+  text-decoration: none;
+  color: var(--white);
+  width: 55%;
+  font-weight: 900;
+}
+
+.gestionar {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0.5;
+}
+
+.icon_gestionar {
+  width: 30%;
+}
+
+.text_gestionar {
+  font-family: var(--font-light);
+  text-decoration: none;
+  color: var(--white);
+  width: 55%;
+  font-weight: 900;
+}
+
+.logout {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.logout_icon {
+  width: 30%;
+}
+
+.text_logout {
+  font-family: var(--font-light);
+  text-decoration: none;
+  color: var(--white);
+  width: 55%;
+  font-weight: 900;
+}
+
+@media screen and (max-width: 1250px) {
+  .navbar {
+    width: 6%;
+  }
+
+  .text_gestionar, .text_tablero, .text_reservas, .text_logout, .infoUser h4 {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+  }
+
+  .icon_gestionar, .icon_reservas, .icon_tablero, .logout_icon {
+    width: 90%;
+    max-width: 40px;
+  }
+
+  .logout{
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .menuViews {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .navbar {
+    position: absolute;
+    display: flex;
+    height: 8%;
+    background-color: var(--black2);
+    color: var(--white);
+    text-decoration: none;
+    width: 100%;
+    min-width: 100%;
+    min-height: 60px;
+    max-height: 80px;
+    z-index: 9999;
+  }
+  
+  .navbarView {
+    height: 20%;
+    min-height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    max-height: 70px;
+  }
+  
+  .logo {
+    display: flex;
+    flex-direction: row;
+    height: 80%;
+    margin: 0px 0px 0px 15px;
+    padding: 0;
+    max-height: 50px;
+    max-width: 65px;
+  }
+  
+  .logo img {
+    height: 50px;
+  }
+  
+  .menuViews {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    max-height: 50px;
+  }
+  
+  .infoUser {
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 0.3;
+  }
+  
+  .infoUser img {
+    max-height: 0px;
+    max-width: 0px;
+    margin:0px;
+    overflow-wrap: break-word;
+    visibility: hidden;
+
+  }
+  
+  .infoUser h4 {
+    text-decoration: none;
+  }
+  
+  .tablero {
+    height: 90%;
+    max-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex: 1;
+  }
+  
+  .icon_tablero {
+    height: 30%;
+    max-height: 50px;
+    max-width: 50px;
+  }
+  
+  .text_tablero {
+    font-family: var(--font-light);
+    text-decoration: none;
+    color: var(--white);
+    height: 55%;
+    font-weight: 900;
+  }
+  
+  .reservas {
+    height: 90%;
+    max-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex: 1;
+  }
+  
+  .icon_reservas {
+    height: 30%;
+    max-height: 50px;
+    max-width: 50px;
+  }
+  
+  .text_reservas {
+    font-family: var(--font-light);
+    text-decoration: none;
+    color: var(--white);
+    height: 55%;
+    font-weight: 900;
+  }
+  
+  .gestionar {
+    height: 90%;
+    max-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex: 1;
+  }
+  
+  .icon_gestionar {
+    height: 30%;
+    max-height: 50px;
+    max-width: 50px;
+  }
+  
+  .text_gestionar {
+    font-family: var(--font-light);
+    text-decoration: none;
+    color: var(--white);
+    height: 55%;
+    font-weight: 900;
+  }
+  
+  .logout {
+    max-height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  .logout_icon {
+    height: 30%;
+    max-height: 45px;
+    max-width: 45px;
+  }
+  
+  .text_logout {
+    font-family: var(--font-light);
+    text-decoration: none;
+    color: var(--white);
+    height: 55%;
+    font-weight: 900;
+  }
 }

@@ -8,6 +8,9 @@
 }
 
 .calendar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   box-sizing: border-box;
   font-family: "Consolas", monospace;
   font-size: 20px;
