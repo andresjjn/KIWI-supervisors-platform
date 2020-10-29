@@ -5,29 +5,28 @@ import DashboardIcon from '../../images/dashboard.svg';
 import BookingIcon from '../../images/queue.svg';
 import SettingsIcon from '../../images/settings.svg';
 import NavItem from '../stateless/NavItem';
+import Logout from './logout/Logout';
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 export default function Navbar() {
-    const [isOpen, setOpen] = useState(false);
-    const [cName, setCName] = useState('compressed');
 
-    function changeDimension() {
-        if (isOpen) {
-            setOpen(false);
-            setCName('compressed');
-        } else {
-            setOpen(true);
-            setCName('extended');
-        }
-    }
-
+    const { user } = useAuth0();
+    console.log(user);
     return (
         <div className='navbar'>
-            <div onMouseEnter={changeDimension} onMouseLeave={changeDimension} className={cName}>
-                <Logo cName={cName} isOpen={isOpen} />
-                <NavItem link="/" className={cName} icon={DashboardIcon} text={isOpen && 'Tablero'} />
-                <NavItem link="/booking" className={cName} icon={BookingIcon} text={isOpen && 'Reservas'} />
-                <NavItem link="/settings" className={cName} icon={SettingsIcon} text={isOpen && 'Gestionar'} />
+            <div className={'navbarView'}>
+                <Logo cName="logo" />
+                <div className="infoUser">
+                    <img src={user.picture} />
+                    <h4>{user.nickname}</h4>
+                </div>
+                <div className="menuViews">
+                    <NavItem link="/" className='tablero' icon={DashboardIcon} text={'Tablero'} />
+                    <NavItem link="/booking" className='reservas' icon={BookingIcon} text={'Reservas'} />
+                    <NavItem link="/settings" className='gestionar' icon={SettingsIcon} text={'Gestionar'} />
+                </div>
+                <Logout />
             </div>
         </div>
     );

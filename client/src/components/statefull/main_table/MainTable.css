@@ -1,4 +1,4 @@
-.main_table {
+/* .main_table {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -11,4 +11,14 @@
   display: flex;
   justify-content: center;
   background-color: khaki;
+}
+*/
+
+.main_table {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: var(--black);
+  padding: 2vw;
 }
