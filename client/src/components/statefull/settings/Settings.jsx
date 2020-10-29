@@ -4,7 +4,7 @@ import Board from './Board';
 import getUsers from '../../../requests/GetUsers';
 import { Loading } from '../../stateless/DashboardMessages';
 import { connect } from 'react-redux';
-import CreateUser from '../../../requests/CreateUser';
+// import CreateUser from '../../../requests/CreateUser';
 
 
 const Settings = ({ isAdmin, supervisors, setSupervisors }) => {
@@ -33,7 +33,7 @@ const Settings = ({ isAdmin, supervisors, setSupervisors }) => {
                     <h1>Administracion de Supervisores</h1>
                 </div>
                 <Board />
-                <button onClick={() => CreateUser()}>Crear Supervisor</button>
+                {/* <button onClick={() => CreateUser()}>Crear Supervisor</button> */}
             </div>
         );
     }

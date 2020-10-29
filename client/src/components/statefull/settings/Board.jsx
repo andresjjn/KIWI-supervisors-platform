@@ -42,9 +42,9 @@ const mapStoreToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setSupervisors(supervisors, pendings) {
+    setSupervisors(supervisors) {
         dispatch({
-            type: "setSupervisors",
+            type: "SetSupervisors",
             supervisors,
         })
     },

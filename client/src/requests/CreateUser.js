@@ -5,6 +5,7 @@ var axios = require("axios");
 const CreateUser = async () => {
     const { value: formValues } = await Swal.fire({
         title: 'Multiple inputs',
+        allowOutsideClick: false,
         html:
             '<input id="Nombre" type="text" class="swal2-input">' +
             '<input id="Email" type="text" class="swal2-input">',
@@ -17,7 +18,7 @@ const CreateUser = async () => {
         }
     })
 
-    if (formValues[0] !== undefined && formValues[1] !== undefined) {
+    if (formValues !== undefined) {
         console.log(JSON.stringify(formValues))
         // var options = {
         //     method: 'POST',
@@ -27,33 +28,34 @@ const CreateUser = async () => {
         //     data: userdata,
         // };
 
-        // try {
-        //     const res = await axios.request(options)
-        //     console.log(res);
-        //     return true;
-        // } catch (error) {
-        //     console.log(error);
-        //     return false;
-        // }
-
         var options = {
             method: 'POST',
             url: `https://${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2/users`,
-            headers: { authorization: `Bearer ${process.env.REACT_APP_MGMT_API_ACCESS_TOKEN}`, 'content-type': 'application/json' },
+            headers: { 'content-type': 'application/json', authorization: `Bearer ${process.env.REACT_APP_MGMT_API_ACCESS_TOKEN}` },
+            scope: "create:users",
+            connection: "Initial-Connection",
             data: {
-                email: 'jane.doe@example.com',
-                user_metadata: { hobby: 'surfing' },
+                "connection": "Username-Password-Authentication",
+                "email": "andersenpiano@gmail.com",
+                "password": "1234",
+                "user_metadata": {
+                    "role": "supervisor"
+                },
+                "email_verified": false,
+                "verify_email": false,
+                "app_metadata": {}
             }
         };
 
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-        }).catch(function (error) {
-            console.error(error);
-        });
+        try {
+            const res = await axios.request(options)
+            console.log(res);
+            return true;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     }
-
-
 }
 
 export default CreateUser;
