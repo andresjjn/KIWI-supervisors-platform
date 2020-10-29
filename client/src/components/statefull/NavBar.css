@@ -222,7 +222,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
+  flex: 2;
 }
 
 .logout_icon {

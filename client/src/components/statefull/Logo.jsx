@@ -6,7 +6,7 @@ import FaceRobot from '../../images/lobbyWhite.png';
 export default function Logo({ cName }) {
     return (
         <div className={cName}>
-            <img src={FaceRobot}/>
+            <img src={FaceRobot} alt=""/>
         </div>
     );
 }
