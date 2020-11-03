@@ -7,6 +7,7 @@ export default async function postHours(daysInfo, hourInfo, available, price) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
+            heightAuto: false,
             text: 'No hay ningun día u hora seleccionada!'
         });
         return;
@@ -16,6 +17,7 @@ export default async function postHours(daysInfo, hourInfo, available, price) {
         title: 'Espere mientras se crean los Horarios!',
         text: 'No recargue la página',
         showConfirmButton: false,
+        heightAuto: false,
         showCancelButton: false,
         allowOutsideClick: false,
         willOpen: () => {
@@ -49,6 +51,7 @@ export default async function postHours(daysInfo, hourInfo, available, price) {
     Swal.fire({
         title: 'Horarios creados!',
         icon: 'success',
+        heightAuto: false,
         showDenyButton: false,
     });
     return true;

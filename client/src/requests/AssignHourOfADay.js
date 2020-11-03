@@ -7,6 +7,7 @@ export default async function assignHourOfADay (day, hour, id) {
         let responseSwal = await Swal.fire({
             title: "Estás seguro?",
             icon: "warning",
+            heightAuto: false,
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
@@ -30,6 +31,7 @@ export default async function assignHourOfADay (day, hour, id) {
                     Swal.fire({
                         position: "center",
                         icon: "success",
+                        heightAuto: false,
                         title: "Hora asignada correctamente",
                         showConfirmButton: false,
                         timer: 1500,
@@ -38,6 +40,7 @@ export default async function assignHourOfADay (day, hour, id) {
                     Swal.fire({
                         position: "center",
                         icon: "error",
+                        heightAuto: false,
                         title: "No hay cupos o ya esta asignado a esta hora",
                         showConfirmButton: false,
                         timer: 1500,
