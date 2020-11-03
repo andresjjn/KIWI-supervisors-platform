@@ -1,0 +1,267 @@
+openapi: 3.0.0
+info:
+  title: Booking API
+  version: '1.0'
+  contact:
+    name: Andrés Jején
+    email: andresjt93@gmail.com
+  license:
+    name: MIT
+  description: 'This API allow create, update and remove from a mongoDB days, hours, slots and users.'
+servers:
+  - url: 'https://kiwi-supervisors-platform.uc.r.appspot.com'
+paths:
+  /api/v1/days:
+    get:
+      summary: ''
+      tags: []
+      responses:
+        '200':
+          description: Return an array with all days created as objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                description: ''
+                minItems: 1
+                uniqueItems: true
+                items:
+                  type: object
+                  required:
+                    - created
+                    - updated
+                    - _id
+                    - date
+                    - hours
+                    - __v
+                  properties:
+                    created:
+                      type: string
+                      minLength: 1
+                    updated:
+                      type: string
+                      minLength: 1
+                    _id:
+                      type: string
+                      minLength: 1
+                    date:
+                      type: string
+                      minLength: 1
+                    hours:
+                      type: array
+                      uniqueItems: true
+                      minItems: 1
+                      items:
+                        required:
+                          - total
+                          - available
+                          - price
+                          - hour
+                        properties:
+                          total:
+                            type: number
+                          available:
+                            type: number
+                          price:
+                            type: number
+                          hour:
+                            type: number
+                          slots:
+                            type: array
+                            items:
+                              required: []
+                              properties: {}
+                    __v:
+                      type: number
+              examples:
+                example-1:
+                  value:
+                    - created: '2020-10-24T16:40:48.501Z'
+                      updated: '2020-10-24T19:32:10.744Z'
+                      _id: 5f945adde23ca92c10b2e9ad
+                      date: '20200202'
+                      hours:
+                        - total: 0
+                          available: 0
+                          price: 0
+                          hour: 8
+                          slots: []
+                        - total: 0
+                          available: 0
+                          price: 2.1
+                          hour: 9
+                          slots: []
+                        - total: 0
+                          available: 0
+                          price: 2.1
+                          hour: 10
+                          slots: []
+                        - total: 10
+                          available: 8
+                          price: 8
+                          hour: 20
+                          slots:
+                            - id: '123456'
+                              name: Berta d'lort
+                            - id: '123456'
+                              name: Berta d'lort
+                            - {}
+                            - {}
+                            - {}
+                            - {}
+                            - {}
+                            - {}
+                            - {}
+                            - {}
+                        - total: 3
+                          available: 3
+                          price: 0
+                          hour: 21
+                          slots:
+                            - {}
+                            - {}
+                            - {}
+                      __v: 3
+      operationId: get-days
+      description: This route allow get a object with all days created and saved on database
+      parameters: []
+    post:
+      summary: ''
+      operationId: post-days
+      responses:
+        '200':
+          description: The day was correctly created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                required:
+                  - status
+              examples:
+                example-1:
+                  value:
+                    status: Success
+        '400':
+          description: 'It happens when '
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  status:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                required:
+                  - status
+                  - description
+              examples:
+                example-1:
+                  value:
+                    status: Error
+                    description: No date passed or incorrect lenght of date
+      description: This route allow create a new day using the schema Day
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+            examples:
+              example-1:
+                value:
+                  date: '20200505'
+        description: 'The minimal data to create a day structure is a date key with value a string with the format YYYYMMDD, with Y: year, M: month and D: day.'
+components:
+  schemas:
+    Day:
+      title: Day
+      x-examples:
+        example-1:
+          created: string
+          update: string
+          date: string
+          hours:
+            - hour: 0
+              total: 0
+              available: 0
+              price: 0
+              slots:
+                - id: string
+                  name: string
+      type: object
+      description: ''
+      properties:
+        created:
+          type: string
+        updated:
+          type: string
+        date:
+          type: string
+        hours:
+          type: array
+          items:
+            type: object
+            properties:
+              hour:
+                type: number
+              total:
+                type: number
+              available:
+                type: number
+              price:
+                type: number
+              slots:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+    User:
+      title: User
+      type: object
+      properties:
+        created:
+          type: string
+        updated:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        birthday:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        role:
+          type: string
+        password:
+          type: string
+      description: ''
+      x-examples:
+        example-1:
+          created: string
+          updated: string
+          id: string
+          name: string
+          email: string
+          birthday: string
+          city: string
+          country: string
+          role: string
+          password: string
