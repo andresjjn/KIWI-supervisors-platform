@@ -8,35 +8,25 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === "SetIsLoaded") {
-        return {
-            ...state,
-            isLoaded: action.setLoaded,
-        }
-    }
 
-    if (action.type === "SetIsAdmin") {
-        return {
-            ...state,
-            isAdmin: action.setAdmin,
-        }
-    }
-
-    if (action.type === "SetUserId") {
-        return {
-            ...state,
-            userId: action.setUserId,
-        }
-    }
-
-    if (action.type === "SetSupervisors") {
-        return {
-            ...state,
-            supervisors: action.supervisors
-        }
+    switch (action.type) {
+        case "SetIsLoaded":
+            state = { ...state, isLoaded: action.setLoaded }
+            break;
+        case "SetIsAdmin":
+            state = { ...state, isAdmin: action.setAdmin }
+            break;
+        case "SetUserId":
+            state = { ...state, userId: action.setUserId }
+            break;
+        case "SetSupervisors":
+            state = { ...state, supervisors: action.supervisors }
+            break;
+        default:
+            break;
     }
 
     return state;
-} 
+}
 
 export default createStore(reducer);
