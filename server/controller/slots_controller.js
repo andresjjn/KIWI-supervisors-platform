@@ -156,10 +156,9 @@ slotsCtrl.fillSlot = async (req, res) => {
           const pos = dayOfdate.hours[i].slots.length - dayOfdate.hours[i].available;
           dayOfdate.hours[i].slots[pos] = req.body;
           const user = await User.findOne({ id: req.body.id });
-          if (!user) {
-            res.status(400).json({ status: 'Error', description: 'No user found' });
+          if (user) {
+            dayOfdate.hours[i].slots[pos].name = user.name;
           }
-          dayOfdate.hours[i].slots[pos].name = user.name;
           dayOfdate.hours[i].available -= 1;
           dayOfdate.updated = date.toISOString();
           await Day.findOneAndUpdate({ date: req.params.date }, dayOfdate);
