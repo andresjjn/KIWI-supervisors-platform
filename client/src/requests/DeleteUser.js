@@ -8,6 +8,7 @@ export default async function deleteUser(user) {
             title: "Estás seguro?",
             text: `Eliminaras a la cuenta asociada a ${user.email}`,
             icon: "warning",
+            heightAuto: false,
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
@@ -27,6 +28,7 @@ export default async function deleteUser(user) {
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
+                    heightAuto: false,
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
@@ -47,6 +49,7 @@ export default async function deleteUser(user) {
                     position: 'top-end',
                     showConfirmButton: false,
                     timer: 3000,
+                    heightAuto: false,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer)

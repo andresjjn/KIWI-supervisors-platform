@@ -8,6 +8,7 @@ export default async function deleteHourOfADay (day, hour) {
             title: "Estás seguro?",
             text: "Puedes perder supervisores asignados!",
             icon: "warning",
+            heightAuto: false,
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
@@ -20,6 +21,7 @@ export default async function deleteHourOfADay (day, hour) {
                 Swal.fire({
                     position: "center",
                     icon: "success",
+                    heightAuto: false,
                     title: "Hora eliminada correctamente",
                     showConfirmButton: false,
                     timer: 1500,
