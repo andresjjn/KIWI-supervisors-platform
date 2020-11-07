@@ -1,0 +1,40 @@
+.booking {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.bookingInput {
+  display: flex;
+  width: 47%;
+}
+
+.dates {
+  width: 47%;
+}
+
+.dates2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .booking {
+    flex-direction: column-reverse;
+  }
+  .bookingInput {
+    width: 100%;
+  }
+  
+  .dates {
+    width: 100%;
+  }
+
+  .dates2 {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,192 @@
+.settingsBody{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.settingsTittle{
+    border-bottom: 1px solid rgb(59, 59, 58);
+    margin: 20px;
+    padding: 0px 10px 1px;
+}
+.settingsView{
+    display: flex;
+    box-shadow: -5px 5px 5px rgb(63, 62, 62);
+    flex-direction: row;
+    background-color: white;
+    padding: 35px;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px;    
+    border-radius: 10px;
+    border-style: solid;
+    min-width: 250px;
+}
+.settingsView button{
+    background-color: #0d1b2a;
+    color: white;
+    padding: 10px 40px;
+    border-radius: 12px;
+    border: 1px;
+    margin: 15px;
+    font-size: 20px;
+    font-weight: 900px;
+    outline: none;
+    cursor: pointer;
+
+}
+.settingsView button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+    transition: all 0.2s ease;
+  }
+
+.users {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(59, 59, 58);
+    min-height: 500px;
+    height: 100%;
+}
+
+.user {
+    border-radius: 15px;
+    padding: 1px 15px;
+    background-color: rgb(95, 92, 254);
+    display: flex;
+    justify-content: space-between;
+    margin: 2px;
+    align-items: center;
+}
+
+.usersTittle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2px 20px;
+}
+
+.users h2 {
+    color: white;
+}
+
+.user h6 {
+    color: white;
+    font-size: 20px;
+    flex: 1;
+}
+
+.userName {
+    flex: 1;
+}
+
+.userId {
+    flex: 1;
+}
+
+.userMenu{
+    flex: 1;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 2px;
+    color: white;
+    outline: none;
+}
+
+.pending {
+  border-radius: 15px;
+  padding: 1px 15px;
+  background-color: rgb(95, 92, 254, 0.5);
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+  align-items: center;
+}
+
+.pending h6 {
+  color: white;
+  font-size: 20px;
+  flex: 1;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 65px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+input:checked + .slider {
+  background-color: rgb(163, 161, 255);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(163, 161, 255);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(35px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 30px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.deleteUser {
+  filter: invert(100%);
+  border: none;
+  margin-left: 15px;
+  height: 20px;
+  width: 20px;
+  background: url('../../../images/basura.svg') no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 670px) {
+    .settingsView{
+        flex-direction: column;
+    }
+}

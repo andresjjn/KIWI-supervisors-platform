@@ -1,0 +1,141 @@
+.booking_list_container {
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a transparent;
+  text-align: center;
+}
+.booking_list_container::-webkit-scrollbar {
+  width: 10px;
+}
+.booking_list_container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.booking_list_container::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius: 20px;
+  border: 3px solid transparent;
+}
+.booking_list_container2 {
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a transparent;
+  text-align: center;
+}
+.booking_list_container2::-webkit-scrollbar {
+  width: 10px;
+}
+.booking_list_container2::-webkit-scrollbar-track {
+  background: transparent;
+}
+.booking_list_container2::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius: 20px;
+  border: 3px solid transparent;
+}
+.booking_list_container {
+  overflow: scroll;
+  height: 44%;
+  max-height: 400px;
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a #ffffff;
+  padding: 10px;
+  background-color: rgb(37, 37, 37);
+  color: rgb(223, 223, 223);
+  overflow-x: hidden;
+}
+.booking_list_container2 {
+  flex: 1;
+  overflow: scroll;
+  width: 90%;
+  height: 100%;
+  max-width: 1000px;
+  max-height: 600px;
+  scrollbar-width: thin;
+  scrollbar-color: #0d1b2a #ffffff;
+  padding: 10px;
+  background-color: rgb(37, 37, 37);
+  color: rgb(223, 223, 223);
+  overflow-x: hidden;
+}
+.card {
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+.available {
+  display: flex;
+  padding: 0px 10px;
+}
+.hour {
+  display: flex;
+  padding: 0px 5px;
+}
+.card {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.deleteBtn {
+  display: flex;
+  padding: 0px 5px;
+  filter: invert(100%);
+}
+.info_section {
+  display: flex;
+  justify-content: space-around;
+}
+.info_section p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.available {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  background-color: rgba(72, 72, 72, 0.138);
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 4px;
+}
+.available .deleteBtn {
+  border: none;
+  width: 20px;
+  width: 20px;
+  background: url('../../../images/basura.svg') no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+.available .addBtn {
+  background: url('../../../images/anadir.svg') no-repeat;
+  border: none;
+  width: 20px;
+  width: 20px;
+  background-size: contain;
+  cursor: pointer;
+  filter: invert(100%);
+}
+ .minusBtn {
+  background: url('../../../images/minus.svg') no-repeat;
+  border: none;
+  width: 20px;
+  width: 20px;
+  background-size: contain;
+  cursor: pointer;
+  filter: invert(100%);
+}
+.assigned {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  background-color: #5f5cfe;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 4px;
+}
+.hour {
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: larger;
+}

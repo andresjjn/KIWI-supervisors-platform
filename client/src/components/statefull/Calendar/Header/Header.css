@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  font-family: monospace;
+  font-weight: 500;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px;
+}
+
+.date {
+  font-size: 1.8rem;
+  width: 80%;
+  text-transform: uppercase;
+}
+
+.picker {
+  display: flex;
+}
+
+.previous, .today, .next {
+  font-size: 1.8rem;
+  color: #999;
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.previous:hover, .today:hover, .next:hover {
+  color: white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+@media screen and (max-height: 800px) {
+  .header {
+    padding: 10px;
+  }
+}

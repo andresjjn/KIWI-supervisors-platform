@@ -1,0 +1,35 @@
+.dashboardBody{
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dashboardTittle{
+    width: 100%;
+    border-bottom: 1px solid rgb(59, 59, 58);
+    margin: 20px;
+    padding: 0px 10px 1px;
+}
+.stadisticsView{
+    display: inherit;
+    box-shadow: -5px 5px 5px rgb(63, 62, 62);
+    flex-direction: column;
+    background-color: white;
+    padding: 15px 35px;
+    justify-content: center;
+    align-items: center;
+    border: 1px;    
+    border-radius: 10px;
+    border-style: solid;
+    min-width: 250px;
+}
+.stadisticsView p{
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+}
+.stadisticsView h2{
+    font-size: 20px;
+    font-weight: 500;
+}

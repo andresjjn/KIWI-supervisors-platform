@@ -1,0 +1,144 @@
+.calendarView {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+.calendar {
+  box-sizing: border-box;
+  font-family: "Consolas", monospace;
+  font-size: 20px;
+  max-width: 1000px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(74,117,152,1) 0%, rgba(79,119,135,1) 100%);
+  padding: 0px 30px;
+}
+
+.date {
+  margin-left: 20px;
+  text-align: center;
+  color: white;
+}
+
+.picker {
+  margin-right: 20px;
+}
+
+.calendar .body {
+  display: flex;
+  flex-direction: column;
+  padding: 0vw 0px 1vw 0px;
+}
+
+.calendar .nameDay {
+  width: calc(100% / 7);
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.calendar .nameDay div {
+  width: 100%;
+}
+
+.calendar .nameDay p {
+  font-size: 20px;
+  color: white;
+}
+
+.calendar .week {
+  display: flex;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.calendar .weekSelected {
+  border-radius: 50vh;
+  display: flex;
+  background-color: rgba(245, 245, 245, 0.15);
+  padding-bottom: 5px;
+}
+
+.calendar .day {
+  position: relative;
+  width: calc(100% / 7);
+  height: 44px;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 1;
+  text-align: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.calendar .day:hover {
+  cursor: default;
+}
+
+.calendar .day div {
+  width: 54px;
+  height: 44px;
+  position: relative;
+  color: white;
+  font-weight: 900;
+  z-index: 100;
+  line-height: 44px;
+}
+
+.calendar .day div.before {
+  color: rgb(187, 187, 187);
+}
+
+.calendar .day div.selected {
+  background-color: inherit;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  width: 40px;
+  border-radius: 0px;
+  border-bottom: solid 3px;
+}
+
+.calendar .day div.selectedToday {
+  background-color: inherit;
+  font-weight: bold;
+  font-size: 25px;
+  width: 40px;
+  border-radius: 0px;
+  border-bottom: solid 3px;
+  color:#ffcf00;
+}
+
+.calendar .day div.today {
+  font-size: 20px;
+  color: #ffcf00;
+  width: 40px;
+  font-weight: bold;
+}
+
+@media screen and (max-height: 800px) {
+  .calendar .day div.selected {
+    font-weight: bold;
+    font-size: 20px;
+    width: 50px;
+    margin: 0;
+  }
+
+  .day {
+    font-size: 20px;
+  }
+
+  .calendar .day div.today {
+    font-size: 20px;
+    width: 54px;
+  }
+}
