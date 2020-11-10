@@ -1,3 +1,4 @@
+// Format date to month name and day format (Enero 17)
 export default function formatedDate(date) {
     const month = date.slice(4, 6);
     const day = date.slice(6, 8);

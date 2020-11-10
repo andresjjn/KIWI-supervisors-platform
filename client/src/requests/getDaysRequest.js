@@ -1,6 +1,8 @@
-
 var axios = require("axios");
 
+/**
+ * getDaysRequest - Get all days from database
+ */
 const getDaysRequest = () => {
     var config = {
         method: "get",

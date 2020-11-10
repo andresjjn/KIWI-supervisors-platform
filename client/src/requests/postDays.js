@@ -1,6 +1,11 @@
 var axios = require("axios");
 
-
+/**
+ * postDays - Create Days on Database
+ * @param {number[]} daysInfo Day to create
+ * @param {number[]} hourInfo Hours to Create
+ * @param {number} available Supervisors per Hour
+ */
 const postDays = async(daysInfo, hourInfo, available) => {
     for (const day of daysInfo) {
         for (const hour of hourInfo) {

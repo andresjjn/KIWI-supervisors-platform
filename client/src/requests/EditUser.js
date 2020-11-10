@@ -1,5 +1,10 @@
 var axios = require("axios");
 
+/**
+ * editUser - Edit user account on Auth0
+ * @param {string} user_id User Id to edit
+ * @param {boolean} checked If true set role to supervisor otherwise pending
+ */
 export default async function editUser(user_id, checked) {
     const role = (checked) ? "supervisor" : "pending";
     var options = {

@@ -6,7 +6,11 @@ import MainTable from "./components/statefull/main_table/MainTable";
 import { Provider } from 'react-redux';
 import store from './Store'
 
+/**
+ * App - Application entry point
+ */
 function App() {
+    // Main view
     return (
         <Provider store={store}>
             <div className="App">
@@ -19,4 +23,5 @@ function App() {
     );
 }
 
+// Requiere user authentication for App
 export default withAuthenticationRequired(App);

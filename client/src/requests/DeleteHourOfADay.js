@@ -2,7 +2,13 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
+/**
+ * deleteHourOfADay - Delete a hour of a day
+ * @param {number} day Day in format YYYYMMDD
+ * @param {number} hour Hour to be deleted
+ */
 export default async function deleteHourOfADay (day, hour) {
+    // Notify warning before delete hour
     try {
         let responseSwal = await Swal.fire({
             title: "Estás seguro?",
@@ -15,6 +21,7 @@ export default async function deleteHourOfADay (day, hour) {
             confirmButtonText: "Sí, eliminala!",
         });
 
+        // If confirm button is pressed try to delete hour
         if (responseSwal.isConfirmed) {
             try {
                 await axios.delete(`${process.env.REACT_APP_API_URL}days/${day}/hours/${hour}`);

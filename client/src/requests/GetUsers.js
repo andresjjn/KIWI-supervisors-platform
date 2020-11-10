@@ -1,5 +1,8 @@
 var axios = require("axios").default;
 
+/**
+ * getUsers - Get all users accounts from Auth0
+ */
 export default async function getUsers() {
     var options = {
         method: 'GET',

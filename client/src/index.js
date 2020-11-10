@@ -6,6 +6,9 @@ import * as serviceWorker from "./serviceWorker";
 import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 require("dotenv").config();
 
+/**
+ * Render single view app, using Auth0 for authentication
+ */
 ReactDOM.render(
     <React.StrictMode>
         <Auth0ProviderWithHistory>

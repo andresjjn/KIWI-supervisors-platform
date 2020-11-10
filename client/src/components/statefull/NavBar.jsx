@@ -8,11 +8,13 @@ import NavItem from '../stateless/NavItem';
 import Logout from './logout/Logout';
 import { useAuth0 } from "@auth0/auth0-react";
 
-
+/**
+ * Navbar - Component that shows user icon, user name and routes in web app
+ */
 export default function Navbar() {
-
+    // get user info from Auth0
     const { user } = useAuth0();
-    console.log(user);
+
     return (
         <div className='navbar'>
             <div className={'navbarView'}>

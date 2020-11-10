@@ -2,7 +2,12 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
+/**
+ * deleteUser - Deletes a user account on Auth0
+ * @param {user} user User to delete
+ */
 export default async function deleteUser(user) {
+    // Notify warning before delete user
     try {
         let responseSwal = await Swal.fire({
             title: "Estás seguro?",
@@ -15,6 +20,7 @@ export default async function deleteUser(user) {
             confirmButtonText: "Sí, elimínalo!",
         });
 
+        // If confirm button is pressed try to delete user
         if (responseSwal.isConfirmed) {
             var options = {
                 method: 'DELETE',
@@ -37,13 +43,14 @@ export default async function deleteUser(user) {
                         toast.addEventListener('mouseleave', Swal.resumeTimer)
                     }
                 });
+                // Notify if user was delete correctly
                 Toast.fire({
                     icon: 'success',
                     title: 'Cuenta eliminada!'
                 });
                 return true;
             } catch (error) {
-                console.log(error);
+                // Notify any error
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',

@@ -2,7 +2,15 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
+/**
+ * postHours - Create work Hours on database
+ * @param {number[]} daysInfo Array with the days
+ * @param {number[]} hourInfo Array with the hours to create
+ * @param {number} available quantity of supervisors per hour
+ * @param {number} price value of every hour
+ */
 export default async function postHours(daysInfo, hourInfo, available, price) {
+    // Notify on incomplete data info
     if (daysInfo.length === 0 || hourInfo.length === 0) {
         Swal.fire({
             icon: 'error',
@@ -13,6 +21,7 @@ export default async function postHours(daysInfo, hourInfo, available, price) {
         return;
     }
 
+    // Notify while create hours
     Swal.fire({
         title: 'Espere mientras se crean los Horarios!',
         text: 'No recargue la página',
@@ -48,6 +57,8 @@ export default async function postHours(daysInfo, hourInfo, available, price) {
                 });
         }
     }
+
+    // Notify on success
     Swal.fire({
         title: 'Horarios creados!',
         icon: 'success',

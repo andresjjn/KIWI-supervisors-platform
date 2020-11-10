@@ -2,7 +2,14 @@ import Swal from "sweetalert2";
 
 var axios = require("axios");
 
+/**
+ * assignHourOfADay - Assign a User with supervisor role to a specific date
+ * @param {number} day Day in format YYYYMMDD
+ * @param {number} hour Hour to be assigned
+ * @param {string} id User id
+ */
 export default async function assignHourOfADay (day, hour, id) {
+    // Notify warning before assign user
     try {
         let responseSwal = await Swal.fire({
             title: "Estás seguro?",
@@ -14,6 +21,7 @@ export default async function assignHourOfADay (day, hour, id) {
             confirmButtonText: "Sí, agregarme!",
         });
 
+        // If confirm button is pressed try to assign the user to a date
         if (responseSwal.isConfirmed) {
             const dataUser = `{\n    "id": "${id}"}`
             try {
@@ -26,7 +34,7 @@ export default async function assignHourOfADay (day, hour, id) {
                     data: dataUser,
                 };
                 const res = await axios(config);
-                console.log(res);
+                // Notify on success or failure
                 if (res.data.status === 'Success') {
                     Swal.fire({
                         position: "center",
