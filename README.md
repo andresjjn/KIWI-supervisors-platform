@@ -1,4 +1,4 @@
-# ![Texto alternativo](./client/src/images/img.svg)
+# Lobbi
 
 _Schedule managment platform for Kiwibot supervisors_
 
