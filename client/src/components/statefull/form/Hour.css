@@ -1,0 +1,22 @@
+.defaultBtn {
+  background-color: white;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 6px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  width: 50px;
+  height: 30px;
+}
+
+.selectedBtn {
+  background-color:#0d1b2a;
+  outline: none;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  margin: 6px;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  width: 50px;
+  height: 30px;
+}
