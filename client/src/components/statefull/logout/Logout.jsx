@@ -1,9 +1,12 @@
 import React from "react";
-import "./Logout.css";
 import LogoutIcon from "../../../images/logout.svg";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 
+
+/**
+ * Function that return the logout button component.
+ */
 export default function LogoutButton() {
     const { logout } = useAuth0();
     return (

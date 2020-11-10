@@ -1,3 +1,7 @@
+/**
+ * Function that sort the hours list.
+ * @param hours Hours to be sorted.
+ */
 export default function sortHours(hours) {
     const length = hours.length;
     for (let j = 0; j < length; j++) {

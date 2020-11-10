@@ -6,6 +6,11 @@ import HoursDay from "../hours_list/HoursDay";
 import './Booking.css';
 import { connect } from 'react-redux';
 
+
+/** 
+ * Function that returns the booking component that
+ * contain the form and the calendar.
+*/
 const Booking = ({ isAdmin }) => {
     const [value, setValue] = useState(Moment());
     const [reload, setReload] = useState(false);

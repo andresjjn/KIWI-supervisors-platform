@@ -1,3 +1,8 @@
+/**
+ * Function that build the calendar component.
+ * @param value Selected moment in the calendar.
+ * 
+ */
 export default function buildCalendar(value) {
     const startDay = value.clone().startOf('Month').startOf('isoWeek');
     const endDay = value.clone().endOf('Month').endOf('isoWeek');

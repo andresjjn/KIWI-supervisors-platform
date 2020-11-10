@@ -5,6 +5,10 @@ import Header from "./Header/Header";
 import WeekCalendar from "./WeekCalendar";
 import DaysName from "./DaysName";
 
+
+/**
+ * Function that return the Calendar component
+ */
 export default function Calendar({ value, onChange }) {
     const [calendar, setCalendar] = useState([]);
 

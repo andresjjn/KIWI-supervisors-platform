@@ -1,3 +1,6 @@
+/* Functions that manage the calendar components class names */
+
+
 function isSelected(day, value) {
     return value.isSame(day, 'day');
 }

@@ -1,6 +1,10 @@
 import React from 'react';
 import './DaysName.css'
 
+
+/**
+ * Function that create the day names section
+ */
 export default function DaysName() {
     return (
         <div className="days_name">

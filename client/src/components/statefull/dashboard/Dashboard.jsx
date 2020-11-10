@@ -1,6 +1,10 @@
 import React from "react";
 import './Dashboard.css';
 
+
+/**
+ * Function that manages the statistics.
+ */
 export default function Dashboard() {
     return (
         <div className='dashboardBody'>

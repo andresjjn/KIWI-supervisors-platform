@@ -1,6 +1,11 @@
 import React from 'react';
 import Hour from './Hour';
 
+
+/**
+ * Function that create and return the hours components.
+ * @param {*} param0 
+ */
 export default function HourForm({ reload, onClick }) {
     const hours = { '0:00': 0, '1:00': 1, '2:00': 2, '3:00': 3, '4:00': 4, '5:00': 5, '6:00': 6, '7:00': 7, '8:00': 8,
                     '9:00': 9, '10:00': 10, '11:00': 11, '12:00': 12, '13:00': 13, '14:00': 14, '15:00': 15, '16:00': 16,

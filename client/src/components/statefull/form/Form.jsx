@@ -6,7 +6,12 @@ import HoursForm from './HoursForm';
 import postHours from '../../../requests/PostHours';
 import PricePerHour from './PricePerHour';
 
-
+/**
+ * Function that returns the form component.
+ * @param reload State variable that reload components.
+ * @param setReload Change reload variable.
+ * @param value Selected day.
+ */
 export default function Form({ reload, setReload, value }) {
     let startOfWeek = value.clone().startOf('isoWeek');
     let endOfWeek = value.clone().endOf('isoWeek');

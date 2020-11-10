@@ -2,6 +2,12 @@ import React from 'react';
 import Moment from 'moment';
 import './Header.css'
 
+
+/**
+ * Function that return the current month.
+ * @param value Selected day.
+ * @param setValue Change the selected day.
+ */
 export default function CalendarHeader({ value, setValue }) {
     function currentMonthName() {
         let date = value.format('MMMM');

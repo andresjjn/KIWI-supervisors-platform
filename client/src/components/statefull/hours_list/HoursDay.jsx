@@ -11,6 +11,10 @@ import { connect } from 'react-redux';
 
 let axios = require("axios");
 
+
+/**
+ * Function that returns the panel of assigned hours.
+ */
 const HoursDay = ({ isAdmin, reload, value, userId }) => {
     const [isLoading, setLoading] = useState(true);
     const [day, setDay] = useState({});
@@ -84,14 +88,14 @@ const HoursDay = ({ isAdmin, reload, value, userId }) => {
     }
 
     async function assignHour(date, hour, index) {
-        let respone = await assignHourOfADay(date, hour, userId); //cambiar por id
+        let respone = await assignHourOfADay(date, hour, userId);
         if (respone === true) {
             refreshList();
         }
     }
 
     async function unassignHour(date, hour, index) {
-        let respone = await unassignHourOfADay(date, hour, userId); //cambiar por id
+        let respone = await unassignHourOfADay(date, hour, userId);
         if (respone === true) {
             refreshList();
         }

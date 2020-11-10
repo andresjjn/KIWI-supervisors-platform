@@ -2,6 +2,12 @@ import React from 'react';
 import dayStyles from "./Styles";
 import weekSelected from './SelectedWeek'
 
+/**
+ * Function that builds and returns the calendar weeks.
+ * @param value Selected day.
+ * @param calendar List of days.
+ * @param funct Function that change the selected day.
+ */
 export default function WeekCalendar({value, calendar, funct }) {
     return (
         <>
